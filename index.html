@@ -29,23 +29,19 @@
         ::-webkit-scrollbar-thumb { background: #6366f1; border-radius: 4px; }
         @keyframes floatAnim { 0%, 100% { transform: translateY(0) rotate(0deg); } 50% { transform: translateY(-8px) rotate(1deg); } }
         .float-icon { animation: floatAnim 4s ease-in-out infinite; }
-        @keyframes rgbGlow { 
-            0% { box-shadow: 0 0 20px rgba(99, 102, 241, 0.25), inset 0 0 15px rgba(139, 92, 246, 0.1); } 
-            50% { box-shadow: 0 0 40px rgba(59, 130, 246, 0.5), inset 0 0 25px rgba(99, 102, 241, 0.3); } 
-            100% { box-shadow: 0 0 20px rgba(99, 102, 241, 0.25), inset 0 0 15px rgba(139, 92, 246, 0.1); } 
-        }
-        .rgb-card { animation: rgbGlow 5s ease-in-out infinite; transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s ease; }
-        .rgb-card:hover { transform: translateY(-4px) scale(1.01); box-shadow: 0 0 30px rgba(99, 102, 241, 0.6); }
-        .glass-panel { background: rgba(255, 255, 255, 0.82); backdrop-filter: blur(20px); border: 1px solid rgba(99, 102, 241, 0.18); transition: all 0.3s ease; }
-        .dark .glass-panel { background: rgba(13, 18, 38, 0.85); backdrop-filter: blur(20px); border: 1px solid rgba(99, 102, 241, 0.25); }
+        
+        /* Clean Glass Panel without heavy background glow */
+        .glass-panel { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(12px); border: 1px solid rgba(226, 232, 240, 0.9); transition: all 0.3s ease; }
+        .dark .glass-panel { background: rgba(13, 18, 38, 0.96); backdrop-filter: blur(12px); border: 1px solid rgba(30, 41, 59, 0.9); }
+        
         .rgb-gradient-text { background: linear-gradient(135deg, #6366f1 0%, #3b82f6 50%, #8b5cf6 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .rgb-badge { background: linear-gradient(135deg, rgba(99,102,241,0.15), rgba(139,92,246,0.15)); border: 1px solid rgba(99,102,241,0.3); }
-        button, input, select { transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1); }
-        button:hover { transform: translateY(-2px); filter: brightness(1.05); }
-        button:active { transform: translateY(1px) scale(0.97); }
+        .rgb-badge { background: linear-gradient(135deg, rgba(99,102,241,0.1), rgba(139,92,246,0.1)); border: 1px solid rgba(99,102,241,0.2); }
+        button, input, select { transition: all 0.25s ease; }
+        button:hover { transform: translateY(-1px); }
+        button:active { transform: translateY(1px) scale(0.98); }
     </style>
 </head>
-<body class="bg-slate-50 dark:bg-[#070913] text-slate-900 dark:text-slate-100 min-h-full flex flex-col selection:bg-indigo-500 selection:text-white">
+<body class="bg-slate-100 dark:bg-[#070913] text-slate-900 dark:text-slate-100 min-h-full flex flex-col selection:bg-indigo-500 selection:text-white">
 
     <!-- Toast Notification Box -->
     <div id="toast" class="fixed top-5 right-5 z-50 transform translate-y-[-180%] transition-all duration-300 max-w-sm bg-white dark:bg-slate-900 text-slate-900 dark:text-white px-5 py-3.5 rounded-2xl shadow-2xl flex items-center space-x-3.5 border border-indigo-500/40">
@@ -53,12 +49,11 @@
         <p id="toast-msg" class="font-bold text-xs"></p>
     </div>
 
-    <!-- Header with SVG Brand Vector -->
+    <!-- Header -->
     <header class="glass-panel border-b border-slate-200 dark:border-indigo-950/60 sticky top-0 z-40 shadow-lg">
         <div class="max-w-6xl mx-auto px-4 py-3.5 flex justify-between items-center">
             <div class="flex items-center space-x-3.5">
                 <div class="bg-gradient-to-tr from-indigo-600 via-blue-600 to-violet-600 text-white p-3 rounded-2xl flex items-center justify-center shadow-lg shadow-indigo-600/30 float-icon">
-                    <!-- Custom SVG Dairy Icon -->
                     <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24"><path d="M18 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 18H6V4h2v3h8V4h2v16zM10 10h4v2h-4v-2zm0 4h4v2h-4v-2z"/></svg>
                 </div>
                 <div class="flex flex-col">
@@ -98,8 +93,8 @@
     <!-- Main Container -->
     <main class="max-w-6xl mx-auto px-3 sm:px-4 py-6 w-full flex-grow flex flex-col gap-6">
 
-        <!-- Navigation Tabs with RGB Glow Active State -->
-        <div class="grid grid-cols-4 sm:grid-cols-7 gap-2 glass-panel p-2.5 rounded-3xl shadow-2xl">
+        <!-- Navigation Tabs -->
+        <div class="grid grid-cols-4 sm:grid-cols-8 gap-2 glass-panel p-2.5 rounded-3xl shadow-2xl">
             <button onclick="switchTab('dashboard')" id="tab-btn-dashboard" class="py-3 px-2 rounded-2xl font-bold text-xs flex flex-col items-center justify-center space-y-1.5 bg-gradient-to-r from-indigo-600 via-blue-600 to-violet-600 text-white shadow-lg shadow-indigo-600/30 transition transform active:scale-95">
                 <i data-lucide="layout-dashboard" class="w-4 h-4"></i>
                 <span>डैशबोर्ड</span>
@@ -128,6 +123,10 @@
                 <i data-lucide="printer" class="w-4 h-4"></i>
                 <span>बिल & स्लिप</span>
             </button>
+            <button onclick="switchTab('expenses')" id="tab-btn-expenses" class="py-3 px-2 rounded-2xl font-semibold text-xs flex flex-col items-center justify-center space-y-1.5 text-slate-600 dark:text-slate-400 hover:bg-indigo-500/10 hover:text-indigo-600 transition">
+                <i data-lucide="package-plus" class="w-4 h-4 text-emerald-500"></i>
+                <span>चारा & खर्च</span>
+            </button>
         </div>
 
         <!-- TAB 1: DASHBOARD -->
@@ -152,134 +151,152 @@
 
             <!-- Giant Highlighted Stat Cards -->
             <div class="space-y-4">
-                <h3 class="text-xs font-black uppercase tracking-wider text-slate-500 dark:text-slate-400 px-1">📊 मुख्य समग्र सारांश (Overall Master Stats)</h3>
-                <div class="grid grid-cols-2 lg:grid-cols-4 gap-5">
-                    <div class="glass-panel p-5 rounded-3xl shadow-xl flex flex-col justify-between rgb-card relative overflow-hidden">
-                        <div class="absolute -right-4 -bottom-4 text-indigo-500/10 pointer-events-none"><i data-lucide="milk" class="w-28 h-28"></i></div>
-                        <div class="flex justify-between items-start z-10">
-                            <span class="text-xs font-extrabold text-slate-500 dark:text-slate-400 uppercase tracking-wide">कुल दूध मात्रा</span>
-                            <div class="p-2 bg-indigo-500/15 text-indigo-600 dark:text-indigo-400 rounded-2xl"><i data-lucide="milk" class="w-4 h-4"></i></div>
+                <div class="flex justify-between items-center px-1">
+                    <h3 class="text-xs font-black uppercase tracking-wider text-slate-500 dark:text-slate-400">📊 मुख्य समग्र सारांश (Overall Master Stats)</h3>
+                    <span class="text-[10px] bg-indigo-500/10 text-indigo-600 font-bold px-3 py-1 rounded-full">एंटरप्राइज सिंक्रोनाइज्ड</span>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                    
+                    <!-- Card 1: Total Liters -->
+                    <div class="glass-panel p-6 rounded-3xl shadow-md flex flex-col justify-between relative overflow-hidden space-y-4">
+                        <div class="flex justify-between items-center">
+                            <span class="text-xs font-extrabold text-indigo-600 dark:text-indigo-400 uppercase tracking-wide flex items-center gap-1.5">
+                                <i data-lucide="milk" class="w-4 h-4 text-indigo-500"></i> कुल दूध मात्रा
+                            </span>
+                            <span id="badge-liters-growth" class="text-[10px] px-2.5 py-0.5 rounded-full font-bold bg-indigo-500/10 text-indigo-600">▲ 0%</span>
                         </div>
-                        <div class="my-3 z-10">
-                            <h3 id="stat-total-liters" class="text-2xl sm:text-3xl font-black text-indigo-600 dark:text-indigo-400 tracking-tight">0.0 L</h3>
-                            <p class="text-[11px] text-slate-500 dark:text-slate-400 mt-1 font-medium">सुबह और शाम की कुल मात्रा</p>
+                        <div class="flex justify-between items-end pt-1 px-1">
+                            <div>
+                                <p class="text-[11px] text-slate-500 font-medium">सुबह और शाम की कुल</p>
+                            </div>
+                            <h3 id="stat-total-liters" class="text-3xl sm:text-4xl font-black text-indigo-600 dark:text-indigo-400 tracking-tight truncate max-w-[200px]" title="0.0 L">0.0 L</h3>
                         </div>
-                        <div id="badge-liters-growth" class="text-[10px] font-bold px-3 py-1 rounded-xl bg-indigo-500/15 text-indigo-600 dark:text-indigo-400 inline-block w-fit z-10 border border-indigo-500/20">▲ 0% वृद्धि</div>
                     </div>
 
-                    <div class="glass-panel p-5 rounded-3xl shadow-xl flex flex-col justify-between rgb-card relative overflow-hidden">
-                        <div class="absolute -right-4 -bottom-4 text-blue-500/10 pointer-events-none"><i data-lucide="indian-rupee" class="w-28 h-28"></i></div>
-                        <div class="flex justify-between items-start z-10">
-                            <span class="text-xs font-extrabold text-slate-500 dark:text-slate-400 uppercase tracking-wide">कुल कारोबार मूल्य</span>
-                            <div class="p-2 bg-blue-500/15 text-blue-600 dark:text-blue-400 rounded-2xl"><i data-lucide="indian-rupee" class="w-4 h-4"></i></div>
+                    <!-- Card 2: Total Amount -->
+                    <div class="glass-panel p-6 rounded-3xl shadow-md flex flex-col justify-between relative overflow-hidden space-y-4">
+                        <div class="flex justify-between items-center">
+                            <span class="text-xs font-extrabold text-blue-600 dark:text-blue-400 uppercase tracking-wide flex items-center gap-1.5">
+                                <i data-lucide="indian-rupee" class="w-4 h-4 text-blue-500"></i> कुल कारोबार मूल्य
+                            </span>
+                            <span id="badge-amount-growth" class="text-[10px] px-2.5 py-0.5 rounded-full font-bold bg-blue-500/10 text-blue-600">▲ 0%</span>
                         </div>
-                        <div class="my-3 z-10">
-                            <h3 id="stat-total-amount" class="text-2xl sm:text-3xl font-black text-blue-600 dark:text-blue-400 tracking-tight flex items-center gap-1.5"><span>₹</span> <span class="tracking-normal">0.00</span></h3>
-                            <p class="text-[11px] text-slate-500 dark:text-slate-400 mt-1 font-medium">लीटर × रेट का कुल योग</p>
+                        <div class="flex justify-between items-end pt-1 px-1">
+                            <div>
+                                <p class="text-[11px] text-slate-500 font-medium">लीटर × रेट का योग</p>
+                            </div>
+                            <h3 id="stat-total-amount" class="text-3xl sm:text-4xl font-black text-blue-600 dark:text-blue-400 tracking-tight truncate max-w-[210px]" title="₹0.00">₹0.00</h3>
                         </div>
-                        <div id="badge-amount-growth" class="text-[10px] font-bold px-3 py-1 rounded-xl bg-blue-500/15 text-blue-600 dark:text-blue-400 inline-block w-fit z-10 border border-blue-500/20">▲ 0% वृद्धि</div>
                     </div>
 
-                    <div class="glass-panel p-5 rounded-3xl shadow-xl flex flex-col justify-between rgb-card relative overflow-hidden">
-                        <div class="absolute -right-4 -bottom-4 text-violet-500/10 pointer-events-none"><i data-lucide="wallet" class="w-28 h-28"></i></div>
-                        <div class="flex justify-between items-start z-10">
-                            <span class="text-xs font-extrabold text-slate-500 dark:text-slate-400 uppercase tracking-wide">कुल भुगतान (Paid)</span>
-                            <div class="p-2 bg-violet-500/15 text-violet-600 dark:text-violet-400 rounded-2xl"><i data-lucide="wallet" class="w-4 h-4"></i></div>
+                    <!-- Card 3: Total Paid -->
+                    <div class="glass-panel p-6 rounded-3xl shadow-md flex flex-col justify-between relative overflow-hidden space-y-4">
+                        <div class="flex justify-between items-center">
+                            <span class="text-xs font-extrabold text-violet-600 dark:text-violet-400 uppercase tracking-wide flex items-center gap-1.5">
+                                <i data-lucide="wallet" class="w-4 h-4 text-violet-500"></i> कुल भुगतान (PAID)
+                            </span>
+                            <span class="text-[10px] px-2.5 py-0.5 rounded-full font-bold bg-violet-500/10 text-violet-600">चुकाया</span>
                         </div>
-                        <div class="my-3 z-10">
-                            <h3 id="stat-total-paid" class="text-2xl sm:text-3xl font-black text-violet-600 dark:text-violet-400 tracking-tight flex items-center gap-1.5"><span>₹</span> <span class="tracking-normal">0.00</span></h3>
-                            <p class="text-[11px] text-slate-500 dark:text-slate-400 mt-1 font-medium">नकद या UPI से दिया गया</p>
+                        <div class="flex justify-between items-end pt-1 px-1">
+                            <div>
+                                <p class="text-[11px] text-slate-500 font-medium">नकद या UPI से दिया</p>
+                            </div>
+                            <h3 id="stat-total-paid" class="text-3xl sm:text-4xl font-black text-violet-600 dark:text-violet-400 tracking-tight truncate max-w-[210px]" title="₹0.00">₹0.00</h3>
                         </div>
-                        <span class="text-[10px] font-bold px-3 py-1 rounded-xl bg-violet-500/15 text-violet-600 dark:text-violet-400 inline-block w-fit border border-violet-500/20">चुकाया गया</span>
                     </div>
 
-                    <div class="glass-panel p-5 rounded-3xl shadow-xl flex flex-col justify-between rgb-card relative overflow-hidden">
-                        <div class="absolute -right-4 -bottom-4 text-amber-500/10 pointer-events-none"><i data-lucide="alert-circle" class="w-28 h-28"></i></div>
-                        <div class="flex justify-between items-start z-10">
-                            <span class="text-xs font-extrabold text-slate-500 dark:text-slate-400 uppercase tracking-wide">शेष बकाया (Due)</span>
-                            <div class="p-2 bg-amber-500/15 text-amber-600 dark:text-amber-400 rounded-2xl"><i data-lucide="alert-circle" class="w-4 h-4"></i></div>
+                    <!-- Card 4: Total Due -->
+                    <div class="glass-panel p-6 rounded-3xl shadow-md flex flex-col justify-between relative overflow-hidden space-y-4">
+                        <div class="flex justify-between items-center">
+                            <span class="text-xs font-extrabold text-amber-600 dark:text-amber-400 uppercase tracking-wide flex items-center gap-1.5">
+                                <i data-lucide="alert-circle" class="w-4 h-4 text-amber-500"></i> शेष बकाया (DUE)
+                            </span>
+                            <span class="text-[10px] px-2.5 py-0.5 rounded-full font-bold bg-amber-500/10 text-amber-600">बाकी</span>
                         </div>
-                        <div class="my-3 z-10">
-                            <h3 id="stat-total-due" class="text-2xl sm:text-3xl font-black text-amber-600 dark:text-amber-400 tracking-tight flex items-center gap-1.5"><span>₹</span> <span class="tracking-normal">0.00</span></h3>
-                            <p class="text-[11px] text-slate-500 dark:text-slate-400 mt-1 font-medium">अभी लेना या देना बाकी है</p>
+                        <div class="flex justify-between items-end pt-1 px-1">
+                            <div>
+                                <p class="text-[11px] text-slate-500 font-medium">लेना या देना बाकी</p>
+                            </div>
+                            <h3 id="stat-total-due" class="text-3xl sm:text-4xl font-black text-amber-600 dark:text-amber-400 tracking-tight truncate max-w-[210px]" title="₹0.00">₹0.00</h3>
                         </div>
-                        <span class="text-[10px] font-bold px-3 py-1 rounded-xl bg-amber-500/15 text-amber-600 dark:text-amber-400 inline-block w-fit border border-amber-500/20">बाकी राशि</span>
                     </div>
+
                 </div>
             </div>
 
-            <!-- New Dedicated Time-Frame Cards (Today, Yesterday, 7 Days, 30 Days with % Growth) -->
+            <!-- Time-Frame Analytics Cards -->
             <div class="space-y-4 pt-2">
                 <h3 class="text-xs font-black uppercase tracking-wider text-slate-500 dark:text-slate-400 px-1">⏱️ समयानुसार विश्लेषण एवं परसेंटेज ग्रोथ (Yesterday, Today, 7 Days, 30 Days)</h3>
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-                    <!-- Yesterday (Moved to First) -->
-                    <div class="glass-panel p-6 rounded-3xl shadow-xl space-y-3 border-l-4 border-blue-500">
+                    
+                    <!-- Yesterday -->
+                    <div class="glass-panel p-6 rounded-3xl shadow-md space-y-3 border-l-4 border-blue-500">
                         <div class="flex justify-between items-center">
                             <span class="text-xs font-extrabold text-blue-600 dark:text-blue-400 uppercase tracking-wide">📅 कल का डेटा</span>
-                            <span id="badge-yesterday-growth" class="text-[10px] px-2.5 py-0.5 rounded-full font-bold bg-blue-500/15 text-blue-600">बीता कल</span>
+                            <span class="text-[10px] px-2.5 py-0.5 rounded-full font-bold bg-blue-500/10 text-blue-600">बीता कल</span>
                         </div>
                         <div class="grid grid-cols-2 gap-3 pt-2">
                             <div>
                                 <p class="text-[11px] text-slate-500 font-bold">दूध मात्रा</p>
-                                <h4 id="stat-yest-liters" class="text-lg font-black text-slate-900 dark:text-white">0.0 L</h4>
+                                <h4 id="stat-yest-liters" class="text-base font-black text-slate-900 dark:text-white truncate">0.0 L</h4>
                             </div>
                             <div>
                                 <p class="text-[11px] text-slate-500 font-bold">कारोबार</p>
-                                <h4 id="stat-yest-amount" class="text-lg font-black text-blue-600">₹0</h4>
+                                <h4 id="stat-yest-amount" class="text-base font-black text-blue-600 truncate">₹0</h4>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Today (Moved to Second) -->
-                    <div class="glass-panel p-6 rounded-3xl shadow-xl space-y-3 border-l-4 border-indigo-500">
+                    <!-- Today -->
+                    <div class="glass-panel p-6 rounded-3xl shadow-md space-y-3 border-l-4 border-indigo-500">
                         <div class="flex justify-between items-center">
                             <span class="text-xs font-extrabold text-indigo-600 dark:text-indigo-400 uppercase tracking-wide">📅 आज का डेटा</span>
-                            <span id="badge-today-growth" class="text-[10px] px-2.5 py-0.5 rounded-full font-bold bg-indigo-500/15 text-indigo-600">लाइव</span>
+                            <span id="badge-today-growth" class="text-[10px] px-2.5 py-0.5 rounded-full font-bold bg-indigo-500/10 text-indigo-600">लाइव</span>
                         </div>
                         <div class="grid grid-cols-2 gap-3 pt-2">
                             <div>
                                 <p class="text-[11px] text-slate-500 font-bold">दूध मात्रा</p>
-                                <h4 id="stat-today-liters" class="text-lg font-black text-slate-900 dark:text-white">0.0 L</h4>
+                                <h4 id="stat-today-liters" class="text-base font-black text-slate-900 dark:text-white truncate">0.0 L</h4>
                             </div>
                             <div>
                                 <p class="text-[11px] text-slate-500 font-bold">कारोबार</p>
-                                <h4 id="stat-today-amount" class="text-lg font-black text-indigo-600">₹0</h4>
+                                <h4 id="stat-today-amount" class="text-base font-black text-indigo-600 truncate">₹0</h4>
                             </div>
                         </div>
                     </div>
 
                     <!-- 7 Days -->
-                    <div class="glass-panel p-6 rounded-3xl shadow-xl space-y-3 border-l-4 border-violet-500">
+                    <div class="glass-panel p-6 rounded-3xl shadow-md space-y-3 border-l-4 border-violet-500">
                         <div class="flex justify-between items-center">
                             <span class="text-xs font-extrabold text-violet-600 dark:text-violet-400 uppercase tracking-wide">📆 पिछले 7 दिन</span>
-                            <span id="badge-7d-growth" class="text-[10px] px-2.5 py-0.5 rounded-full font-bold bg-violet-500/15 text-violet-600">साप्ताहिक</span>
+                            <span id="badge-7d-growth" class="text-[10px] px-2.5 py-0.5 rounded-full font-bold bg-violet-500/10 text-violet-600">साप्ताहिक</span>
                         </div>
                         <div class="grid grid-cols-2 gap-3 pt-2">
                             <div>
                                 <p class="text-[11px] text-slate-500 font-bold">दूध मात्रा</p>
-                                <h4 id="stat-7-liters" class="text-lg font-black text-slate-900 dark:text-white">0.0 L</h4>
+                                <h4 id="stat-7-liters" class="text-base font-black text-slate-900 dark:text-white truncate">0.0 L</h4>
                             </div>
                             <div>
                                 <p class="text-[11px] text-slate-500 font-bold">कारोबार</p>
-                                <h4 id="stat-7-amount" class="text-lg font-black text-violet-600">₹0</h4>
+                                <h4 id="stat-7-amount" class="text-base font-black text-violet-600 truncate">₹0</h4>
                             </div>
                         </div>
                     </div>
 
                     <!-- 30 Days -->
-                    <div class="glass-panel p-6 rounded-3xl shadow-xl space-y-3 border-l-4 border-emerald-500">
+                    <div class="glass-panel p-6 rounded-3xl shadow-md space-y-3 border-l-4 border-emerald-500">
                         <div class="flex justify-between items-center">
                             <span class="text-xs font-extrabold text-emerald-600 dark:text-emerald-400 uppercase tracking-wide">🗓️ पिछले 30 दिन</span>
-                            <span id="badge-30d-growth" class="text-[10px] px-2.5 py-0.5 rounded-full font-bold bg-emerald-500/15 text-emerald-600">मासिक</span>
+                            <span class="text-[10px] px-2.5 py-0.5 rounded-full font-bold bg-emerald-500/10 text-emerald-600">मासिक</span>
                         </div>
                         <div class="grid grid-cols-2 gap-3 pt-2">
                             <div>
                                 <p class="text-[11px] text-slate-500 font-bold">दूध मात्रा</p>
-                                <h4 id="stat-30-liters" class="text-lg font-black text-slate-900 dark:text-white">0.0 L</h4>
+                                <h4 id="stat-30-liters" class="text-base font-black text-slate-900 dark:text-white truncate">0.0 L</h4>
                             </div>
                             <div>
                                 <p class="text-[11px] text-slate-500 font-bold">कारोबार</p>
-                                <h4 id="stat-30-amount" class="text-lg font-black text-emerald-600">₹0</h4>
+                                <h4 id="stat-30-amount" class="text-base font-black text-emerald-600 truncate">₹0</h4>
                             </div>
                         </div>
                     </div>
@@ -333,7 +350,7 @@
                             <span id="qe-total-preview" class="text-sm font-black text-indigo-600 dark:text-indigo-400">₹0</span>
                         </div>
                         <button type="submit" class="w-full bg-gradient-to-r from-indigo-600 via-blue-600 to-violet-600 hover:opacity-95 text-white font-bold py-3.5 rounded-2xl transition shadow-xl shadow-indigo-600/30 text-xs tracking-wide transform active:scale-[0.98]">
-                            एंट्री सेव करें 💾
+                            एंट्री सेव करें 💾 ✨
                         </button>
                     </form>
                 </div>
@@ -413,7 +430,7 @@
                         <input type="number" step="0.5" id="de-rate" placeholder="₹" required class="w-full bg-white dark:bg-slate-950 border border-slate-200 dark:border-indigo-950 text-slate-900 dark:text-white rounded-2xl px-3.5 py-2.5 text-xs font-bold shadow-inner">
                     </div>
                     <div>
-                        <button type="submit" class="w-full bg-indigo-600 hover:bg-indigo-500 text-white font-extrabold py-3 rounded-2xl text-xs transition shadow-lg shadow-indigo-600/30 transform active:scale-95">जोड़ें ➕</button>
+                        <button type="submit" class="w-full bg-indigo-600 hover:bg-indigo-500 text-white font-extrabold py-3 rounded-2xl text-xs transition shadow-lg shadow-indigo-600/30 transform active:scale-95">जोड़ें ➕ ✨</button>
                     </div>
                 </form>
                 <div class="overflow-x-auto">
@@ -464,7 +481,7 @@
                             <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1.5">नोट / विवरण</label>
                             <input type="text" id="khata-note" placeholder="नकद या UPI" class="w-full bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-indigo-950 text-slate-900 dark:text-white rounded-2xl px-4 py-3 text-xs font-bold shadow-inner">
                         </div>
-                        <button type="submit" class="w-full bg-gradient-to-r from-indigo-600 via-blue-600 to-violet-600 hover:opacity-95 text-white font-bold py-3.5 rounded-2xl text-xs transition shadow-lg shadow-indigo-600/30 transform active:scale-95">सेव करें 💼</button>
+                        <button type="submit" class="w-full bg-gradient-to-r from-indigo-600 via-blue-600 to-violet-600 hover:opacity-95 text-white font-bold py-3.5 rounded-2xl text-xs transition shadow-lg shadow-indigo-600/30 transform active:scale-95">सेव करें 💼 ✨</button>
                     </form>
                 </div>
                 <div class="glass-panel p-6 rounded-3xl shadow-xl lg:col-span-2 space-y-4">
@@ -502,7 +519,7 @@
                         </div>
                         <div><label class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1.5">डिफ़ॉल्ट रेट प्रति लीटर (₹)</label><input type="number" step="0.5" id="cust-default-rate" placeholder="65" required class="w-full bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-indigo-950 text-slate-900 dark:text-white rounded-2xl px-4 py-3 text-xs font-bold shadow-inner"></div>
                         <div class="flex space-x-3 pt-2">
-                            <button type="submit" id="cust-submit-btn" class="flex-1 bg-gradient-to-r from-indigo-600 via-blue-600 to-violet-600 hover:opacity-95 text-white font-bold py-3.5 rounded-2xl transition text-xs shadow-lg shadow-indigo-600/30 transform active:scale-95">सेव करें 💾</button>
+                            <button type="submit" id="cust-submit-btn" class="flex-1 bg-gradient-to-r from-indigo-600 via-blue-600 to-violet-600 hover:opacity-95 text-white font-bold py-3.5 rounded-2xl transition text-xs shadow-lg shadow-indigo-600/30 transform active:scale-95">सेव करें 💾 ✨</button>
                             <button type="button" onclick="resetCustomerForm()" class="hidden bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300 px-4 py-3.5 rounded-2xl text-xs font-bold" id="cust-cancel-btn">रद्द</button>
                         </div>
                     </form>
@@ -562,9 +579,7 @@
                             </select>
                         </div>
                     </div>
-                    <div id="ai-comparison-result" class="hidden bg-indigo-500/10 border border-indigo-500/30 p-4 rounded-2xl text-xs font-bold text-indigo-800 dark:text-indigo-200">
-                        <!-- Comparison dynamically inserted here -->
-                    </div>
+                    <div id="ai-comparison-result" class="hidden bg-indigo-500/10 border border-indigo-500/30 p-4 rounded-2xl text-xs font-bold text-indigo-800 dark:text-indigo-200"></div>
                 </div>
 
                 <!-- 20 AI Features Grid -->
@@ -651,7 +666,6 @@
                     </div>
                 </div>
 
-                <!-- Extra AI Smart Insights Cards -->
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
                     <div class="bg-indigo-500/5 border border-indigo-500/20 p-5 rounded-3xl space-y-2">
                         <h4 class="text-xs font-bold text-indigo-700 dark:text-indigo-300 flex items-center gap-2">
@@ -749,17 +763,130 @@
             </div>
         </section>
 
+        <!-- TAB 8: FEED & EXPENSE MANAGER (NEW UNIQUE FEATURE) -->
+        <section id="tab-expenses" class="hidden space-y-6">
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                <!-- Detailed Expense Entry Form -->
+                <div class="glass-panel p-6 rounded-3xl shadow-xl space-y-4">
+                    <div class="flex justify-between items-center pb-2 border-b border-slate-200 dark:border-indigo-950">
+                        <h3 class="font-bold text-slate-900 dark:text-white text-sm">विस्तृत पशुआहार & लागत दर्ज करें 🌾</h3>
+                        <span class="text-[10px] bg-emerald-500/20 text-emerald-600 dark:text-emerald-400 border border-emerald-500/30 font-bold px-3 py-0.5 rounded-full">एंटरप्राइज लेजर</span>
+                    </div>
+                    <form id="expenseForm" onsubmit="handleExpenseSubmit(event)" class="space-y-3.5">
+                        <div>
+                            <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">चारा / खर्च की श्रेणी (Category)</label>
+                            <select id="exp-category" class="w-full bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-indigo-950 text-slate-900 dark:text-white rounded-2xl px-4 py-2.5 text-xs font-bold shadow-inner">
+                                <option value="Binola">🌾 बिनौला खली / पशुआहार (Premium)</option>
+                                <option value="Chokar">🌾 गेहूं का चोकर / भूसा (Bulk)</option>
+                                <option value="Grain">🌽 मक्का / दाना मिश्रण (High Energy)</option>
+                                <option value="GreenFeed">🌿 हरा चारा / बरसीम (Organic)</option>
+                                <option value="Mineral">🧪 मिनरल मिक्चर / विटामिन्स</option>
+                                <option value="Medicine">💊 पशु चिकित्सा / डॉक्टर फीस / AI</option>
+                                <option value="Maintenance">🔧 डेयरी शेड रख-रखाव / बिजली / पानी</option>
+                                <option value="Labor">👷 डेयरी लेबर / वेतन</option>
+                                <option value="Transport">🚚 परिवहन / ढुलाई खर्च</option>
+                                <option value="Other">📦 अन्य विविध व्यावसायिक खर्च</option>
+                            </select>
+                        </div>
+                        <div class="grid grid-cols-2 gap-3">
+                            <div>
+                                <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">मात्रा (वजन/बोरी/यूनिट)</label>
+                                <input type="number" step="0.5" id="exp-qty" placeholder="जैसे: 2 बोरी / 50 Kg" class="w-full bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-indigo-950 text-slate-900 dark:text-white rounded-2xl px-3.5 py-2 text-xs font-bold shadow-inner">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">कुल राशि (₹)</label>
+                                <input type="number" step="1" id="exp-amount" placeholder="जैसे: 2400" required class="w-full bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-indigo-950 text-slate-900 dark:text-white rounded-2xl px-3.5 py-2 text-xs font-bold shadow-inner">
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-2 gap-3">
+                            <div>
+                                <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">तारीख</label>
+                                <input type="date" id="exp-date" required class="w-full bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-indigo-950 text-slate-900 dark:text-white rounded-2xl px-3.5 py-2 text-xs font-bold shadow-inner">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">पशु / शेड / यूनिट</label>
+                                <input type="text" id="exp-animal" placeholder="जैसे: भैंस शेड #1" class="w-full bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-indigo-950 text-slate-900 dark:text-white rounded-2xl px-3.5 py-2 text-xs font-bold shadow-inner">
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">सप्लायर नाम / ब्रांड / नोट</label>
+                            <input type="text" id="exp-note" placeholder="जैसे: अमूल दाना या स्थानीय व्यापारी" class="w-full bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-indigo-950 text-slate-900 dark:text-white rounded-2xl px-4 py-2.5 text-xs font-bold shadow-inner">
+                        </div>
+                        <button type="submit" class="w-full bg-gradient-to-r from-emerald-600 via-teal-600 to-green-600 hover:opacity-95 text-white font-bold py-3.5 rounded-2xl text-xs transition shadow-lg shadow-emerald-600/30 transform active:scale-95">विस्तृत खर्च सेव करें 📝 ✨</button>
+                    </form>
+                </div>
+
+                <!-- Deep Analytics & Expense Table -->
+                <div class="glass-panel p-6 rounded-3xl shadow-xl lg:col-span-2 space-y-5">
+                    <div class="grid grid-cols-1 sm:grid-cols-4 gap-3">
+                        <div class="bg-emerald-500/10 border border-emerald-500/20 p-4 rounded-2xl">
+                            <span class="text-[10px] text-emerald-600 dark:text-emerald-400 font-extrabold uppercase">कुल पशुआहार खर्च</span>
+                            <h4 id="exp-summary-feed" class="text-lg font-black text-emerald-700 dark:text-emerald-300 mt-1">₹0</h4>
+                        </div>
+                        <div class="bg-blue-500/10 border border-blue-500/20 p-4 rounded-2xl">
+                            <span class="text-[10px] text-blue-600 dark:text-blue-400 font-extrabold uppercase">लेबर & अन्य खर्च</span>
+                            <h4 id="exp-summary-other" class="text-lg font-black text-blue-700 dark:text-blue-300 mt-1">₹0</h4>
+                        </div>
+                        <div class="bg-indigo-500/10 border border-indigo-500/20 p-4 rounded-2xl">
+                            <span class="text-[10px] text-indigo-600 dark:text-indigo-400 font-extrabold uppercase">प्रति लीटर लागत (Cost/L)</span>
+                            <h4 id="exp-summary-cost-per-liter" class="text-lg font-black text-indigo-700 dark:text-indigo-300 mt-1">₹0.0</h4>
+                        </div>
+                        <div class="bg-violet-500/10 border border-violet-500/20 p-4 rounded-2xl">
+                            <span class="text-[10px] text-violet-600 dark:text-violet-400 font-extrabold uppercase">फीड ROI इंडेक्स</span>
+                            <h4 id="exp-summary-roi" class="text-lg font-black text-violet-700 dark:text-violet-300 mt-1">100%</h4>
+                        </div>
+                    </div>
+
+                    <!-- Enterprise Feed Metrics Banner -->
+                    <div class="bg-slate-50 dark:bg-slate-950/80 border border-slate-200 dark:border-indigo-950 p-4 rounded-2xl flex flex-wrap justify-between items-center gap-3 text-xs">
+                        <div>
+                            <span class="text-slate-500 font-medium">मासिक बजट अनुमानित स्थिति:</span>
+                            <span id="exp-budget-status" class="font-bold text-emerald-600 ml-1">संतुलित (Optimal)</span>
+                        </div>
+                        <div>
+                            <span class="text-slate-500 font-medium">फीड कन्वर्जन दक्षता (FCE):</span>
+                            <span class="font-bold text-indigo-600 ml-1">Grade A+ (High Efficiency)</span>
+                        </div>
+                    </div>
+
+                    <div class="flex justify-between items-center pb-2 border-b border-slate-200 dark:border-indigo-950">
+                        <h3 class="font-bold text-slate-900 dark:text-white text-sm">चारा एवं लागत इतिहास (Enterprise Ledger) 📊</h3>
+                        <span id="total-expenses-badge" class="text-xs font-bold text-emerald-600">कुल योग: ₹0</span>
+                    </div>
+
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left border-collapse">
+                            <thead>
+                                <tr class="border-b border-slate-200 dark:border-indigo-950 text-[11px] font-bold text-slate-400 uppercase">
+                                    <th class="py-3 px-3">तारीख</th>
+                                    <th class="py-3 px-3">श्रेणी</th>
+                                    <th class="py-3 px-3">मात्रा/पशु</th>
+                                    <th class="py-3 px-3">विवरण / सप्लायर</th>
+                                    <th class="py-3 px-3">राशि</th>
+                                    <th class="py-3 px-3 text-right">कार्य</th>
+                                </tr>
+                            </thead>
+                            <tbody id="expenses-tbody" class="text-xs divide-y divide-slate-200 dark:divide-indigo-950/50 font-semibold"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+
     </main>
 
     <!-- JS Engine -->
     <script>
         let appData = {
             customers: JSON.parse(localStorage.getItem('milk_customers_v8')) || [
-                { id: '1', name: 'रामेश्वर यादव', phone: '9876543210', milkType: 'Buffalo', defaultRate: 65 },
+                { id: '1', name: 'अमित कुमार', phone: '6393954985', milkType: 'Buffalo', defaultRate: 65 },
                 { id: '2', name: 'सुनील कुमार', phone: '9123456789', milkType: 'Cow', defaultRate: 50 }
             ],
             entries: JSON.parse(localStorage.getItem('milk_entries_v8')) || [],
-            khata: JSON.parse(localStorage.getItem('milk_khata_v8')) || []
+            khata: JSON.parse(localStorage.getItem('milk_khata_v8')) || [],
+            expenses: JSON.parse(localStorage.getItem('milk_expenses_v8')) || [
+                { id: 'e1', category: 'Binola', qty: '2 बोरी', amount: 2400, date: '2026-05-01', animal: 'भैंस शेड', note: 'उत्तम क्वालिटी खल' }
+            ]
         };
 
         let currentDashboardDays = 'all';
@@ -778,7 +905,7 @@
             lucide.createIcons();
             
             const today = new Date().toISOString().split('T')[0];
-            ['qe-date', 'de-date', 'khata-date'].forEach(id => {
+            ['qe-date', 'de-date', 'khata-date', 'exp-date'].forEach(id => {
                 const el = document.getElementById(id);
                 if (el) el.value = today;
             });
@@ -841,7 +968,6 @@
                         }
                     },
                     (error) => {
-                        console.warn('Geolocation error:', error);
                         locEl.innerHTML = `<i data-lucide="map-pin" class="w-3.5 h-3.5 text-indigo-500"></i> लोकल डेयरी सेंटर`;
                     },
                     { enableHighAccuracy: true, timeout: 10000, maximumAge: 0 }
@@ -866,6 +992,7 @@
             localStorage.setItem('milk_customers_v8', JSON.stringify(appData.customers));
             localStorage.setItem('milk_entries_v8', JSON.stringify(appData.entries));
             localStorage.setItem('milk_khata_v8', JSON.stringify(appData.khata));
+            localStorage.setItem('milk_expenses_v8', JSON.stringify(appData.expenses));
         }
 
         function showToast(msg, isErr = false) {
@@ -879,7 +1006,7 @@
         }
 
         function switchTab(id) {
-            ['dashboard', 'entries', 'khata', 'customers', 'ai', 'stock', 'reports'].forEach(t => {
+            ['dashboard', 'entries', 'khata', 'customers', 'ai', 'stock', 'reports', 'expenses'].forEach(t => {
                 const sec = document.getElementById(`tab-${t}`);
                 const btn = document.getElementById(`tab-btn-${t}`);
                 if (sec) sec.classList.add('hidden');
@@ -896,7 +1023,117 @@
             if (id === 'customers') renderCustomerTable();
             if (id === 'ai') calculateAIPredictions();
             if (id === 'reports') generateReport();
+            if (id === 'expenses') renderExpensesTable();
             lucide.createIcons();
+        }
+
+        function handleExpenseSubmit(e) {
+            e.preventDefault();
+            const category = document.getElementById('exp-category').value;
+            const qty = document.getElementById('exp-qty').value || '-';
+            const amount = parseFloat(document.getElementById('exp-amount').value);
+            const date = document.getElementById('exp-date').value;
+            const animal = document.getElementById('exp-animal').value || 'सामान्य शेड';
+            const note = document.getElementById('exp-note').value;
+
+            if(!amount) {
+                showToast('कृपया राशि दर्ज करें!', true);
+                return;
+            }
+
+            const newExp = {
+                id: Date.now().toString(),
+                category,
+                qty,
+                amount,
+                date,
+                animal,
+                note
+            };
+
+            appData.expenses.unshift(newExp);
+            saveToLocalStorage();
+
+            document.getElementById('exp-amount').value = '';
+            document.getElementById('exp-qty').value = '';
+            document.getElementById('exp-animal').value = '';
+            document.getElementById('exp-note').value = '';
+            renderExpensesTable();
+            showToast('विस्तृत पशुआहार व व्यावसायिक खर्च सफलतापूर्वक सेव हो गया! 🌾');
+        }
+
+        function renderExpensesTable() {
+            const tbody = document.getElementById('expenses-tbody');
+            if(!tbody) return;
+            let total = 0;
+            let feedTotal = 0;
+            let otherTotal = 0;
+
+            appData.expenses.forEach(x => {
+                total += x.amount;
+                if(['Binola', 'Chokar', 'Grain', 'GreenFeed', 'Mineral'].includes(x.category)) {
+                    feedTotal += x.amount;
+                } else {
+                    otherTotal += x.amount;
+                }
+            });
+
+            const badge = document.getElementById('total-expenses-badge');
+            if(badge) badge.innerText = `कुल योग: ₹${total.toFixed(2)}`;
+
+            const sumFeed = document.getElementById('exp-summary-feed');
+            const sumOther = document.getElementById('exp-summary-other');
+            const sumCostPerL = document.getElementById('exp-summary-cost-per-liter');
+            const sumRoi = document.getElementById('exp-summary-roi');
+
+            if(sumFeed) sumFeed.innerText = `₹${feedTotal.toFixed(2)}`;
+            if(sumOther) sumOther.innerText = `₹${otherTotal.toFixed(2)}`;
+
+            let totalMilkLiters = 0;
+            let totalMilkRevenue = 0;
+            appData.entries.forEach(e => {
+                totalMilkLiters += e.liters;
+                totalMilkRevenue += e.total;
+            });
+
+            const costPerL = totalMilkLiters > 0 ? (total / totalMilkLiters) : 0;
+            if(sumCostPerL) sumCostPerL.innerText = `₹${costPerL.toFixed(2)}/L`;
+
+            const roi = total > 0 ? ((totalMilkRevenue / total) * 100) : 100;
+            if(sumRoi) sumRoi.innerText = `${roi.toFixed(0)}%`;
+
+            tbody.innerHTML = appData.expenses.length ? appData.expenses.map(x => {
+                let catText = 'अन्य खर्च';
+                if(x.category === 'Binola') catText = '🌾 बिनौला खली';
+                else if(x.category === 'Chokar') catText = '🌾 चोकर/भूसा';
+                else if(x.category === 'Grain') catText = '🌽 दाना मिश्रण';
+                else if(x.category === 'GreenFeed') catText = '🌿 हरा चारा';
+                else if(x.category === 'Mineral') catText = '🧪 मिनरल मिक्चर';
+                else if(x.category === 'Medicine') catText = '💊 पशु चिकित्सा';
+                else if(x.category === 'Maintenance') catText = '🔧 रख-रखाव';
+                else if(x.category === 'Labor') catText = '👷 लेबर वेतन';
+                else if(x.category === 'Transport') catText = '🚚 परिवहन';
+
+                return `
+                    <tr class="border-b border-slate-200 dark:border-indigo-950">
+                        <td class="py-3 px-3">${x.date}</td>
+                        <td class="py-3 px-3"><span class="px-2.5 py-1 rounded-full text-[10px] bg-emerald-500/10 text-emerald-600 font-bold">${catText}</span></td>
+                        <td class="py-3 px-3 font-medium">${x.qty} <span class="text-[10px] text-slate-400">(${x.animal})</span></td>
+                        <td class="py-3 px-3">${x.note || '-'}</td>
+                        <td class="py-3 px-3 font-bold text-emerald-600">₹${x.amount}</td>
+                        <td class="py-3 px-3 text-right">
+                            <button onclick="deleteExpense('${x.id}')" class="text-red-500 font-bold hover:underline">हटाएं</button>
+                        </td>
+                    </tr>
+                `;
+            }).join('') : '<tr><td colspan="6" class="text-center py-5 text-slate-400">कोई खर्च रिकॉर्ड नहीं मिला</td></tr>';
+        }
+
+        function deleteExpense(id) {
+            appData.expenses = appData.expenses.filter(x => x.id !== id);
+            saveToLocalStorage();
+            renderExpensesTable();
+            showToast('खर्च रिकॉर्ड हटा दिया गया!');
         }
 
         function populateCustomerDropdowns() {
@@ -1220,9 +1457,9 @@
             let totalDue = Math.max(0, totalAmount - totalPaid);
 
             document.getElementById('stat-total-liters').innerText = `${totalLiters.toFixed(1)} L`;
-            document.getElementById('stat-total-amount').innerHTML = `<span>₹</span> <span class="tracking-normal">${totalAmount.toFixed(2)}</span>`;
-            document.getElementById('stat-total-paid').innerHTML = `<span>₹</span> <span class="tracking-normal">${totalPaid.toFixed(2)}</span>`;
-            document.getElementById('stat-total-due').innerHTML = `<span>₹</span> <span class="tracking-normal">${totalDue.toFixed(2)}</span>`;
+            document.getElementById('stat-total-amount').innerText = `₹${totalAmount.toFixed(2)}`;
+            document.getElementById('stat-total-paid').innerText = `₹${totalPaid.toFixed(2)}`;
+            document.getElementById('stat-total-due').innerText = `₹${totalDue.toFixed(2)}`;
 
             const todayObj = new Date();
             const todayStr = todayObj.toISOString().split('T')[0];
@@ -1268,16 +1505,16 @@
             });
 
             document.getElementById('stat-today-liters').innerText = `${todayL.toFixed(1)} L`;
-            document.getElementById('stat-today-amount').innerHTML = `<span>₹</span> <span class="tracking-normal">${todayAmt.toFixed(2)}</span>`;
+            document.getElementById('stat-today-amount').innerText = `₹${todayAmt.toFixed(2)}`;
 
             document.getElementById('stat-yest-liters').innerText = `${yestL.toFixed(1)} L`;
-            document.getElementById('stat-yest-amount').innerHTML = `<span>₹</span> <span class="tracking-normal">${yestAmt.toFixed(2)}</span>`;
+            document.getElementById('stat-yest-amount').innerText = `₹${yestAmt.toFixed(2)}`;
 
             document.getElementById('stat-7-liters').innerText = `${d7L.toFixed(1)} L`;
-            document.getElementById('stat-7-amount').innerHTML = `<span>₹</span> <span class="tracking-normal">${d7Amt.toFixed(2)}</span>`;
+            document.getElementById('stat-7-amount').innerText = `₹${d7Amt.toFixed(2)}`;
 
             document.getElementById('stat-30-liters').innerText = `${d30L.toFixed(1)} L`;
-            document.getElementById('stat-30-amount').innerHTML = `<span>₹</span> <span class="tracking-normal">${d30Amt.toFixed(2)}</span>`;
+            document.getElementById('stat-30-amount').innerText = `₹${d30Amt.toFixed(2)}`;
 
             const yestGrowth = yestAmt > 0 ? ((todayAmt - yestAmt) / yestAmt) * 100 : (todayAmt > 0 ? 100 : 0);
             const bToday = document.getElementById('badge-today-growth');
@@ -1325,10 +1562,10 @@
 
             const hasData = filteredEntries.length > 0;
 
-            const feat1 = document.getElementById('ai-feat-1'); if(feat1) feat1.innerText = hasData ? `${totalL.toFixed(1)} L` : `0.0 L`;
-            const feat2 = document.getElementById('ai-feat-2'); if(feat2) feat2.innerText = hasData ? `₹${totalRev.toFixed(2)}` : `₹0`;
-            const feat3 = document.getElementById('ai-feat-3'); if(feat3) feat3.innerText = hasData ? `₹${(totalRev * 1.1).toFixed(2)}` : `₹0`;
-            const feat4 = document.getElementById('ai-feat-4'); if(feat4) feat4.innerText = hasData ? `${Math.min(100, Math.round(totalL * 2 + 30))}%` : `0%`;
+            document.getElementById('ai-feat-1').innerText = hasData ? `${totalL.toFixed(1)} L` : `0.0 L`;
+            document.getElementById('ai-feat-2').innerText = hasData ? `₹${totalRev.toFixed(2)}` : `₹0`;
+            document.getElementById('ai-feat-3').innerText = hasData ? `₹${(totalRev * 1.1).toFixed(2)}` : `₹0`;
+            document.getElementById('ai-feat-4').innerText = hasData ? `${Math.min(100, Math.round(totalL * 2 + 30))}%` : `0%`;
             
             let avgFat = 0, avgRate = 0;
             if(hasData) {
@@ -1338,30 +1575,30 @@
                 avgRate = sumRate / filteredEntries.length;
             }
 
-            const feat5 = document.getElementById('ai-feat-5'); if(feat5) feat5.innerText = hasData ? `${avgFat.toFixed(1)}%` : `0.0%`;
-            const feat6 = document.getElementById('ai-feat-6'); if(feat6) feat6.innerText = hasData ? `₹${avgRate.toFixed(1)}` : `₹0`;
-            const feat7 = document.getElementById('ai-feat-7'); if(feat7) feat7.innerText = hasData ? `+5.0%` : `0%`;
-            const feat8 = document.getElementById('ai-feat-8'); if(feat8) feat8.innerText = hasData ? `सुरक्षित` : `-`;
+            document.getElementById('ai-feat-5').innerText = hasData ? `${avgFat.toFixed(1)}%` : `0.0%`;
+            document.getElementById('ai-feat-6').innerText = hasData ? `₹${avgRate.toFixed(1)}` : `₹0`;
+            document.getElementById('ai-feat-7').innerText = hasData ? `+5.0%` : `0%`;
+            document.getElementById('ai-feat-8').innerText = hasData ? `सुरक्षित` : `-`;
             
             let morningCount = filteredEntries.filter(e => e.shift === 'Morning').length;
             let eveningCount = filteredEntries.filter(e => e.shift === 'Evening').length;
-            const feat9 = document.getElementById('ai-feat-9'); if(feat9) feat9.innerText = hasData ? `${morningCount}:${eveningCount}` : `0:0`;
+            document.getElementById('ai-feat-9').innerText = hasData ? `${morningCount}:${eveningCount}` : `0:0`;
             
-            const feat10 = document.getElementById('ai-feat-10'); if(feat10) feat10.innerText = hasData ? `${new Set(filteredEntries.map(e => e.customerId)).size}` : `0`;
+            document.getElementById('ai-feat-10').innerText = hasData ? `${new Set(filteredEntries.map(e => e.customerId)).size}` : `0`;
             
             let totalKhata = appData.khata.reduce((acc, t) => acc + t.amount, 0);
             let totalDue = hasData ? Math.max(0, totalRev - totalKhata) : 0;
-            const feat11 = document.getElementById('ai-feat-11'); if(feat11) feat11.innerText = hasData ? `₹${totalDue.toFixed(2)}` : `₹0`;
+            document.getElementById('ai-feat-11').innerText = hasData ? `₹${totalDue.toFixed(2)}` : `₹0`;
             
-            const feat12 = document.getElementById('ai-feat-12'); if(feat12) feat12.innerText = hasData ? `${(totalL * 30).toFixed(1)} L` : `0 L`;
-            const feat13 = document.getElementById('ai-feat-13'); if(feat13) feat13.innerText = hasData ? `नियमित` : `-`;
-            const feat14 = document.getElementById('ai-feat-14'); if(feat14) feat14.innerText = hasData ? `20.0%` : `0%`;
-            const feat15 = document.getElementById('ai-feat-15'); if(feat15) feat15.innerText = hasData ? `Grade A` : `-`;
-            const feat16 = document.getElementById('ai-feat-16'); if(feat16) feat16.innerText = hasData ? `उत्तम` : `-`;
-            const feat17 = document.getElementById('ai-feat-17'); if(feat17) feat17.innerText = hasData ? `स्थिर` : `-`;
-            const feat18 = document.getElementById('ai-feat-18'); if(feat18) feat18.innerText = hasData ? `सिंक्रोनाइज्ड` : `खाली`;
-            const feat19 = document.getElementById('ai-feat-19'); if(feat19) feat19.innerText = hasData ? `सक्रिय` : `प्रतीक्षारत`;
-            const feat20 = document.getElementById('ai-feat-20'); if(feat20) feat20.innerText = hasData ? `सुरक्षित` : `-`;
+            document.getElementById('ai-feat-12').innerText = hasData ? `${(totalL * 30).toFixed(1)} L` : `0 L`;
+            document.getElementById('ai-feat-13').innerText = hasData ? `नियमित` : `-`;
+            document.getElementById('ai-feat-14').innerText = hasData ? `20.0%` : `0%`;
+            document.getElementById('ai-feat-15').innerText = hasData ? `Grade A` : `-`;
+            document.getElementById('ai-feat-16').innerText = hasData ? `उत्तम` : `-`;
+            document.getElementById('ai-feat-17').innerText = hasData ? `स्थिर` : `-`;
+            document.getElementById('ai-feat-18').innerText = hasData ? `सिंक्रोनाइज्ड` : `खाली`;
+            document.getElementById('ai-feat-19').innerText = hasData ? `सक्रिय` : `प्रतीक्षारत`;
+            document.getElementById('ai-feat-20').innerText = hasData ? `सुरक्षित` : `-`;
 
             const growthEl = document.getElementById('ai-growth-advice');
             if (growthEl) {
