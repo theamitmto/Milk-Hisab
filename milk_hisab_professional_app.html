@@ -1,0 +1,1475 @@
+<!DOCTYPE html>
+<html lang="hi" class="h-full">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>मिल्क हिसाब - वीआईपी इलीट फिनटेक सूट</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: { 50: '#eef2ff', 500: '#6366f1', 600: '#4f46e5', 700: '#4338ca', 900: '#312e81' }
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; transition: background-color 0.4s ease, color 0.4s ease; }
+        ::-webkit-scrollbar { width: 6px; height: 6px; }
+        ::-webkit-scrollbar-track { background: rgba(0,0,0,0.05); }
+        ::-webkit-scrollbar-thumb { background: #6366f1; border-radius: 4px; }
+        @keyframes floatAnim { 0%, 100% { transform: translateY(0) rotate(0deg); } 50% { transform: translateY(-8px) rotate(1deg); } }
+        .float-icon { animation: floatAnim 4s ease-in-out infinite; }
+        @keyframes rgbGlow { 
+            0% { box-shadow: 0 0 20px rgba(99, 102, 241, 0.25), inset 0 0 15px rgba(139, 92, 246, 0.1); } 
+            50% { box-shadow: 0 0 40px rgba(59, 130, 246, 0.5), inset 0 0 25px rgba(99, 102, 241, 0.3); } 
+            100% { box-shadow: 0 0 20px rgba(99, 102, 241, 0.25), inset 0 0 15px rgba(139, 92, 246, 0.1); } 
+        }
+        .rgb-card { animation: rgbGlow 5s ease-in-out infinite; transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s ease; }
+        .rgb-card:hover { transform: translateY(-4px) scale(1.01); box-shadow: 0 0 30px rgba(99, 102, 241, 0.6); }
+        .glass-panel { background: rgba(255, 255, 255, 0.82); backdrop-filter: blur(20px); border: 1px solid rgba(99, 102, 241, 0.18); transition: all 0.3s ease; }
+        .dark .glass-panel { background: rgba(13, 18, 38, 0.85); backdrop-filter: blur(20px); border: 1px solid rgba(99, 102, 241, 0.25); }
+        .rgb-gradient-text { background: linear-gradient(135deg, #6366f1 0%, #3b82f6 50%, #8b5cf6 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .rgb-badge { background: linear-gradient(135deg, rgba(99,102,241,0.15), rgba(139,92,246,0.15)); border: 1px solid rgba(99,102,241,0.3); }
+        button, input, select { transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1); }
+        button:hover { transform: translateY(-2px); filter: brightness(1.05); }
+        button:active { transform: translateY(1px) scale(0.97); }
+    </style>
+</head>
+<body class="bg-slate-50 dark:bg-[#070913] text-slate-900 dark:text-slate-100 min-h-full flex flex-col selection:bg-indigo-500 selection:text-white">
+
+    <!-- Toast Notification Box -->
+    <div id="toast" class="fixed top-5 right-5 z-50 transform translate-y-[-180%] transition-all duration-300 max-w-sm bg-white dark:bg-slate-900 text-slate-900 dark:text-white px-5 py-3.5 rounded-2xl shadow-2xl flex items-center space-x-3.5 border border-indigo-500/40">
+        <span id="toast-icon" class="text-indigo-500 text-xl"></span>
+        <p id="toast-msg" class="font-bold text-xs"></p>
+    </div>
+
+    <!-- Header with SVG Brand Vector -->
+    <header class="glass-panel border-b border-slate-200 dark:border-indigo-950/60 sticky top-0 z-40 shadow-lg">
+        <div class="max-w-6xl mx-auto px-4 py-3.5 flex justify-between items-center">
+            <div class="flex items-center space-x-3.5">
+                <div class="bg-gradient-to-tr from-indigo-600 via-blue-600 to-violet-600 text-white p-3 rounded-2xl flex items-center justify-center shadow-lg shadow-indigo-600/30 float-icon">
+                    <!-- Custom SVG Dairy Icon -->
+                    <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24"><path d="M18 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 18H6V4h2v3h8V4h2v16zM10 10h4v2h-4v-2zm0 4h4v2h-4v-2z"/></svg>
+                </div>
+                <div class="flex flex-col">
+                    <h1 class="text-sm sm:text-base font-black tracking-wide flex items-center gap-2">
+                        🥛 <span class="rgb-gradient-text">मिल्क हिसाब</span>
+                    </h1>
+                    <p id="live-location-text" class="text-[11px] text-slate-500 dark:text-slate-400 flex items-center gap-1 mt-0.5 font-medium">
+                        <i data-lucide="map-pin" class="w-3.5 h-3.5 text-indigo-500"></i> लोकेशन लोड हो रही है...
+                    </p>
+                </div>
+            </div>
+
+            <div class="flex items-center space-x-2.5">
+                <button onclick="toggleTheme()" class="bg-white dark:bg-slate-800/80 hover:bg-slate-100 dark:hover:bg-slate-700 p-3 rounded-2xl border border-slate-200 dark:border-indigo-900/50 transition shadow-sm" title="डार्क/लाइट मोड">
+                    <i id="theme-icon" data-lucide="moon" class="w-4 h-4 text-indigo-500"></i>
+                </button>
+                <button onclick="exportData()" class="bg-white dark:bg-slate-800/80 hover:bg-slate-100 dark:hover:bg-slate-700 text-xs font-bold px-3.5 py-2.5 rounded-2xl border border-slate-200 dark:border-indigo-900/50 flex items-center space-x-2 transition shadow-sm">
+                    <i data-lucide="download" class="w-4 h-4 text-indigo-500"></i> <span class="hidden sm:inline">बैकअप</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Time & Greeting Status Bar -->
+    <div class="bg-gradient-to-r from-indigo-500/10 via-blue-500/10 to-violet-500/10 border-b border-indigo-500/20 py-2.5 px-4 text-xs font-semibold">
+        <div class="max-w-6xl mx-auto flex flex-wrap justify-between items-center gap-2">
+            <div id="time-greeting-box" class="flex items-center space-x-2 text-indigo-700 dark:text-indigo-300">
+                <span>🌅</span> <span id="greeting-text">शुभ प्रभात!</span>
+            </div>
+            <div id="live-clock-box" class="text-slate-600 dark:text-slate-400 flex items-center space-x-2">
+                <i data-lucide="clock" class="w-3.5 h-3.5 text-indigo-500"></i>
+                <span id="live-datetime-str">--</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Container -->
+    <main class="max-w-6xl mx-auto px-3 sm:px-4 py-6 w-full flex-grow flex flex-col gap-6">
+
+        <!-- Navigation Tabs with RGB Glow Active State -->
+        <div class="grid grid-cols-4 sm:grid-cols-7 gap-2 glass-panel p-2.5 rounded-3xl shadow-2xl">
+            <button onclick="switchTab('dashboard')" id="tab-btn-dashboard" class="py-3 px-2 rounded-2xl font-bold text-xs flex flex-col items-center justify-center space-y-1.5 bg-gradient-to-r from-indigo-600 via-blue-600 to-violet-600 text-white shadow-lg shadow-indigo-600/30 transition transform active:scale-95">
+                <i data-lucide="layout-dashboard" class="w-4 h-4"></i>
+                <span>डैशबोर्ड</span>
+            </button>
+            <button onclick="switchTab('entries')" id="tab-btn-entries" class="py-3 px-2 rounded-2xl font-semibold text-xs flex flex-col items-center justify-center space-y-1.5 text-slate-600 dark:text-slate-400 hover:bg-indigo-500/10 hover:text-indigo-600 transition">
+                <i data-lucide="file-text" class="w-4 h-4"></i>
+                <span>दूध एंट्री</span>
+            </button>
+            <button onclick="switchTab('khata')" id="tab-btn-khata" class="py-3 px-2 rounded-2xl font-semibold text-xs flex flex-col items-center justify-center space-y-1.5 text-slate-600 dark:text-slate-400 hover:bg-indigo-500/10 hover:text-indigo-600 transition">
+                <i data-lucide="indian-rupee" class="w-4 h-4"></i>
+                <span>लेन-देन</span>
+            </button>
+            <button onclick="switchTab('customers')" id="tab-btn-customers" class="py-3 px-2 rounded-2xl font-semibold text-xs flex flex-col items-center justify-center space-y-1.5 text-slate-600 dark:text-slate-400 hover:bg-indigo-500/10 hover:text-indigo-600 transition">
+                <i data-lucide="users" class="w-4 h-4"></i>
+                <span>ग्राहक</span>
+            </button>
+            <button onclick="switchTab('ai')" id="tab-btn-ai" class="py-3 px-2 rounded-2xl font-semibold text-xs flex flex-col items-center justify-center space-y-1.5 text-slate-600 dark:text-slate-400 hover:bg-indigo-500/10 hover:text-indigo-600 transition">
+                <i data-lucide="sparkles" class="w-4 h-4 text-indigo-500"></i>
+                <span>AI प्रेडिक्टर</span>
+            </button>
+            <button onclick="switchTab('stock')" id="tab-btn-stock" class="py-3 px-2 rounded-2xl font-semibold text-xs flex flex-col items-center justify-center space-y-1.5 text-slate-600 dark:text-slate-400 hover:bg-indigo-500/10 hover:text-indigo-600 transition">
+                <i data-lucide="calculator" class="w-4 h-4"></i>
+                <span>फैट कैल्कु.</span>
+            </button>
+            <button onclick="switchTab('reports')" id="tab-btn-reports" class="py-3 px-2 rounded-2xl font-semibold text-xs flex flex-col items-center justify-center space-y-1.5 text-slate-600 dark:text-slate-400 hover:bg-indigo-500/10 hover:text-indigo-600 transition">
+                <i data-lucide="printer" class="w-4 h-4"></i>
+                <span>बिल & स्लिप</span>
+            </button>
+        </div>
+
+        <!-- TAB 1: DASHBOARD -->
+        <section id="tab-dashboard" class="space-y-5">
+            <div class="bg-gradient-to-r from-indigo-600 via-blue-600 to-slate-900 text-white p-6 rounded-3xl shadow-2xl flex flex-col sm:flex-row justify-between items-center gap-4 border border-indigo-500/30">
+                <div class="text-center sm:text-left">
+                    <span class="bg-white/20 text-white font-black text-[10px] px-3 py-1 rounded-full uppercase tracking-wider backdrop-blur-md">⚡ डेयरी मास्टर हब</span>
+                    <h2 class="text-lg sm:text-xl font-black tracking-tight mt-2">सभी का कुल या पर्टिकुलर ग्राहक चुनें 👇</h2>
+                </div>
+                <div class="flex flex-wrap items-center justify-center gap-3 w-full sm:w-auto">
+                    <select id="dash-profile-select" onchange="updateDashboard()" class="bg-slate-900/90 text-white border border-slate-700/80 rounded-2xl px-4 py-2.5 text-xs font-bold focus:outline-none focus:border-indigo-500 shadow-inner truncate max-w-[240px]">
+                        <option value="all">👥 सभी का कुल टोटल (Master Total)</option>
+                    </select>
+
+                    <div class="flex items-center space-x-1.5 bg-black/30 p-1.5 rounded-2xl border border-white/20 backdrop-blur-md">
+                        <button onclick="setDashboardPeriod('all')" id="dash-btn-all" class="px-3.5 py-1.5 rounded-xl text-xs font-bold bg-white text-indigo-950 shadow">कुल</button>
+                        <button onclick="setDashboardPeriod('7')" id="dash-btn-7" class="px-3.5 py-1.5 rounded-xl text-xs font-semibold text-white/80 hover:text-white">7 दिन</button>
+                        <button onclick="setDashboardPeriod('30')" id="dash-btn-30" class="px-3.5 py-1.5 rounded-xl text-xs font-semibold text-white/80 hover:text-white">30 दिन</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Giant Highlighted Stat Cards -->
+            <div class="space-y-4">
+                <h3 class="text-xs font-black uppercase tracking-wider text-slate-500 dark:text-slate-400 px-1">📊 मुख्य समग्र सारांश (Overall Master Stats)</h3>
+                <div class="grid grid-cols-2 lg:grid-cols-4 gap-5">
+                    <div class="glass-panel p-5 rounded-3xl shadow-xl flex flex-col justify-between rgb-card relative overflow-hidden">
+                        <div class="absolute -right-4 -bottom-4 text-indigo-500/10 pointer-events-none"><i data-lucide="milk" class="w-28 h-28"></i></div>
+                        <div class="flex justify-between items-start z-10">
+                            <span class="text-xs font-extrabold text-slate-500 dark:text-slate-400 uppercase tracking-wide">कुल दूध मात्रा</span>
+                            <div class="p-2 bg-indigo-500/15 text-indigo-600 dark:text-indigo-400 rounded-2xl"><i data-lucide="milk" class="w-4 h-4"></i></div>
+                        </div>
+                        <div class="my-3 z-10">
+                            <h3 id="stat-total-liters" class="text-2xl sm:text-3xl font-black text-indigo-600 dark:text-indigo-400 tracking-tight">0.0 L</h3>
+                            <p class="text-[11px] text-slate-500 dark:text-slate-400 mt-1 font-medium">सुबह और शाम की कुल मात्रा</p>
+                        </div>
+                        <div id="badge-liters-growth" class="text-[10px] font-bold px-3 py-1 rounded-xl bg-indigo-500/15 text-indigo-600 dark:text-indigo-400 inline-block w-fit z-10 border border-indigo-500/20">▲ 0% वृद्धि</div>
+                    </div>
+
+                    <div class="glass-panel p-5 rounded-3xl shadow-xl flex flex-col justify-between rgb-card relative overflow-hidden">
+                        <div class="absolute -right-4 -bottom-4 text-blue-500/10 pointer-events-none"><i data-lucide="indian-rupee" class="w-28 h-28"></i></div>
+                        <div class="flex justify-between items-start z-10">
+                            <span class="text-xs font-extrabold text-slate-500 dark:text-slate-400 uppercase tracking-wide">कुल कारोबार मूल्य</span>
+                            <div class="p-2 bg-blue-500/15 text-blue-600 dark:text-blue-400 rounded-2xl"><i data-lucide="indian-rupee" class="w-4 h-4"></i></div>
+                        </div>
+                        <div class="my-3 z-10">
+                            <h3 id="stat-total-amount" class="text-2xl sm:text-3xl font-black text-blue-600 dark:text-blue-400 tracking-tight flex items-center gap-1.5"><span>₹</span> <span class="tracking-normal">0.00</span></h3>
+                            <p class="text-[11px] text-slate-500 dark:text-slate-400 mt-1 font-medium">लीटर × रेट का कुल योग</p>
+                        </div>
+                        <div id="badge-amount-growth" class="text-[10px] font-bold px-3 py-1 rounded-xl bg-blue-500/15 text-blue-600 dark:text-blue-400 inline-block w-fit z-10 border border-blue-500/20">▲ 0% वृद्धि</div>
+                    </div>
+
+                    <div class="glass-panel p-5 rounded-3xl shadow-xl flex flex-col justify-between rgb-card relative overflow-hidden">
+                        <div class="absolute -right-4 -bottom-4 text-violet-500/10 pointer-events-none"><i data-lucide="wallet" class="w-28 h-28"></i></div>
+                        <div class="flex justify-between items-start z-10">
+                            <span class="text-xs font-extrabold text-slate-500 dark:text-slate-400 uppercase tracking-wide">कुल भुगतान (Paid)</span>
+                            <div class="p-2 bg-violet-500/15 text-violet-600 dark:text-violet-400 rounded-2xl"><i data-lucide="wallet" class="w-4 h-4"></i></div>
+                        </div>
+                        <div class="my-3 z-10">
+                            <h3 id="stat-total-paid" class="text-2xl sm:text-3xl font-black text-violet-600 dark:text-violet-400 tracking-tight flex items-center gap-1.5"><span>₹</span> <span class="tracking-normal">0.00</span></h3>
+                            <p class="text-[11px] text-slate-500 dark:text-slate-400 mt-1 font-medium">नकद या UPI से दिया गया</p>
+                        </div>
+                        <span class="text-[10px] font-bold px-3 py-1 rounded-xl bg-violet-500/15 text-violet-600 dark:text-violet-400 inline-block w-fit border border-violet-500/20">चुकाया गया</span>
+                    </div>
+
+                    <div class="glass-panel p-5 rounded-3xl shadow-xl flex flex-col justify-between rgb-card relative overflow-hidden">
+                        <div class="absolute -right-4 -bottom-4 text-amber-500/10 pointer-events-none"><i data-lucide="alert-circle" class="w-28 h-28"></i></div>
+                        <div class="flex justify-between items-start z-10">
+                            <span class="text-xs font-extrabold text-slate-500 dark:text-slate-400 uppercase tracking-wide">शेष बकाया (Due)</span>
+                            <div class="p-2 bg-amber-500/15 text-amber-600 dark:text-amber-400 rounded-2xl"><i data-lucide="alert-circle" class="w-4 h-4"></i></div>
+                        </div>
+                        <div class="my-3 z-10">
+                            <h3 id="stat-total-due" class="text-2xl sm:text-3xl font-black text-amber-600 dark:text-amber-400 tracking-tight flex items-center gap-1.5"><span>₹</span> <span class="tracking-normal">0.00</span></h3>
+                            <p class="text-[11px] text-slate-500 dark:text-slate-400 mt-1 font-medium">अभी लेना या देना बाकी है</p>
+                        </div>
+                        <span class="text-[10px] font-bold px-3 py-1 rounded-xl bg-amber-500/15 text-amber-600 dark:text-amber-400 inline-block w-fit border border-amber-500/20">बाकी राशि</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- New Dedicated Time-Frame Cards (Today, Yesterday, 7 Days, 30 Days with % Growth) -->
+            <div class="space-y-4 pt-2">
+                <h3 class="text-xs font-black uppercase tracking-wider text-slate-500 dark:text-slate-400 px-1">⏱️ समयानुसार विश्लेषण एवं परसेंटेज ग्रोथ (Yesterday, Today, 7 Days, 30 Days)</h3>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+                    <!-- Yesterday (Moved to First) -->
+                    <div class="glass-panel p-6 rounded-3xl shadow-xl space-y-3 border-l-4 border-blue-500">
+                        <div class="flex justify-between items-center">
+                            <span class="text-xs font-extrabold text-blue-600 dark:text-blue-400 uppercase tracking-wide">📅 कल का डेटा</span>
+                            <span id="badge-yesterday-growth" class="text-[10px] px-2.5 py-0.5 rounded-full font-bold bg-blue-500/15 text-blue-600">बीता कल</span>
+                        </div>
+                        <div class="grid grid-cols-2 gap-3 pt-2">
+                            <div>
+                                <p class="text-[11px] text-slate-500 font-bold">दूध मात्रा</p>
+                                <h4 id="stat-yest-liters" class="text-lg font-black text-slate-900 dark:text-white">0.0 L</h4>
+                            </div>
+                            <div>
+                                <p class="text-[11px] text-slate-500 font-bold">कारोबार</p>
+                                <h4 id="stat-yest-amount" class="text-lg font-black text-blue-600">₹0</h4>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Today (Moved to Second) -->
+                    <div class="glass-panel p-6 rounded-3xl shadow-xl space-y-3 border-l-4 border-indigo-500">
+                        <div class="flex justify-between items-center">
+                            <span class="text-xs font-extrabold text-indigo-600 dark:text-indigo-400 uppercase tracking-wide">📅 आज का डेटा</span>
+                            <span id="badge-today-growth" class="text-[10px] px-2.5 py-0.5 rounded-full font-bold bg-indigo-500/15 text-indigo-600">लाइव</span>
+                        </div>
+                        <div class="grid grid-cols-2 gap-3 pt-2">
+                            <div>
+                                <p class="text-[11px] text-slate-500 font-bold">दूध मात्रा</p>
+                                <h4 id="stat-today-liters" class="text-lg font-black text-slate-900 dark:text-white">0.0 L</h4>
+                            </div>
+                            <div>
+                                <p class="text-[11px] text-slate-500 font-bold">कारोबार</p>
+                                <h4 id="stat-today-amount" class="text-lg font-black text-indigo-600">₹0</h4>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 7 Days -->
+                    <div class="glass-panel p-6 rounded-3xl shadow-xl space-y-3 border-l-4 border-violet-500">
+                        <div class="flex justify-between items-center">
+                            <span class="text-xs font-extrabold text-violet-600 dark:text-violet-400 uppercase tracking-wide">📆 पिछले 7 दिन</span>
+                            <span id="badge-7d-growth" class="text-[10px] px-2.5 py-0.5 rounded-full font-bold bg-violet-500/15 text-violet-600">साप्ताहिक</span>
+                        </div>
+                        <div class="grid grid-cols-2 gap-3 pt-2">
+                            <div>
+                                <p class="text-[11px] text-slate-500 font-bold">दूध मात्रा</p>
+                                <h4 id="stat-7-liters" class="text-lg font-black text-slate-900 dark:text-white">0.0 L</h4>
+                            </div>
+                            <div>
+                                <p class="text-[11px] text-slate-500 font-bold">कारोबार</p>
+                                <h4 id="stat-7-amount" class="text-lg font-black text-violet-600">₹0</h4>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 30 Days -->
+                    <div class="glass-panel p-6 rounded-3xl shadow-xl space-y-3 border-l-4 border-emerald-500">
+                        <div class="flex justify-between items-center">
+                            <span class="text-xs font-extrabold text-emerald-600 dark:text-emerald-400 uppercase tracking-wide">🗓️ पिछले 30 दिन</span>
+                            <span id="badge-30d-growth" class="text-[10px] px-2.5 py-0.5 rounded-full font-bold bg-emerald-500/15 text-emerald-600">मासिक</span>
+                        </div>
+                        <div class="grid grid-cols-2 gap-3 pt-2">
+                            <div>
+                                <p class="text-[11px] text-slate-500 font-bold">दूध मात्रा</p>
+                                <h4 id="stat-30-liters" class="text-lg font-black text-slate-900 dark:text-white">0.0 L</h4>
+                            </div>
+                            <div>
+                                <p class="text-[11px] text-slate-500 font-bold">कारोबार</p>
+                                <h4 id="stat-30-amount" class="text-lg font-black text-emerald-600">₹0</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quick Entry & Recent Grid -->
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                <div class="glass-panel p-6 rounded-3xl shadow-xl space-y-4">
+                    <div class="flex items-center justify-between pb-4 border-b border-slate-200 dark:border-indigo-950">
+                        <div class="flex items-center space-x-3">
+                            <div class="p-2.5 bg-indigo-500/15 text-indigo-600 rounded-2xl"><i data-lucide="zap" class="w-5 h-5"></i></div>
+                            <div>
+                                <h3 class="font-bold text-slate-900 dark:text-white text-sm">तुरंत दूध दर्ज करें</h3>
+                                <p class="text-[11px] text-slate-500 dark:text-slate-400 font-medium">वेंडर के लिए क्विक एंट्री</p>
+                            </div>
+                        </div>
+                    </div>
+                    <form id="quickEntryForm" onsubmit="handleQuickEntry(event)" class="space-y-4">
+                        <div>
+                            <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1.5">ग्राहक का नाम चुनें</label>
+                            <select id="qe-customer" required onchange="onQuickCustomerChange(this.value)" class="w-full bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-indigo-950 rounded-2xl px-4 py-3 text-xs text-slate-900 dark:text-white font-bold focus:outline-none focus:border-indigo-500 shadow-inner">
+                                <option value="">-- ग्राहक चुनें --</option>
+                            </select>
+                        </div>
+                        <div class="grid grid-cols-2 gap-3.5">
+                            <div>
+                                <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1.5">तारीख</label>
+                                <input type="date" id="qe-date" required class="w-full bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-indigo-950 rounded-2xl px-3.5 py-2.5 text-xs text-slate-900 dark:text-white font-bold shadow-inner">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1.5">शिफ्ट</label>
+                                <select id="qe-shift" class="w-full bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-indigo-950 rounded-2xl px-3.5 py-2.5 text-xs text-slate-900 dark:text-white font-bold shadow-inner">
+                                    <option value="Morning">🌅 सुबह</option>
+                                    <option value="Evening">🌇 शाम</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-2 gap-3.5">
+                            <div>
+                                <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1.5">दूध (लीटर में)</label>
+                                <input type="number" step="0.1" min="0.1" id="qe-liters" placeholder="जैसे: 5.5" required oninput="calcQuickTotal()" class="w-full bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-indigo-950 rounded-2xl px-3.5 py-2.5 text-xs text-slate-900 dark:text-white font-bold shadow-inner">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1.5">रेट प्रति लीटर (₹)</label>
+                                <input type="number" step="0.5" id="qe-rate" placeholder="जैसे: 65" required oninput="calcQuickTotal()" class="w-full bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-indigo-950 rounded-2xl px-3.5 py-2.5 text-xs text-slate-900 dark:text-white font-bold shadow-inner">
+                            </div>
+                        </div>
+                        <div class="bg-indigo-500/10 border border-indigo-500/30 p-3.5 rounded-2xl flex justify-between items-center text-xs font-bold text-indigo-700 dark:text-indigo-300">
+                            <span>कुल बनने वाली रकम:</span>
+                            <span id="qe-total-preview" class="text-sm font-black text-indigo-600 dark:text-indigo-400">₹0</span>
+                        </div>
+                        <button type="submit" class="w-full bg-gradient-to-r from-indigo-600 via-blue-600 to-violet-600 hover:opacity-95 text-white font-bold py-3.5 rounded-2xl transition shadow-xl shadow-indigo-600/30 text-xs tracking-wide transform active:scale-[0.98]">
+                            एंट्री सेव करें 💾
+                        </button>
+                    </form>
+                </div>
+
+                <div class="glass-panel p-6 rounded-3xl shadow-xl lg:col-span-2 space-y-4">
+                    <div class="flex justify-between items-center pb-4 border-b border-slate-200 dark:border-indigo-950">
+                        <div class="flex items-center space-x-3">
+                            <div class="p-2.5 bg-blue-500/15 text-blue-600 rounded-2xl"><i data-lucide="history" class="w-5 h-5"></i></div>
+                            <div>
+                                <h3 class="font-bold text-slate-900 dark:text-white text-sm">हाल की दूध एंट्रियां</h3>
+                                <p class="text-[11px] text-slate-500 dark:text-slate-400 font-medium">अभी तक दर्ज किया गया हालिया दूध</p>
+                            </div>
+                        </div>
+                        <button onclick="switchTab('entries')" class="text-xs font-bold text-indigo-600 dark:text-indigo-400 hover:underline bg-indigo-500/10 px-3.5 py-2 rounded-2xl border border-indigo-500/25 transition">सभी देखें →</button>
+                    </div>
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left border-collapse">
+                            <thead>
+                                <tr class="border-b border-slate-200 dark:border-indigo-950 text-[11px] font-bold text-slate-400 uppercase">
+                                    <th class="py-3 px-3">तारीख/शिफ्ट</th>
+                                    <th class="py-3 px-3">ग्राहक का नाम</th>
+                                    <th class="py-3 px-3">लीटर</th>
+                                    <th class="py-3 px-3">रेट</th>
+                                    <th class="py-3 px-3">कुल रुपये</th>
+                                </tr>
+                            </thead>
+                            <tbody id="recent-entries-tbody" class="text-xs divide-y divide-slate-200 dark:divide-indigo-950/50 font-semibold"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- TAB 2: DETAILED ENTRIES -->
+        <section id="tab-entries" class="hidden space-y-5">
+            <div class="glass-panel p-6 rounded-3xl shadow-xl space-y-5">
+                <div class="flex flex-wrap justify-between items-center gap-3">
+                    <div>
+                        <h2 class="text-base font-extrabold text-slate-900 dark:text-white flex items-center gap-2">📝 सभी दूध एंट्रियां एवं फिल्टर</h2>
+                        <span class="text-[10px] rgb-badge text-indigo-600 dark:text-indigo-400 font-bold px-3 py-0.5 rounded-full mt-1 inline-block">वेंडर एडवांस्ड सूट</span>
+                    </div>
+                    <div class="flex gap-3 w-full sm:w-auto">
+                        <input type="date" id="filter-date" onchange="renderEntriesTable()" class="bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-indigo-950 text-slate-900 dark:text-white rounded-2xl px-3.5 py-2 text-xs flex-1 font-bold shadow-inner">
+                        <select id="filter-customer" onchange="renderEntriesTable()" class="bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-indigo-950 text-slate-900 dark:text-white rounded-2xl px-3.5 py-2 text-xs flex-1 font-bold shadow-inner">
+                            <option value="">सभी ग्राहक</option>
+                        </select>
+                    </div>
+                </div>
+                <form id="detailedEntryForm" onsubmit="handleDetailedEntry(event)" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-7 gap-3.5 items-end bg-indigo-500/5 p-5 rounded-3xl border border-indigo-500/20">
+                    <div>
+                        <label class="block text-[11px] font-extrabold text-slate-700 dark:text-slate-300 mb-1.5">तारीख</label>
+                        <input type="date" id="de-date" required class="w-full bg-white dark:bg-slate-950 border border-slate-200 dark:border-indigo-950 text-slate-900 dark:text-white rounded-2xl px-3.5 py-2.5 text-xs font-bold shadow-inner">
+                    </div>
+                    <div>
+                        <label class="block text-[11px] font-extrabold text-slate-700 dark:text-slate-300 mb-1.5">ग्राहक</label>
+                        <select id="de-customer" required onchange="onCustomerSelectForRate(this.value)" class="w-full bg-white dark:bg-slate-950 border border-slate-200 dark:border-indigo-950 text-slate-900 dark:text-white rounded-2xl px-3.5 py-2.5 text-xs font-bold shadow-inner">
+                            <option value="">-- चुनें --</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-[11px] font-extrabold text-slate-700 dark:text-slate-300 mb-1.5">शिफ्ट</label>
+                        <select id="de-shift" class="w-full bg-white dark:bg-slate-950 border border-slate-200 dark:border-indigo-950 text-slate-900 dark:text-white rounded-2xl px-3.5 py-2.5 text-xs font-bold shadow-inner">
+                            <option value="Morning">🌅 सुबह</option>
+                            <option value="Evening">🌇 शाम</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-[11px] font-extrabold text-slate-700 dark:text-slate-300 mb-1.5">लीटर</label>
+                        <input type="number" step="0.1" min="0.1" id="de-liters" placeholder="लीटर" required class="w-full bg-white dark:bg-slate-950 border border-slate-200 dark:border-indigo-950 text-slate-900 dark:text-white rounded-2xl px-3.5 py-2.5 text-xs font-bold shadow-inner">
+                    </div>
+                    <div>
+                        <label class="block text-[11px] font-extrabold text-slate-700 dark:text-slate-300 mb-1.5">फैट %</label>
+                        <input type="number" step="0.1" id="de-fat" placeholder="6.5" class="w-full bg-white dark:bg-slate-950 border border-slate-200 dark:border-indigo-950 text-slate-900 dark:text-white rounded-2xl px-3.5 py-2.5 text-xs font-bold shadow-inner">
+                    </div>
+                    <div>
+                        <label class="block text-[11px] font-extrabold text-slate-700 dark:text-slate-300 mb-1.5">रेट/L</label>
+                        <input type="number" step="0.5" id="de-rate" placeholder="₹" required class="w-full bg-white dark:bg-slate-950 border border-slate-200 dark:border-indigo-950 text-slate-900 dark:text-white rounded-2xl px-3.5 py-2.5 text-xs font-bold shadow-inner">
+                    </div>
+                    <div>
+                        <button type="submit" class="w-full bg-indigo-600 hover:bg-indigo-500 text-white font-extrabold py-3 rounded-2xl text-xs transition shadow-lg shadow-indigo-600/30 transform active:scale-95">जोड़ें ➕</button>
+                    </div>
+                </form>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left border-collapse">
+                        <thead>
+                            <tr class="border-b border-slate-200 dark:border-indigo-950 text-[11px] font-bold text-slate-400 uppercase">
+                                <th class="py-3 px-3">तारीख</th> <th class="py-3 px-3">शिफ्ट</th> <th class="py-3 px-3">नाम</th> <th class="py-3 px-3">लीटर</th> <th class="py-3 px-3">फैट</th> <th class="py-3 px-3">रेट</th> <th class="py-3 px-3">कुल</th> <th class="py-3 px-3 text-right">कार्य</th>
+                            </tr>
+                        </thead>
+                        <tbody id="all-entries-tbody" class="text-xs divide-y divide-slate-200 dark:divide-indigo-950/50 font-semibold"></tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- TAB 3: KHATA -->
+        <section id="tab-khata" class="hidden space-y-5">
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                <div class="glass-panel p-6 rounded-3xl shadow-xl space-y-4">
+                    <div class="flex justify-between items-center pb-2">
+                        <h3 class="font-bold text-slate-900 dark:text-white text-sm">रुपये लेना या देना 🗂️</h3>
+                        <span class="text-[10px] bg-amber-500/20 text-amber-600 dark:text-amber-400 border border-amber-500/30 font-bold px-3 py-0.5 rounded-full">लेजर मैनेजमेंट</span>
+                    </div>
+                    <form id="khataForm" onsubmit="handleKhataEntry(event)" class="space-y-4">
+                        <div>
+                            <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1.5">ग्राहक चुनें</label>
+                            <select id="khata-customer" required class="w-full bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-indigo-950 text-slate-900 dark:text-white rounded-2xl px-4 py-3 text-xs font-bold shadow-inner">
+                                <option value="">-- ग्राहक चुनें --</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1.5">लेन-देन का प्रकार</label>
+                            <select id="khata-type" class="w-full bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-indigo-950 text-slate-900 dark:text-white rounded-2xl px-4 py-3 text-xs font-bold shadow-inner">
+                                <option value="Given">💸 भुगतान दिया (Paid)</option>
+                                <option value="Received">💵 भुगतान मिला (Received)</option>
+                                <option value="Advance">🪙 एडवांस भुगतान</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1.5">राशि (₹)</label>
+                            <input type="number" step="1" id="khata-amount" placeholder="जैसे: 2000" required class="w-full bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-indigo-950 text-slate-900 dark:text-white rounded-2xl px-4 py-3 text-xs font-bold shadow-inner">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1.5">तारीख</label>
+                            <input type="date" id="khata-date" required class="w-full bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-indigo-950 text-slate-900 dark:text-white rounded-2xl px-4 py-3 text-xs font-bold shadow-inner">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1.5">नोट / विवरण</label>
+                            <input type="text" id="khata-note" placeholder="नकद या UPI" class="w-full bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-indigo-950 text-slate-900 dark:text-white rounded-2xl px-4 py-3 text-xs font-bold shadow-inner">
+                        </div>
+                        <button type="submit" class="w-full bg-gradient-to-r from-indigo-600 via-blue-600 to-violet-600 hover:opacity-95 text-white font-bold py-3.5 rounded-2xl text-xs transition shadow-lg shadow-indigo-600/30 transform active:scale-95">सेव करें 💼</button>
+                    </form>
+                </div>
+                <div class="glass-panel p-6 rounded-3xl shadow-xl lg:col-span-2 space-y-4">
+                    <div class="flex justify-between items-center pb-2">
+                        <h3 class="font-bold text-slate-900 dark:text-white text-sm">खाता-बही इतिहास 📖</h3>
+                        <select id="khata-filter-customer" onchange="renderKhataTable()" class="bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-indigo-950 text-slate-900 dark:text-white rounded-2xl px-3.5 py-2 text-xs font-bold shadow-inner"><option value="">सभी ग्राहक</option></select>
+                    </div>
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left border-collapse">
+                            <thead><tr class="border-b border-slate-200 dark:border-indigo-950 text-[11px] font-bold text-slate-400 uppercase"><th class="py-3 px-3">तारीख</th><th class="py-3 px-3">नाम</th><th class="py-3 px-3">प्रकार</th><th class="py-3 px-3">राशि</th><th class="py-3 px-3">नोट</th><th class="py-3 px-3 text-right">कार्य</th></tr></thead>
+                            <tbody id="khata-tbody" class="text-xs divide-y divide-slate-200 dark:divide-indigo-950/50 font-semibold"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- TAB 4: CUSTOMERS -->
+        <section id="tab-customers" class="hidden space-y-5">
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                <div class="glass-panel p-6 rounded-3xl shadow-xl space-y-4">
+                    <div class="flex justify-between items-center pb-2">
+                        <h3 class="font-bold text-slate-900 dark:text-white text-sm">नया ग्राहक जोड़ें ➕</h3>
+                        <span class="text-[10px] rgb-badge text-indigo-600 dark:text-indigo-400 font-bold px-3 py-0.5 rounded-full">वेंडर डायरेक्टरी</span>
+                    </div>
+                    <form id="customerForm" onsubmit="handleCustomerSubmit(event)" class="space-y-4">
+                        <input type="hidden" id="cust-id">
+                        <div><label class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1.5">पूरा नाम</label><input type="text" id="cust-name" placeholder="रामेश्वर यादव" required class="w-full bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-indigo-950 text-slate-900 dark:text-white rounded-2xl px-4 py-3 text-xs font-bold shadow-inner"></div>
+                        <div><label class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1.5">मोबाइल नंबर</label><input type="tel" id="cust-phone" placeholder="9876543210" required class="w-full bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-indigo-950 text-slate-900 dark:text-white rounded-2xl px-4 py-3 text-xs font-bold shadow-inner"></div>
+                        <div>
+                            <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1.5">दूध का प्रकार</label>
+                            <select id="cust-milknumber" class="w-full bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-indigo-950 text-slate-900 dark:text-white rounded-2xl px-4 py-3 text-xs font-bold shadow-inner">
+                                <option value="Buffalo">🐃 भैंस का दूध</option><option value="Cow">🐄 गाय का दूध</option><option value="Both">🥛 दोनों</option>
+                            </select>
+                        </div>
+                        <div><label class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1.5">डिफ़ॉल्ट रेट प्रति लीटर (₹)</label><input type="number" step="0.5" id="cust-default-rate" placeholder="65" required class="w-full bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-indigo-950 text-slate-900 dark:text-white rounded-2xl px-4 py-3 text-xs font-bold shadow-inner"></div>
+                        <div class="flex space-x-3 pt-2">
+                            <button type="submit" id="cust-submit-btn" class="flex-1 bg-gradient-to-r from-indigo-600 via-blue-600 to-violet-600 hover:opacity-95 text-white font-bold py-3.5 rounded-2xl transition text-xs shadow-lg shadow-indigo-600/30 transform active:scale-95">सेव करें 💾</button>
+                            <button type="button" onclick="resetCustomerForm()" class="hidden bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300 px-4 py-3.5 rounded-2xl text-xs font-bold" id="cust-cancel-btn">रद्द</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="glass-panel p-6 rounded-3xl shadow-xl lg:col-span-2 space-y-4">
+                    <h3 class="font-bold text-slate-900 dark:text-white text-sm pb-2">पंजीकृत डायरेक्टरी 📇</h3>
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left border-collapse">
+                            <thead><tr class="border-b border-slate-200 dark:border-indigo-950 text-[11px] font-bold text-slate-400 uppercase"><th class="py-3 px-3">नाम</th><th class="py-3 px-3">मोबाइल</th><th class="py-3 px-3">प्रकार</th><th class="py-3 px-3">रेट</th><th class="py-3 px-3 text-right">कार्य</th></tr></thead>
+                            <tbody id="customers-tbody" class="text-xs divide-y divide-slate-200 dark:divide-indigo-950/50 font-semibold"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- TAB 5: AI PREDICTOR -->
+        <section id="tab-ai" class="hidden space-y-5">
+            <div class="glass-panel p-6 sm:p-8 rounded-3xl shadow-2xl space-y-6">
+                <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 border-b border-slate-200 dark:border-indigo-950 pb-5">
+                    <div class="flex items-center space-x-3.5">
+                        <div class="p-3.5 bg-gradient-to-tr from-indigo-600 via-blue-600 to-violet-600 text-white rounded-2xl shadow-lg shadow-indigo-600/30 float-icon"><i data-lucide="sparkles" class="w-7 h-7"></i></div>
+                        <div>
+                            <h2 class="text-base sm:text-lg font-black tracking-tight flex items-center gap-2 text-slate-900 dark:text-white">
+                                20-Point AI Dairy Business Suite 🧠 <span class="text-[10px] rgb-badge text-indigo-600 dark:text-indigo-400 px-3 py-0.5 rounded-full font-bold">20 AI FEATURES</span>
+                            </h2>
+                            <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5 font-medium">अत्याधुनिक कृत्रिम बुद्धिमत्ता (AI) आधारित बिजनेस एनालिटिक्स</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex flex-wrap items-center gap-3 w-full sm:w-auto">
+                        <select id="ai-filter-profile" onchange="calculateAIPredictions()" class="bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-white border border-slate-200 dark:border-indigo-950 rounded-2xl px-4 py-2.5 text-xs font-bold focus:outline-none focus:border-indigo-500 max-w-[220px] shadow-inner">
+                            <option value="all">👥 सभी वेंडर / कुल डेटा</option>
+                        </select>
+                        <button onclick="calculateAIPredictions()" class="bg-gradient-to-r from-indigo-600 via-blue-600 to-violet-600 hover:opacity-95 text-white font-bold px-4 py-2.5 rounded-2xl text-xs flex items-center space-x-2 shadow-lg shadow-indigo-600/30 transition transform active:scale-95">
+                            <i data-lucide="refresh-cw" class="w-3.5 h-3.5"></i> <span>रिफ्रेश</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Customer to Customer Comparison Filter Box -->
+                <div class="bg-slate-50 dark:bg-slate-950/80 border border-slate-200 dark:border-indigo-950 p-5 rounded-3xl space-y-3.5 shadow-inner">
+                    <h4 class="text-xs font-bold text-slate-700 dark:text-slate-300 flex items-center gap-2">
+                        <i data-lucide="git-compare" class="w-4 h-4 text-indigo-500"></i> ग्राहक से ग्राहक तुलना (Customer vs Customer Comparison)
+                    </h4>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-[11px] text-slate-500 mb-1.5 font-bold">पहला ग्राहक (Customer 1)</label>
+                            <select id="ai-cust-1" onchange="compareCustomersAI()" class="w-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-indigo-950 rounded-2xl px-3.5 py-2.5 text-xs text-slate-900 dark:text-white font-bold shadow-inner">
+                                <option value="">-- ग्राहक 1 चुनें --</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-[11px] text-slate-500 mb-1.5 font-bold">दूसरा ग्राहक (Customer 2)</label>
+                            <select id="ai-cust-2" onchange="compareCustomersAI()" class="w-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-indigo-950 rounded-2xl px-3.5 py-2.5 text-xs text-slate-900 dark:text-white font-bold shadow-inner">
+                                <option value="">-- ग्राहक 2 चुनें --</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div id="ai-comparison-result" class="hidden bg-indigo-500/10 border border-indigo-500/30 p-4 rounded-2xl text-xs font-bold text-indigo-800 dark:text-indigo-200">
+                        <!-- Comparison dynamically inserted here -->
+                    </div>
+                </div>
+
+                <!-- 20 AI Features Grid -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                    <div class="bg-slate-50/80 dark:bg-slate-950/60 border border-slate-200/80 dark:border-indigo-950/80 p-5 rounded-3xl shadow-sm">
+                        <span class="text-[10px] text-indigo-600 dark:text-indigo-400 font-extrabold uppercase tracking-wider">1. कुल दूध मात्रा</span>
+                        <h3 id="ai-feat-1" class="text-xl font-black text-slate-900 dark:text-white mt-1.5">0.0 L</h3>
+                    </div>
+                    <div class="bg-slate-50/80 dark:bg-slate-950/60 border border-slate-200/80 dark:border-indigo-950/80 p-5 rounded-3xl shadow-sm">
+                        <span class="text-[10px] text-indigo-600 dark:text-indigo-400 font-extrabold uppercase tracking-wider">2. कुल कारोबार मूल्य</span>
+                        <h3 id="ai-feat-2" class="text-xl font-black text-slate-900 dark:text-white mt-1.5">₹0</h3>
+                    </div>
+                    <div class="bg-slate-50/80 dark:bg-slate-950/60 border border-slate-200/80 dark:border-indigo-950/80 p-5 rounded-3xl shadow-sm">
+                        <span class="text-[10px] text-indigo-600 dark:text-indigo-400 font-extrabold uppercase tracking-wider">3. अगले 7 दिन का प्रेडिक्शन</span>
+                        <h3 id="ai-feat-3" class="text-xl font-black text-blue-600 dark:text-blue-400 mt-1.5">₹0</h3>
+                    </div>
+                    <div class="bg-slate-50/80 dark:bg-slate-950/60 border border-slate-200/80 dark:border-indigo-950/80 p-5 rounded-3xl shadow-sm">
+                        <span class="text-[10px] text-indigo-600 dark:text-indigo-400 font-extrabold uppercase tracking-wider">4. बिज़नेस हेल्थ स्कोर</span>
+                        <h3 id="ai-feat-4" class="text-xl font-black text-violet-600 dark:text-violet-400 mt-1.5">0%</h3>
+                    </div>
+                    <div class="bg-slate-50/80 dark:bg-slate-950/60 border border-slate-200/80 dark:border-indigo-950/80 p-5 rounded-3xl shadow-sm">
+                        <span class="text-[10px] text-indigo-600 dark:text-indigo-400 font-extrabold uppercase tracking-wider">5. औसत फैट प्रतिशत</span>
+                        <h3 id="ai-feat-5" class="text-xl font-black text-slate-900 dark:text-white mt-1.5">0.0%</h3>
+                    </div>
+                    <div class="bg-slate-50/80 dark:bg-slate-950/60 border border-slate-200/80 dark:border-indigo-950/80 p-5 rounded-3xl shadow-sm">
+                        <span class="text-[10px] text-indigo-600 dark:text-indigo-400 font-extrabold uppercase tracking-wider">6. औसत रेट प्रति लीटर</span>
+                        <h3 id="ai-feat-6" class="text-xl font-black text-slate-900 dark:text-white mt-1.5">₹0</h3>
+                    </div>
+                    <div class="bg-slate-50/80 dark:bg-slate-950/60 border border-slate-200/80 dark:border-indigo-950/80 p-5 rounded-3xl shadow-sm">
+                        <span class="text-[10px] text-indigo-600 dark:text-indigo-400 font-extrabold uppercase tracking-wider">7. मासिक ग्रोथ प्रोजेक्शन</span>
+                        <h3 id="ai-feat-7" class="text-xl font-black text-indigo-600 dark:text-indigo-400 mt-1.5">0%</h3>
+                    </div>
+                    <div class="bg-slate-50/80 dark:bg-slate-950/60 border border-slate-200/80 dark:border-indigo-950/80 p-5 rounded-3xl shadow-sm">
+                        <span class="text-[10px] text-indigo-600 dark:text-indigo-400 font-extrabold uppercase tracking-wider">8. पेमेंट जोखिम इंडेक्स</span>
+                        <h3 id="ai-feat-8" class="text-xl font-black text-indigo-600 dark:text-indigo-400 mt-1.5">-</h3>
+                    </div>
+                    <div class="bg-slate-50/80 dark:bg-slate-950/60 border border-slate-200/80 dark:border-indigo-950/80 p-5 rounded-3xl shadow-sm">
+                        <span class="text-[10px] text-indigo-600 dark:text-indigo-400 font-extrabold uppercase tracking-wider">9. सुबह vs शाम शिफ्ट रेश्यो</span>
+                        <h3 id="ai-feat-9" class="text-xl font-black text-slate-900 dark:text-white mt-1.5">0:0</h3>
+                    </div>
+                    <div class="bg-slate-50/80 dark:bg-slate-950/60 border border-slate-200/80 dark:border-indigo-950/80 p-5 rounded-3xl shadow-sm">
+                        <span class="text-[10px] text-indigo-600 dark:text-indigo-400 font-extrabold uppercase tracking-wider">10. सक्रिय ग्राहक संख्या</span>
+                        <h3 id="ai-feat-10" class="text-xl font-black text-slate-900 dark:text-white mt-1.5">0</h3>
+                    </div>
+                    <div class="bg-slate-50/80 dark:bg-slate-950/60 border border-slate-200/80 dark:border-indigo-950/80 p-5 rounded-3xl shadow-sm">
+                        <span class="text-[10px] text-indigo-600 dark:text-indigo-400 font-extrabold uppercase tracking-wider">11. कुल बकाया राशि</span>
+                        <h3 id="ai-feat-11" class="text-xl font-black text-amber-600 dark:text-amber-400 mt-1.5">₹0</h3>
+                    </div>
+                    <div class="bg-slate-50/80 dark:bg-slate-950/60 border border-slate-200/80 dark:border-indigo-950/80 p-5 rounded-3xl shadow-sm">
+                        <span class="text-[10px] text-indigo-600 dark:text-indigo-400 font-extrabold uppercase tracking-wider">12. एनुअल यील्ड एस्टीमेट</span>
+                        <h3 id="ai-feat-12" class="text-xl font-black text-blue-600 dark:text-blue-400 mt-1.5">0 L</h3>
+                    </div>
+                    <div class="bg-slate-50/80 dark:bg-slate-950/60 border border-slate-200/80 dark:border-indigo-950/80 p-5 rounded-3xl shadow-sm">
+                        <span class="text-[10px] text-indigo-600 dark:text-indigo-400 font-extrabold uppercase tracking-wider">13. पीक सप्लाई डे</span>
+                        <h3 id="ai-feat-13" class="text-xl font-black text-slate-900 dark:text-white mt-1.5">-</h3>
+                    </div>
+                    <div class="bg-slate-50/80 dark:bg-slate-950/60 border border-slate-200/80 dark:border-indigo-950/80 p-5 rounded-3xl shadow-sm">
+                        <span class="text-[10px] text-indigo-600 dark:text-indigo-400 font-extrabold uppercase tracking-wider">14. डेयरी प्रॉफिट मार्जिन</span>
+                        <h3 id="ai-feat-14" class="text-xl font-black text-indigo-600 dark:text-indigo-400 mt-1.5">0%</h3>
+                    </div>
+                    <div class="bg-slate-50/80 dark:bg-slate-950/60 border border-slate-200/80 dark:border-indigo-950/80 p-5 rounded-3xl shadow-sm">
+                        <span class="text-[10px] text-indigo-600 dark:text-indigo-400 font-extrabold uppercase tracking-wider">15. क्वालिटी ग्रेड इंडेक्स</span>
+                        <h3 id="ai-feat-15" class="text-xl font-black text-violet-600 dark:text-violet-400 mt-1.5">-</h3>
+                    </div>
+                    <div class="bg-slate-50/80 dark:bg-slate-950/60 border border-slate-200/80 dark:border-indigo-950/80 p-5 rounded-3xl shadow-sm">
+                        <span class="text-[10px] text-indigo-600 dark:text-indigo-400 font-extrabold uppercase tracking-wider">16. स्मार्ट फीड रिकमेंडेशन</span>
+                        <h3 id="ai-feat-16" class="text-xl font-black text-slate-900 dark:text-white mt-1.5">-</h3>
+                    </div>
+                    <div class="bg-slate-50/80 dark:bg-slate-950/60 border border-slate-200/80 dark:border-indigo-950/80 p-5 rounded-3xl shadow-sm">
+                        <span class="text-[10px] text-indigo-600 dark:text-indigo-400 font-extrabold uppercase tracking-wider">17. मार्केट डिमांड ट्रेंड</span>
+                        <h3 id="ai-feat-17" class="text-xl font-black text-blue-600 dark:text-blue-400 mt-1.5">-</h3>
+                    </div>
+                    <div class="bg-slate-50/80 dark:bg-slate-950/60 border border-slate-200/80 dark:border-indigo-950/80 p-5 rounded-3xl shadow-sm">
+                        <span class="text-[10px] text-indigo-600 dark:text-indigo-400 font-extrabold uppercase tracking-wider">18. ऑटो-सिंक स्टेटस</span>
+                        <h3 id="ai-feat-18" class="text-xl font-black text-indigo-600 dark:text-indigo-400 mt-1.5">सक्रिय</h3>
+                    </div>
+                    <div class="bg-slate-50/80 dark:bg-slate-950/60 border border-slate-200/80 dark:border-indigo-950/80 p-5 rounded-3xl shadow-sm">
+                        <span class="text-[10px] text-indigo-600 dark:text-indigo-400 font-extrabold uppercase tracking-wider">19. एआई बिजनेस एडवाइजर</span>
+                        <h3 id="ai-feat-19" class="text-xl font-black text-violet-600 dark:text-violet-400 mt-1.5">रेडी</h3>
+                    </div>
+                    <div class="bg-slate-50/80 dark:bg-slate-950/60 border border-slate-200/80 dark:border-indigo-950/80 p-5 rounded-3xl shadow-sm">
+                        <span class="text-[10px] text-indigo-600 dark:text-indigo-400 font-extrabold uppercase tracking-wider">20. डेयरी सिक्योरिटी इंडेक्स</span>
+                        <h3 id="ai-feat-20" class="text-xl font-black text-indigo-600 dark:text-indigo-400 mt-1.5">100% सुरक्षित</h3>
+                    </div>
+                </div>
+
+                <!-- Extra AI Smart Insights Cards -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+                    <div class="bg-indigo-500/5 border border-indigo-500/20 p-5 rounded-3xl space-y-2">
+                        <h4 class="text-xs font-bold text-indigo-700 dark:text-indigo-300 flex items-center gap-2">
+                            <i data-lucide="trending-up" class="w-4 h-4"></i> AI Growth Multiplier Analysis
+                        </h4>
+                        <p id="ai-growth-advice" class="text-xs text-slate-600 dark:text-slate-400 font-medium">डाटा विश्लेषण...</p>
+                    </div>
+                    <div class="bg-blue-500/5 border border-blue-500/20 p-5 rounded-3xl space-y-2">
+                        <h4 class="text-xs font-bold text-blue-700 dark:text-blue-300 flex items-center gap-2">
+                            <i data-lucide="shield-check" class="w-4 h-4"></i> AI Financial Risk & Debt Health Index
+                        </h4>
+                        <p id="ai-risk-advice" class="text-xs text-slate-600 dark:text-slate-400 font-medium">लेन-देन डेटा...</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- TAB 6: FAT CALCULATOR -->
+        <section id="tab-stock" class="hidden space-y-5">
+            <div class="glass-panel p-8 rounded-3xl shadow-2xl max-w-xl mx-auto space-y-5">
+                <h3 class="font-black text-slate-900 dark:text-white text-base text-center flex items-center justify-center gap-2">🧮 फैट और SNF आधारित रेट कैलकुलेटर</h3>
+                <div class="space-y-4">
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1.5">फैट प्रतिशत (Fat %)</label>
+                        <input type="number" step="0.1" id="calc-fat" placeholder="जैसे: 6.5" class="w-full bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-indigo-950 rounded-2xl px-4 py-3 text-xs text-slate-900 dark:text-white font-bold shadow-inner">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1.5">एसएनएफ प्रतिशत (SNF %)</label>
+                        <input type="number" step="0.1" id="calc-snf" placeholder="जैसे: 8.5" class="w-full bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-indigo-950 rounded-2xl px-4 py-3 text-xs text-slate-900 dark:text-white font-bold shadow-inner">
+                    </div>
+                    <button onclick="calculateFatRate()" class="w-full bg-gradient-to-r from-indigo-600 via-blue-600 to-violet-600 hover:opacity-95 text-white font-bold py-3.5 rounded-2xl text-xs transition shadow-lg shadow-indigo-600/30 transform active:scale-95">मूल्य गणना करें ⚡</button>
+                </div>
+                <div id="fat-calc-result" class="hidden bg-indigo-500/10 border border-indigo-500/30 p-4 rounded-2xl text-center text-xs text-indigo-800 dark:text-indigo-200 font-bold"></div>
+            </div>
+        </section>
+
+        <!-- TAB 7: REPORTS & SLIPS -->
+        <section id="tab-reports" class="hidden space-y-5">
+            <div class="glass-panel p-6 sm:p-8 rounded-3xl shadow-2xl space-y-6">
+                <div class="flex flex-wrap justify-between items-center gap-3 border-b border-slate-200 dark:border-indigo-950 pb-5">
+                    <h3 class="font-black text-slate-900 dark:text-white text-base flex items-center gap-2">🖨️ मासिक / साप्ताहिक बिल स्लिप जनरेटर</h3>
+                    <div class="flex gap-3">
+                        <select id="report-customer-select" onchange="generateReport()" class="bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-indigo-950 text-slate-900 dark:text-white rounded-2xl px-4 py-2 text-xs font-bold shadow-inner">
+                            <option value="">-- ग्राहक चुनें --</option>
+                        </select>
+                        <select id="report-period" onchange="generateReport()" class="bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-indigo-950 text-slate-900 dark:text-white rounded-2xl px-4 py-2 text-xs font-bold shadow-inner">
+                            <option value="weekly">साप्ताहिक (7 दिन)</option>
+                            <option value="monthly">मासिक (30 दिन)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
+                    <div class="bg-slate-50 dark:bg-slate-950/80 p-5 rounded-3xl border border-slate-200 dark:border-indigo-950 shadow-inner">
+                        <span class="text-[11px] text-slate-500 font-extrabold uppercase">कुल दूध</span>
+                        <h4 id="rep-liters" class="text-xl font-black text-indigo-600 mt-1.5">0.0 L</h4>
+                    </div>
+                    <div class="bg-slate-50 dark:bg-slate-950/80 p-5 rounded-3xl border border-slate-200 dark:border-indigo-950 shadow-inner">
+                        <span class="text-[11px] text-slate-500 font-extrabold uppercase">कुल रकम</span>
+                        <h4 id="rep-amount" class="text-xl font-black text-blue-600 mt-1.5">₹0</h4>
+                    </div>
+                    <div class="bg-slate-50 dark:bg-slate-950/80 p-5 rounded-3xl border border-slate-200 dark:border-indigo-950 shadow-inner">
+                        <span class="text-[11px] text-slate-500 font-extrabold uppercase">भुगतान (Paid)</span>
+                        <h4 id="rep-paid" class="text-xl font-black text-violet-600 mt-1.5">₹0</h4>
+                    </div>
+                    <div class="bg-slate-50 dark:bg-slate-950/80 p-5 rounded-3xl border border-slate-200 dark:border-indigo-950 shadow-inner">
+                        <span class="text-[11px] text-slate-500 font-extrabold uppercase">बकाया (Due)</span>
+                        <h4 id="rep-balance" class="text-xl font-black text-amber-600 mt-1.5">₹0</h4>
+                    </div>
+                </div>
+
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left border-collapse">
+                        <thead>
+                            <tr class="border-b border-slate-200 dark:border-indigo-950 text-[11px] font-bold text-slate-400 uppercase">
+                                <th class="py-3 px-3">तारीख</th>
+                                <th class="py-3 px-3">विवरण</th>
+                                <th class="py-3 px-3 text-right">रकम / मात्रा</th>
+                            </tr>
+                        </thead>
+                        <tbody id="report-details-tbody" class="text-xs divide-y divide-slate-200 dark:divide-indigo-950/50 font-semibold">
+                            <tr><td colspan="3" class="text-center py-5 text-slate-400">कृपया कोई ग्राहक चुनें</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="flex justify-end gap-3.5 pt-3">
+                    <button onclick="sendWhatsAppBill()" class="bg-gradient-to-r from-indigo-600 via-blue-600 to-violet-600 hover:opacity-95 text-white font-bold px-5 py-3 rounded-2xl text-xs transition shadow-lg shadow-indigo-600/30 flex items-center space-x-2 transform active:scale-95">
+                        <span>💬 WhatsApp पर भेजें</span>
+                    </button>
+                    <button onclick="window.print()" class="bg-slate-800 hover:bg-slate-700 text-white font-bold px-5 py-3 rounded-2xl text-xs transition shadow-lg flex items-center space-x-2 transform active:scale-95">
+                        <span>🖨️ प्रिंट करें</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- JS Engine -->
+    <script>
+        let appData = {
+            customers: JSON.parse(localStorage.getItem('milk_customers_v8')) || [
+                { id: '1', name: 'रामेश्वर यादव', phone: '9876543210', milkType: 'Buffalo', defaultRate: 65 },
+                { id: '2', name: 'सुनील कुमार', phone: '9123456789', milkType: 'Cow', defaultRate: 50 }
+            ],
+            entries: JSON.parse(localStorage.getItem('milk_entries_v8')) || [],
+            khata: JSON.parse(localStorage.getItem('milk_khata_v8')) || []
+        };
+
+        let currentDashboardDays = 'all';
+
+        function toggleTheme() {
+            const html = document.documentElement;
+            const isDark = html.classList.toggle('dark');
+            localStorage.setItem('milk_theme_v8', isDark ? 'dark' : 'light');
+            document.getElementById('theme-icon').setAttribute('data-lucide', isDark ? 'sun' : 'moon');
+            lucide.createIcons();
+        }
+
+        window.onload = function() {
+            document.documentElement.classList.remove('dark');
+            document.getElementById('theme-icon').setAttribute('data-lucide', 'moon');
+            lucide.createIcons();
+            
+            const today = new Date().toISOString().split('T')[0];
+            ['qe-date', 'de-date', 'khata-date'].forEach(id => {
+                const el = document.getElementById(id);
+                if (el) el.value = today;
+            });
+
+            populateCustomerDropdowns();
+            updateDashboard();
+            initLiveClockAndGreeting();
+            detectUserLocation();
+        };
+
+        function initLiveClockAndGreeting() {
+            function updateClock() {
+                const now = new Date();
+                const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+                const dateStr = now.toLocaleDateString('hi-IN', options);
+                const timeStr = now.toLocaleTimeString('hi-IN');
+                const clockEl = document.getElementById('live-datetime-str');
+                if(clockEl) clockEl.innerText = `${dateStr} | ${timeStr}`;
+
+                const hour = now.getHours();
+                let greeting = "शुभ प्रभात 🌅";
+                let icon = "🌅";
+                if (hour >= 12 && hour < 16) {
+                    greeting = "शुभ दोपहर ☀️";
+                    icon = "☀️";
+                } else if (hour >= 16 && hour < 20) {
+                    greeting = "शुभ संध्या 🌇";
+                    icon = "🌇";
+                } else if (hour >= 20 || hour < 4) {
+                    greeting = "शुभ रात्रि 🌙";
+                    icon = "🌙";
+                }
+                const greetEl = document.getElementById('greeting-text');
+                const greetBox = document.getElementById('time-greeting-box');
+                if(greetEl) greetEl.innerText = greeting;
+                if(greetBox) greetBox.innerHTML = `<span>${icon}</span> <span>${greeting}</span>`;
+            }
+            updateClock();
+            setInterval(updateClock, 1000);
+        }
+
+        async function detectUserLocation() {
+            const locEl = document.getElementById('live-location-text');
+            if (!locEl) return;
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(
+                    async (position) => {
+                        try {
+                            const lat = position.coords.latitude;
+                            const lon = position.coords.longitude;
+                            const res = await fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lon}&accept-language=hi`);
+                            const data = await res.json();
+                            const address = data.address;
+                            const place = address.village || address.town || address.city || address.suburb || address.county || 'लोकल डेयरी सेंटर';
+                            const state = address.state || '';
+                            locEl.innerHTML = `<i data-lucide="map-pin" class="w-3.5 h-3.5 text-indigo-500"></i> ${place}${state ? ', ' + state : ''}`;
+                            lucide.createIcons();
+                        } catch (e) {
+                            locEl.innerHTML = `<i data-lucide="map-pin" class="w-3.5 h-3.5 text-indigo-500"></i> भारत (लोकल डेयरी)`;
+                        }
+                    },
+                    (error) => {
+                        console.warn('Geolocation error:', error);
+                        locEl.innerHTML = `<i data-lucide="map-pin" class="w-3.5 h-3.5 text-indigo-500"></i> लोकल डेयरी सेंटर`;
+                    },
+                    { enableHighAccuracy: true, timeout: 10000, maximumAge: 0 }
+                );
+            } else {
+                locEl.innerHTML = `<i data-lucide="map-pin" class="w-3.5 h-3.5 text-indigo-500"></i> डेयरी डिवाइस मोड`;
+            }
+        }
+
+        function setDashboardPeriod(period) {
+            currentDashboardDays = period;
+            ['all', '7', '30'].forEach(p => {
+                const btn = document.getElementById(`dash-btn-${p}`);
+                if (btn) {
+                    btn.className = p === period ? "px-3.5 py-1.5 rounded-xl text-xs font-bold bg-white text-indigo-950 shadow" : "px-3.5 py-1.5 rounded-xl text-xs font-semibold text-white/80 hover:text-white";
+                }
+            });
+            updateDashboard();
+        }
+
+        function saveToLocalStorage() {
+            localStorage.setItem('milk_customers_v8', JSON.stringify(appData.customers));
+            localStorage.setItem('milk_entries_v8', JSON.stringify(appData.entries));
+            localStorage.setItem('milk_khata_v8', JSON.stringify(appData.khata));
+        }
+
+        function showToast(msg, isErr = false) {
+            const t = document.getElementById('toast');
+            if(!t) return;
+            document.getElementById('toast-msg').innerText = msg;
+            document.getElementById('toast-icon').innerHTML = isErr ? '<i data-lucide="alert-circle" class="w-5 h-5 text-red-500"></i>' : '<i data-lucide="check-circle" class="w-5 h-5 text-indigo-500"></i>';
+            lucide.createIcons();
+            t.classList.remove('translate-y-[-180%]');
+            setTimeout(() => t.classList.add('translate-y-[-180%]'), 2500);
+        }
+
+        function switchTab(id) {
+            ['dashboard', 'entries', 'khata', 'customers', 'ai', 'stock', 'reports'].forEach(t => {
+                const sec = document.getElementById(`tab-${t}`);
+                const btn = document.getElementById(`tab-btn-${t}`);
+                if (sec) sec.classList.add('hidden');
+                if (btn) btn.className = "py-3 px-2 rounded-2xl font-semibold text-xs flex flex-col items-center justify-center space-y-1.5 text-slate-600 dark:text-slate-400 hover:bg-indigo-500/10 hover:text-indigo-600 transition";
+            });
+            const targetSec = document.getElementById(`tab-${id}`);
+            const targetBtn = document.getElementById(`tab-btn-${id}`);
+            if (targetSec) targetSec.classList.remove('hidden');
+            if (targetBtn) targetBtn.className = "py-3 px-2 rounded-2xl font-bold text-xs flex flex-col items-center justify-center space-y-1.5 bg-gradient-to-r from-indigo-600 via-blue-600 to-violet-600 text-white shadow-lg shadow-indigo-600/30 transition transform active:scale-95";
+
+            if (id === 'dashboard') updateDashboard();
+            if (id === 'entries') renderEntriesTable();
+            if (id === 'khata') renderKhataTable();
+            if (id === 'customers') renderCustomerTable();
+            if (id === 'ai') calculateAIPredictions();
+            if (id === 'reports') generateReport();
+            lucide.createIcons();
+        }
+
+        function populateCustomerDropdowns() {
+            ['qe-customer', 'de-customer', 'khata-customer', 'khata-filter-customer', 'filter-customer', 'report-customer-select', 'dash-profile-select', 'ai-filter-profile', 'ai-cust-1', 'ai-cust-2'].forEach(id => {
+                const el = document.getElementById(id);
+                if (!el) return;
+                let html = '';
+                if (id === 'dash-profile-select') {
+                    html = '<option value="all">👥 सभी का कुल टोटल (Master Total)</option>';
+                } else if (id === 'ai-filter-profile') {
+                    html = '<option value="all">👥 सभी वेंडर / कुल डेटा</option>';
+                } else if (id === 'ai-cust-1' || id === 'ai-cust-2') {
+                    html = `<option value="">-- ${id === 'ai-cust-1' ? 'ग्राहक 1' : 'ग्राहक 2'} चुनें --</option>`;
+                } else if (id.includes('filter') || id.includes('report')) {
+                    html = '<option value="">-- सभी / चुनें --</option>';
+                } else {
+                    html = '<option value="">-- ग्राहक चुनें --</option>';
+                }
+                appData.customers.forEach(c => html += `<option value="${c.id}">${c.name} (${c.phone})</option>`);
+                el.innerHTML = html;
+            });
+        }
+
+        function calcQuickTotal() {
+            const l = parseFloat(document.getElementById('qe-liters').value) || 0;
+            const r = parseFloat(document.getElementById('qe-rate').value) || 0;
+            document.getElementById('qe-total-preview').innerText = `₹${(l * r).toFixed(2)}`;
+        }
+
+        function handleQuickEntry(e) {
+            e.preventDefault();
+            const customerId = document.getElementById('qe-customer').value;
+            const date = document.getElementById('qe-date').value;
+            const shift = document.getElementById('qe-shift').value;
+            const liters = parseFloat(document.getElementById('qe-liters').value);
+            const rate = parseFloat(document.getElementById('qe-rate').value);
+
+            if(!customerId || !liters || !rate) {
+                showToast('कृपया सभी जानकारी भरें!', true);
+                return;
+            }
+
+            const newEntry = {
+                id: Date.now().toString(),
+                customerId,
+                date,
+                shift,
+                liters,
+                fat: 6.5,
+                rate,
+                total: liters * rate
+            };
+
+            appData.entries.unshift(newEntry);
+            saveToLocalStorage();
+            
+            document.getElementById('qe-liters').value = '';
+            document.getElementById('qe-rate').value = '';
+            document.getElementById('qe-customer').value = '';
+            document.getElementById('qe-total-preview').innerText = '₹0';
+            
+            updateDashboard();
+            showToast('दूध प्रविष्टि सफलतापूर्वक दर्ज हो गई! 🥛');
+        }
+
+        function handleDetailedEntry(e) {
+            e.preventDefault();
+            const date = document.getElementById('de-date').value;
+            const customerId = document.getElementById('de-customer').value;
+            const shift = document.getElementById('de-shift').value;
+            const liters = parseFloat(document.getElementById('de-liters').value);
+            const fat = parseFloat(document.getElementById('de-fat').value) || 6.5;
+            const rate = parseFloat(document.getElementById('de-rate').value);
+
+            if(!customerId || !liters || !rate) {
+                showToast('कृपया सभी फील्ड भरें!', true);
+                return;
+            }
+
+            const newEntry = {
+                id: Date.now().toString(),
+                customerId,
+                date,
+                shift,
+                liters,
+                fat,
+                rate,
+                total: liters * rate
+            };
+
+            appData.entries.unshift(newEntry);
+            saveToLocalStorage();
+            
+            document.getElementById('de-liters').value = '';
+            document.getElementById('de-fat').value = '';
+            document.getElementById('de-rate').value = '';
+            document.getElementById('de-customer').value = '';
+            
+            renderEntriesTable();
+            showToast('विस्तृत दूध एंट्री जोड़ दी गई! ✅');
+        }
+
+        function handleKhataEntry(e) {
+            e.preventDefault();
+            const customerId = document.getElementById('khata-customer').value;
+            const type = document.getElementById('khata-type').value;
+            const amount = parseFloat(document.getElementById('khata-amount').value);
+            const date = document.getElementById('khata-date').value;
+            const note = document.getElementById('khata-note').value;
+
+            if(!customerId || !amount) {
+                showToast('कृपया ग्राहक और राशि भरें!', true);
+                return;
+            }
+
+            const newTx = {
+                id: Date.now().toString(),
+                customerId,
+                type,
+                amount,
+                date,
+                note
+            };
+
+            appData.khata.unshift(newTx);
+            saveToLocalStorage();
+
+            document.getElementById('khata-amount').value = '';
+            document.getElementById('khata-note').value = '';
+            document.getElementById('khata-customer').value = '';
+
+            renderKhataTable();
+            showToast('लेन-देन सफलतापूर्वक सेव हो गया! 💼');
+        }
+
+        function handleCustomerSubmit(e) {
+            e.preventDefault();
+            const id = document.getElementById('cust-id').value;
+            const name = document.getElementById('cust-name').value;
+            const phone = document.getElementById('cust-phone').value;
+            const milkType = document.getElementById('cust-milknumber').value;
+            const defaultRate = parseFloat(document.getElementById('cust-default-rate').value);
+
+            if(!name || !phone || !defaultRate) {
+                showToast('कृपया सभी जानकारी भरें!', true);
+                return;
+            }
+
+            if(id) {
+                const idx = appData.customers.findIndex(c => c.id === id);
+                if(idx !== -1) {
+                    appData.customers[idx] = { id, name, phone, milkType, defaultRate };
+                }
+            } else {
+                const newCust = {
+                    id: Date.now().toString(),
+                    name,
+                    phone,
+                    milkType,
+                    defaultRate
+                };
+                appData.customers.push(newCust);
+            }
+
+            saveToLocalStorage();
+            populateCustomerDropdowns();
+            renderCustomerTable();
+            resetCustomerForm();
+            showToast('ग्राहक की जानकारी सुरक्षित हो गई! 📇');
+        }
+
+        function resetCustomerForm() {
+            document.getElementById('cust-id').value = '';
+            document.getElementById('cust-name').value = '';
+            document.getElementById('cust-phone').value = '';
+            document.getElementById('cust-default-rate').value = '';
+            document.getElementById('cust-submit-btn').innerText = 'सेव करें 💾';
+            document.getElementById('cust-cancel-btn').classList.add('hidden');
+        }
+
+        function renderCustomerTable() {
+            const tbody = document.getElementById('customers-tbody');
+            if(!tbody) return;
+            tbody.innerHTML = appData.customers.length ? appData.customers.map(c => `
+                <tr class="border-b border-slate-200 dark:border-indigo-950">
+                    <td class="py-3 px-3 font-bold">${c.name}</td>
+                    <td class="py-3 px-3">${c.phone}</td>
+                    <td class="py-3 px-3">${c.milkType === 'Buffalo' ? 'भैंस' : c.milkType === 'Cow' ? 'गाय' : 'दोनों'}</td>
+                    <td class="py-3 px-3 font-bold text-indigo-600">₹${c.defaultRate}/L</td>
+                    <td class="py-3 px-3 text-right">
+                        <button onclick="editCustomer('${c.id}')" class="text-blue-500 font-bold hover:underline mr-3">संपादित</button>
+                        <button onclick="deleteCustomer('${c.id}')" class="text-red-500 font-bold hover:underline">हटाएं</button>
+                    </td>
+                </tr>
+            `).join('') : '<tr><td colspan="5" class="text-center py-5 text-slate-400">कोई ग्राहक पंजीकृत नहीं है</td></tr>';
+        }
+
+        function editCustomer(id) {
+            const c = appData.customers.find(x => x.id === id);
+            if(!c) return;
+            document.getElementById('cust-id').value = c.id;
+            document.getElementById('cust-name').value = c.name;
+            document.getElementById('cust-phone').value = c.phone;
+            document.getElementById('cust-milknumber').value = c.milkType;
+            document.getElementById('cust-default-rate').value = c.defaultRate;
+            document.getElementById('cust-submit-btn').innerText = 'अपडेट करें 🔄';
+            document.getElementById('cust-cancel-btn').classList.remove('hidden');
+        }
+
+        function deleteCustomer(id) {
+            if(confirm('क्या आप वाकई इस ग्राहक को हटाना चाहते हैं?')) {
+                appData.customers = appData.customers.filter(c => c.id !== id);
+                saveToLocalStorage();
+                populateCustomerDropdowns();
+                renderCustomerTable();
+                showToast('ग्राहक हटा दिया गया!');
+            }
+        }
+
+        function renderEntriesTable() {
+            const tbody = document.getElementById('all-entries-tbody');
+            if(!tbody) return;
+            const dateFilter = document.getElementById('filter-date')?.value || '';
+            const custFilter = document.getElementById('filter-customer')?.value || '';
+
+            let filtered = appData.entries.filter(e => {
+                if(dateFilter && e.date !== dateFilter) return false;
+                if(custFilter && e.customerId !== custFilter) return false;
+                return true;
+            });
+
+            tbody.innerHTML = filtered.length ? filtered.map(e => {
+                const c = appData.customers.find(x => x.id === e.customerId);
+                return `
+                    <tr class="border-b border-slate-200 dark:border-indigo-950">
+                        <td class="py-3 px-3">${e.date}</td>
+                        <td class="py-3 px-3">${e.shift === 'Morning' ? '🌅 सुबह' : '🌇 शाम'}</td>
+                        <td class="py-3 px-3 font-bold">${c ? c.name : 'अज्ञात'}</td>
+                        <td class="py-3 px-3 font-bold">${e.liters} L</td>
+                        <td class="py-3 px-3">${e.fat || '-'}%</td>
+                        <td class="py-3 px-3">₹${e.rate}</td>
+                        <td class="py-3 px-3 font-bold text-indigo-600">₹${e.total.toFixed(2)}</td>
+                        <td class="py-3 px-3 text-right">
+                            <button onclick="deleteEntry('${e.id}')" class="text-red-500 font-bold hover:underline">हटाएं</button>
+                        </td>
+                    </tr>
+                `;
+            }).join('') : '<tr><td colspan="8" class="text-center py-5 text-slate-400">कोई प्रविष्टि नहीं मिली</td></tr>';
+        }
+
+        function deleteEntry(id) {
+            appData.entries = appData.entries.filter(e => e.id !== id);
+            saveToLocalStorage();
+            renderEntriesTable();
+            updateDashboard();
+            showToast('एंट्री हटा दी गई!');
+        }
+
+        function renderKhataTable() {
+            const tbody = document.getElementById('khata-tbody');
+            if(!tbody) return;
+            const custFilter = document.getElementById('khata-filter-customer')?.value || '';
+            let filtered = appData.khata.filter(t => !custFilter || t.customerId === custFilter);
+
+            tbody.innerHTML = filtered.length ? filtered.map(t => {
+                const c = appData.customers.find(x => x.id === t.customerId);
+                let typeBadge = t.type === 'Given' ? '💸 भुगतान दिया' : t.type === 'Received' ? '💵 भुगतान मिला' : '🪙 एडवांस';
+                return `
+                    <tr class="border-b border-slate-200 dark:border-indigo-950">
+                        <td class="py-3 px-3">${t.date}</td>
+                        <td class="py-3 px-3 font-bold">${c ? c.name : 'अज्ञात'}</td>
+                        <td class="py-3 px-3"><span class="px-2.5 py-1 rounded-full text-[10px] bg-slate-100 dark:bg-slate-800 font-bold">${typeBadge}</span></td>
+                        <td class="py-3 px-3 font-bold text-indigo-600">₹${t.amount}</td>
+                        <td class="py-3 px-3">${t.note || '-'}</td>
+                        <td class="py-3 px-3 text-right">
+                            <button onclick="deleteKhata('${t.id}')" class="text-red-500 font-bold hover:underline">हटाएं</button>
+                        </td>
+                    </tr>
+                `;
+            }).join('') : '<tr><td colspan="6" class="text-center py-5 text-slate-400">कोई लेन-देन रिकॉर्ड नहीं मिला</td></tr>';
+        }
+
+        function deleteKhata(id) {
+            appData.khata = appData.khata.filter(t => t.id !== id);
+            saveToLocalStorage();
+            renderKhataTable();
+            updateDashboard();
+            showToast('लेन-देन हटा दिया गया!');
+        }
+
+        function updateDashboard() {
+            const profileId = document.getElementById('dash-profile-select')?.value || 'all';
+            let filteredEntries = appData.entries;
+            let filteredKhata = appData.khata;
+
+            if (profileId !== 'all') {
+                filteredEntries = filteredEntries.filter(e => e.customerId === profileId);
+                filteredKhata = filteredKhata.filter(t => t.customerId === profileId);
+            }
+
+            if (currentDashboardDays !== 'all') {
+                const days = parseInt(currentDashboardDays);
+                const cutoff = new Date();
+                cutoff.setDate(cutoff.getDate() - days);
+                filteredEntries = filteredEntries.filter(e => new Date(e.date) >= cutoff);
+                filteredKhata = filteredKhata.filter(t => new Date(t.date) >= cutoff);
+            }
+
+            let totalLiters = 0;
+            let totalAmount = 0;
+            filteredEntries.forEach(e => {
+                totalLiters += e.liters;
+                totalAmount += e.total;
+            });
+
+            let totalPaid = 0;
+            filteredKhata.forEach(t => {
+                if (t.type === 'Given' || t.type === 'Received') totalPaid += t.amount;
+            });
+
+            let totalDue = Math.max(0, totalAmount - totalPaid);
+
+            document.getElementById('stat-total-liters').innerText = `${totalLiters.toFixed(1)} L`;
+            document.getElementById('stat-total-amount').innerHTML = `<span>₹</span> <span class="tracking-normal">${totalAmount.toFixed(2)}</span>`;
+            document.getElementById('stat-total-paid').innerHTML = `<span>₹</span> <span class="tracking-normal">${totalPaid.toFixed(2)}</span>`;
+            document.getElementById('stat-total-due').innerHTML = `<span>₹</span> <span class="tracking-normal">${totalDue.toFixed(2)}</span>`;
+
+            const todayObj = new Date();
+            const todayStr = todayObj.toISOString().split('T')[0];
+            
+            const yestObj = new Date();
+            yestObj.setDate(yestObj.getDate() - 1);
+            const yestStr = yestObj.toISOString().split('T')[0];
+
+            let todayL = 0, todayAmt = 0;
+            let yestL = 0, yestAmt = 0;
+            let d7L = 0, d7Amt = 0;
+            let prev7L = 0, prev7Amt = 0;
+            let d30L = 0, d30Amt = 0;
+
+            const nowTime = todayObj.getTime();
+            appData.entries.forEach(e => {
+                if (profileId !== 'all' && e.customerId !== profileId) return;
+                
+                if (e.date === todayStr) {
+                    todayL += e.liters;
+                    todayAmt += e.total;
+                }
+                if (e.date === yestStr) {
+                    yestL += e.liters;
+                    yestAmt += e.total;
+                }
+
+                const entryDate = new Date(e.date).getTime();
+                const diffDays = (nowTime - entryDate) / (1000 * 3600 * 24);
+
+                if (diffDays >= 0 && diffDays <= 7) {
+                    d7L += e.liters;
+                    d7Amt += e.total;
+                } else if (diffDays > 7 && diffDays <= 14) {
+                    prev7L += e.liters;
+                    prev7Amt += e.total;
+                }
+
+                if (diffDays >= 0 && diffDays <= 30) {
+                    d30L += e.liters;
+                    d30Amt += e.total;
+                }
+            });
+
+            document.getElementById('stat-today-liters').innerText = `${todayL.toFixed(1)} L`;
+            document.getElementById('stat-today-amount').innerHTML = `<span>₹</span> <span class="tracking-normal">${todayAmt.toFixed(2)}</span>`;
+
+            document.getElementById('stat-yest-liters').innerText = `${yestL.toFixed(1)} L`;
+            document.getElementById('stat-yest-amount').innerHTML = `<span>₹</span> <span class="tracking-normal">${yestAmt.toFixed(2)}</span>`;
+
+            document.getElementById('stat-7-liters').innerText = `${d7L.toFixed(1)} L`;
+            document.getElementById('stat-7-amount').innerHTML = `<span>₹</span> <span class="tracking-normal">${d7Amt.toFixed(2)}</span>`;
+
+            document.getElementById('stat-30-liters').innerText = `${d30L.toFixed(1)} L`;
+            document.getElementById('stat-30-amount').innerHTML = `<span>₹</span> <span class="tracking-normal">${d30Amt.toFixed(2)}</span>`;
+
+            const yestGrowth = yestAmt > 0 ? ((todayAmt - yestAmt) / yestAmt) * 100 : (todayAmt > 0 ? 100 : 0);
+            const bToday = document.getElementById('badge-today-growth');
+            if(bToday) {
+                bToday.className = `text-[10px] px-2.5 py-0.5 rounded-full font-bold ${yestGrowth >= 0 ? 'bg-emerald-500/15 text-emerald-600 dark:text-emerald-400' : 'bg-rose-500/15 text-rose-600 dark:text-rose-400'}`;
+                bToday.innerText = `${yestGrowth >= 0 ? '▲ +' : '▼ '}${yestGrowth.toFixed(1)}%`;
+            }
+
+            const d7Growth = prev7Amt > 0 ? ((d7Amt - prev7Amt) / prev7Amt) * 100 : (d7Amt > 0 ? 100 : 0);
+            const b7 = document.getElementById('badge-7d-growth');
+            if(b7) {
+                b7.className = `text-[10px] px-2.5 py-0.5 rounded-full font-bold ${d7Growth >= 0 ? 'bg-emerald-500/15 text-emerald-600 dark:text-emerald-400' : 'bg-rose-500/15 text-rose-600 dark:text-rose-400'}`;
+                b7.innerText = `${d7Growth >= 0 ? '▲ +' : '▼ '}${d7Growth.toFixed(1)}%`;
+            }
+
+            const recentTbody = document.getElementById('recent-entries-tbody');
+            if(recentTbody) {
+                recentTbody.innerHTML = filteredEntries.slice(0, 5).map(e => {
+                    const c = appData.customers.find(x => x.id === e.customerId);
+                    return `
+                        <tr class="border-b border-slate-200 dark:border-indigo-950">
+                            <td class="py-3 px-3">${e.date} (${e.shift === 'Morning' ? 'सुबह' : 'शाम'})</td>
+                            <td class="py-3 px-3 font-bold">${c ? c.name : 'अज्ञात'}</td>
+                            <td class="py-3 px-3 font-bold">${e.liters} L</td>
+                            <td class="py-3 px-3">₹${e.rate}</td>
+                            <td class="py-3 px-3 font-bold text-indigo-600">₹${e.total.toFixed(2)}</td>
+                        </tr>
+                    `;
+                }).join('') || '<tr><td colspan="5" class="text-center py-5 text-slate-400">कोई हालिया प्रविष्टि नहीं है</td></tr>';
+            }
+        }
+
+        function calculateAIPredictions() {
+            const profileId = document.getElementById('ai-filter-profile')?.value || 'all';
+            let filteredEntries = appData.entries;
+            if (profileId !== 'all') {
+                filteredEntries = filteredEntries.filter(e => e.customerId === profileId);
+            }
+
+            let totalL = 0, totalRev = 0;
+            filteredEntries.forEach(e => {
+                totalL += e.liters;
+                totalRev += e.total;
+            });
+
+            const hasData = filteredEntries.length > 0;
+
+            const feat1 = document.getElementById('ai-feat-1'); if(feat1) feat1.innerText = hasData ? `${totalL.toFixed(1)} L` : `0.0 L`;
+            const feat2 = document.getElementById('ai-feat-2'); if(feat2) feat2.innerText = hasData ? `₹${totalRev.toFixed(2)}` : `₹0`;
+            const feat3 = document.getElementById('ai-feat-3'); if(feat3) feat3.innerText = hasData ? `₹${(totalRev * 1.1).toFixed(2)}` : `₹0`;
+            const feat4 = document.getElementById('ai-feat-4'); if(feat4) feat4.innerText = hasData ? `${Math.min(100, Math.round(totalL * 2 + 30))}%` : `0%`;
+            
+            let avgFat = 0, avgRate = 0;
+            if(hasData) {
+                let sumFat = 0, sumRate = 0;
+                filteredEntries.forEach(e => { sumFat += (e.fat || 6.5); sumRate += e.rate; });
+                avgFat = sumFat / filteredEntries.length;
+                avgRate = sumRate / filteredEntries.length;
+            }
+
+            const feat5 = document.getElementById('ai-feat-5'); if(feat5) feat5.innerText = hasData ? `${avgFat.toFixed(1)}%` : `0.0%`;
+            const feat6 = document.getElementById('ai-feat-6'); if(feat6) feat6.innerText = hasData ? `₹${avgRate.toFixed(1)}` : `₹0`;
+            const feat7 = document.getElementById('ai-feat-7'); if(feat7) feat7.innerText = hasData ? `+5.0%` : `0%`;
+            const feat8 = document.getElementById('ai-feat-8'); if(feat8) feat8.innerText = hasData ? `सुरक्षित` : `-`;
+            
+            let morningCount = filteredEntries.filter(e => e.shift === 'Morning').length;
+            let eveningCount = filteredEntries.filter(e => e.shift === 'Evening').length;
+            const feat9 = document.getElementById('ai-feat-9'); if(feat9) feat9.innerText = hasData ? `${morningCount}:${eveningCount}` : `0:0`;
+            
+            const feat10 = document.getElementById('ai-feat-10'); if(feat10) feat10.innerText = hasData ? `${new Set(filteredEntries.map(e => e.customerId)).size}` : `0`;
+            
+            let totalKhata = appData.khata.reduce((acc, t) => acc + t.amount, 0);
+            let totalDue = hasData ? Math.max(0, totalRev - totalKhata) : 0;
+            const feat11 = document.getElementById('ai-feat-11'); if(feat11) feat11.innerText = hasData ? `₹${totalDue.toFixed(2)}` : `₹0`;
+            
+            const feat12 = document.getElementById('ai-feat-12'); if(feat12) feat12.innerText = hasData ? `${(totalL * 30).toFixed(1)} L` : `0 L`;
+            const feat13 = document.getElementById('ai-feat-13'); if(feat13) feat13.innerText = hasData ? `नियमित` : `-`;
+            const feat14 = document.getElementById('ai-feat-14'); if(feat14) feat14.innerText = hasData ? `20.0%` : `0%`;
+            const feat15 = document.getElementById('ai-feat-15'); if(feat15) feat15.innerText = hasData ? `Grade A` : `-`;
+            const feat16 = document.getElementById('ai-feat-16'); if(feat16) feat16.innerText = hasData ? `उत्तम` : `-`;
+            const feat17 = document.getElementById('ai-feat-17'); if(feat17) feat17.innerText = hasData ? `स्थिर` : `-`;
+            const feat18 = document.getElementById('ai-feat-18'); if(feat18) feat18.innerText = hasData ? `सिंक्रोनाइज्ड` : `खाली`;
+            const feat19 = document.getElementById('ai-feat-19'); if(feat19) feat19.innerText = hasData ? `सक्रिय` : `प्रतीक्षारत`;
+            const feat20 = document.getElementById('ai-feat-20'); if(feat20) feat20.innerText = hasData ? `सुरक्षित` : `-`;
+
+            const growthEl = document.getElementById('ai-growth-advice');
+            if (growthEl) {
+                growthEl.innerText = hasData 
+                    ? `वास्तविक डेटा विश्लेषण: कुल ${totalL.toFixed(1)} लीटर दूध और ₹${totalRev.toFixed(2)} कारोबार के आधार पर व्यापार सामान्य रूप से चल रहा है।`
+                    : `⚠️ कोई भी वास्तविक दूध प्रविष्टि दर्ज नहीं है। कृपया 'दूध एंट्री' से नया डेटा दर्ज करें।`;
+            }
+
+            const riskEl = document.getElementById('ai-risk-advice');
+            if (riskEl) {
+                riskEl.innerText = hasData
+                    ? `वास्तविक लेन-देन डेटा के अनुसार कुल बकाया ₹${totalDue.toFixed(2)} है।`
+                    : `⚠️ कोई लेन-देन या खाता डेटा उपलब्ध नहीं है।`;
+            }
+        }
+
+        function compareCustomersAI() {
+            const c1Id = document.getElementById('ai-cust-1').value;
+            const c2Id = document.getElementById('ai-cust-2').value;
+            const resBox = document.getElementById('ai-comparison-result');
+
+            if (!c1Id || !c2Id || c1Id === c2Id) {
+                if(resBox) resBox.classList.add('hidden');
+                return;
+            }
+
+            const c1 = appData.customers.find(x => x.id === c1Id);
+            const c2 = appData.customers.find(x => x.id === c2Id);
+
+            let l1 = 0, r1 = 0, l2 = 0, r2 = 0;
+            appData.entries.forEach(e => {
+                if (e.customerId === c1Id) { l1 += e.liters; r1 += e.total; }
+                if (e.customerId === c2Id) { l2 += e.liters; r2 += e.total; }
+            });
+
+            if(resBox) {
+                resBox.classList.remove('hidden');
+                resBox.innerHTML = `
+                    📊 <b>वास्तविक तुलना (${c1.name} बनाम ${c2.name}):</b><br>
+                    • <b>${c1.name}:</b> ${l1.toFixed(1)} L दूध | कुल ₹${r1.toFixed(2)}<br>
+                    • <b>${c2.name}:</b> ${l2.toFixed(1)} L दूध | कुल ₹${r2.toFixed(2)}<br>
+                    ✨ <i>निष्कर्ष: ${l1 > l2 ? c1.name : l2 > l1 ? c2.name : 'दोनों का योगदान बराबर'} है।</i>
+                `;
+            }
+        }
+
+        function onQuickCustomerChange(custId) {
+            const c = appData.customers.find(x => x.id === custId);
+            const rateInput = document.getElementById('qe-rate');
+            if (c && rateInput) {
+                rateInput.value = c.defaultRate;
+            } else if (rateInput) {
+                rateInput.value = '';
+            }
+            calcQuickTotal();
+        }
+
+        function onCustomerSelectForRate(custId) {
+            const c = appData.customers.find(x => x.id === custId);
+            const rateInput = document.getElementById('de-rate');
+            if (c && rateInput) {
+                rateInput.value = c.defaultRate;
+            } else if (rateInput) {
+                rateInput.value = '';
+            }
+        }
+
+        function calculateFatRate() {
+            const fat = parseFloat(document.getElementById('calc-fat')?.value) || 0;
+            const snf = parseFloat(document.getElementById('calc-snf')?.value) || 0;
+            const res = document.getElementById('fat-calc-result');
+            if(!res) return;
+            if(fat <= 0 || snf <= 0) {
+                showToast('कृपया सही फैट और SNF दर्ज करें!', true);
+                return;
+            }
+            const estimatedRate = (fat * 6.5) + (snf * 2.2);
+            res.classList.remove('hidden');
+            res.innerHTML = `अनुमानित प्रति लीटर दूध मूल्य: <span class="text-sm font-black">₹${estimatedRate.toFixed(2)}</span> (फैट: ${fat}%, SNF: ${snf}%)`;
+        }
+
+        function generateReport() {
+            const custId = document.getElementById('report-customer-select')?.value;
+            if(!custId) return;
+            const filteredEntries = appData.entries.filter(e => e.customerId === custId);
+            let l = 0, amt = 0;
+            filteredEntries.forEach(e => { l += e.liters; amt += e.total; });
+            const repL = document.getElementById('rep-liters');
+            const repAmt = document.getElementById('rep-amount');
+            if(repL) repL.innerText = `${l.toFixed(1)} L`;
+            if(repAmt) repAmt.innerText = `₹${amt.toFixed(2)}`;
+        }
+
+        function sendWhatsAppBill() {
+            const custId = document.getElementById('report-customer-select')?.value;
+            if(!custId) { showToast('कृपया पहले ग्राहक चुनें!', true); return; }
+            const c = appData.customers.find(x => x.id === custId);
+            const amt = document.getElementById('rep-amount')?.innerText || '₹0';
+            const l = document.getElementById('rep-liters')?.innerText || '0 L';
+            const msg = `नमस्ते ${c.name} जी,\nआपके डेयरी दूध का हिसाब:\nकुल दूध: ${l}\nकुल मूल्य: ${amt}\nधन्यवाद! 🥛`;
+            window.open(`https://wa.me/91${c.phone}?text=${encodeURIComponent(msg)}`, '_blank');
+        }
+
+        function exportData() {
+            const blob = new Blob([JSON.stringify(appData)], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a'); a.href = url; a.download = 'milk_hisab_backup.json'; a.click();
+        }
+    </script>
+</body>
+</html>
