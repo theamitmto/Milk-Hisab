@@ -66,12 +66,16 @@
                 </div>
             </div>
 
+            <!-- Center User Name Editable Field -->
+            <div class="flex-1 max-w-xs mx-4 hidden sm:block">
+                <div class="relative">
+                    <input type="text" id="header-user-name" placeholder="अपना नाम यहाँ लिखें..." oninput="saveUserName(this.value)" class="w-full bg-slate-50 dark:bg-slate-900/80 border border-slate-200 dark:border-indigo-900/60 rounded-2xl px-3.5 py-2 text-xs font-bold text-center text-slate-900 dark:text-white focus:outline-none focus:border-indigo-500 shadow-inner">
+                </div>
+            </div>
+
             <div class="flex items-center space-x-2.5">
                 <button onclick="toggleTheme()" class="bg-white dark:bg-slate-800/80 hover:bg-slate-100 dark:hover:bg-slate-700 p-3 rounded-2xl border border-slate-200 dark:border-indigo-900/50 transition shadow-sm" title="डार्क/लाइट मोड">
                     <i id="theme-icon" data-lucide="moon" class="w-4 h-4 text-indigo-500"></i>
-                </button>
-                <button onclick="exportData()" class="bg-white dark:bg-slate-800/80 hover:bg-slate-100 dark:hover:bg-slate-700 text-xs font-bold px-3.5 py-2.5 rounded-2xl border border-slate-200 dark:border-indigo-900/50 flex items-center space-x-2 transition shadow-sm">
-                    <i data-lucide="download" class="w-4 h-4 text-indigo-500"></i> <span class="hidden sm:inline">बैकअप</span>
                 </button>
             </div>
         </div>
@@ -169,7 +173,7 @@
                             <div>
                                 <p class="text-[11px] text-slate-500 font-medium">सुबह और शाम की कुल</p>
                             </div>
-                            <h3 id="stat-total-liters" class="text-3xl sm:text-4xl font-black text-indigo-600 dark:text-indigo-400 tracking-tight truncate max-w-[200px]" title="0.0 L">0.0 L</h3>
+                            <h3 id="stat-total-liters" class="text-2xl sm:text-3xl font-black text-indigo-600 dark:text-indigo-400 tracking-tight truncate max-w-[200px]" title="0.0 L">0.0 L</h3>
                         </div>
                     </div>
 
@@ -185,7 +189,7 @@
                             <div>
                                 <p class="text-[11px] text-slate-500 font-medium">लीटर × रेट का योग</p>
                             </div>
-                            <h3 id="stat-total-amount" class="text-3xl sm:text-4xl font-black text-blue-600 dark:text-blue-400 tracking-tight truncate max-w-[210px]" title="₹0.00">₹0.00</h3>
+                            <h3 id="stat-total-amount" class="text-2xl sm:text-3xl font-black text-blue-600 dark:text-blue-400 tracking-tight truncate max-w-[210px]" title="₹0.00">₹0.00</h3>
                         </div>
                     </div>
 
@@ -201,7 +205,7 @@
                             <div>
                                 <p class="text-[11px] text-slate-500 font-medium">नकद या UPI से दिया</p>
                             </div>
-                            <h3 id="stat-total-paid" class="text-3xl sm:text-4xl font-black text-violet-600 dark:text-violet-400 tracking-tight truncate max-w-[210px]" title="₹0.00">₹0.00</h3>
+                            <h3 id="stat-total-paid" class="text-2xl sm:text-3xl font-black text-violet-600 dark:text-violet-400 tracking-tight truncate max-w-[210px]" title="₹0.00">₹0.00</h3>
                         </div>
                     </div>
 
@@ -217,7 +221,7 @@
                             <div>
                                 <p class="text-[11px] text-slate-500 font-medium">लेना या देना बाकी</p>
                             </div>
-                            <h3 id="stat-total-due" class="text-3xl sm:text-4xl font-black text-amber-600 dark:text-amber-400 tracking-tight truncate max-w-[210px]" title="₹0.00">₹0.00</h3>
+                            <h3 id="stat-total-due" class="text-2xl sm:text-3xl font-black text-amber-600 dark:text-amber-400 tracking-tight truncate max-w-[210px]" title="₹0.00">₹0.00</h3>
                         </div>
                     </div>
 
@@ -879,14 +883,15 @@
     <script>
         let appData = {
             customers: JSON.parse(localStorage.getItem('milk_customers_v8')) || [
-                { id: '1', name: 'अमित कुमार', phone: '6393954985', milkType: 'Buffalo', defaultRate: 65 },
+                { id: '1', name: 'रामेश्वर यादव', phone: '9876543210', milkType: 'Buffalo', defaultRate: 65 },
                 { id: '2', name: 'सुनील कुमार', phone: '9123456789', milkType: 'Cow', defaultRate: 50 }
             ],
             entries: JSON.parse(localStorage.getItem('milk_entries_v8')) || [],
             khata: JSON.parse(localStorage.getItem('milk_khata_v8')) || [],
             expenses: JSON.parse(localStorage.getItem('milk_expenses_v8')) || [
                 { id: 'e1', category: 'Binola', qty: '2 बोरी', amount: 2400, date: '2026-05-01', animal: 'भैंस शेड', note: 'उत्तम क्वालिटी खल' }
-            ]
+            ],
+            userName: localStorage.getItem('milk_user_name_v8') || ''
         };
 
         let currentDashboardDays = 'all';
@@ -904,6 +909,12 @@
             document.getElementById('theme-icon').setAttribute('data-lucide', 'moon');
             lucide.createIcons();
             
+            const savedName = localStorage.getItem('milk_user_name_v8');
+            if (savedName) {
+                const nameInput = document.getElementById('header-user-name');
+                if (nameInput) nameInput.value = savedName;
+            }
+
             const today = new Date().toISOString().split('T')[0];
             ['qe-date', 'de-date', 'khata-date', 'exp-date'].forEach(id => {
                 const el = document.getElementById(id);
@@ -911,10 +922,16 @@
             });
 
             populateCustomerDropdowns();
-            updateDashboard();
             initLiveClockAndGreeting();
             detectUserLocation();
+            updateDashboard();
+            lucide.createIcons();
         };
+
+        function saveUserName(name) {
+            localStorage.setItem('milk_user_name_v8', name);
+            appData.userName = name;
+        }
 
         function initLiveClockAndGreeting() {
             function updateClock() {
@@ -1599,20 +1616,6 @@
             document.getElementById('ai-feat-18').innerText = hasData ? `सिंक्रोनाइज्ड` : `खाली`;
             document.getElementById('ai-feat-19').innerText = hasData ? `सक्रिय` : `प्रतीक्षारत`;
             document.getElementById('ai-feat-20').innerText = hasData ? `सुरक्षित` : `-`;
-
-            const growthEl = document.getElementById('ai-growth-advice');
-            if (growthEl) {
-                growthEl.innerText = hasData 
-                    ? `वास्तविक डेटा विश्लेषण: कुल ${totalL.toFixed(1)} लीटर दूध और ₹${totalRev.toFixed(2)} कारोबार के आधार पर व्यापार सामान्य रूप से चल रहा है।`
-                    : `⚠️ कोई भी वास्तविक दूध प्रविष्टि दर्ज नहीं है। कृपया 'दूध एंट्री' से नया डेटा दर्ज करें।`;
-            }
-
-            const riskEl = document.getElementById('ai-risk-advice');
-            if (riskEl) {
-                riskEl.innerText = hasData
-                    ? `वास्तविक लेन-देन डेटा के अनुसार कुल बकाया ₹${totalDue.toFixed(2)} है।`
-                    : `⚠️ कोई लेन-देन या खाता डेटा उपलब्ध नहीं है।`;
-            }
         }
 
         function compareCustomersAI() {
@@ -1700,12 +1703,6 @@
             const l = document.getElementById('rep-liters')?.innerText || '0 L';
             const msg = `नमस्ते ${c.name} जी,\nआपके डेयरी दूध का हिसाब:\nकुल दूध: ${l}\nकुल मूल्य: ${amt}\nधन्यवाद! 🥛`;
             window.open(`https://wa.me/91${c.phone}?text=${encodeURIComponent(msg)}`, '_blank');
-        }
-
-        function exportData() {
-            const blob = new Blob([JSON.stringify(appData)], { type: 'application/json' });
-            const url = URL.createObjectURL(blob);
-            const a = document.createElement('a'); a.href = url; a.download = 'milk_hisab_backup.json'; a.click();
         }
     </script>
 </body>
