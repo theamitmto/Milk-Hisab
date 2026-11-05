@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="hi" class="h-full">
+<html lang="en" class="h-full">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>मिल्क हिसाब - ग्लोबल प्रीमियम फिनटेक सूट</title>
+    <title>Milk Ledger - Global Premium Fintech Suite</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -130,16 +130,16 @@
                 </a>
                 <div class="flex flex-col">
                     <h1 class="text-sm sm:text-base font-black tracking-wide flex items-center gap-2">
-                        <span class="rgb-gradient-text">मिल्क हिसाब</span>
+                        <span class="rgb-gradient-text">Milk Ledger</span>
                     </h1>
                     <p id="live-location-text" class="text-[11px] text-slate-500 dark:text-slate-400 flex items-center gap-1 mt-0.5 font-semibold">
-                        <svg class="w-3.5 h-3.5 text-indigo-500 spin-slow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> लोकेशन लोड हो रही है...
+                        <svg class="w-3.5 h-3.5 text-indigo-500 spin-slow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> Loading location...
                     </p>
                 </div>
             </div>
 
             <div class="flex items-center space-x-2.5">
-                <button onclick="toggleTheme()" class="morph-panel hover:bg-slate-100 dark:hover:bg-slate-800 p-3 rounded-2xl transition shadow-sm relative" title="डार्क/लाइट मोड">
+                <button onclick="toggleTheme()" class="morph-panel hover:bg-slate-100 dark:hover:bg-slate-800 p-3 rounded-2xl transition shadow-sm relative" title="Dark / Light Mode">
                     <!-- Animated Rotating Theme SVG Icon -->
                     <svg id="theme-svg-icon" class="w-4 h-4 text-indigo-600 dark:text-indigo-400 spin-slow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
                 </button>
@@ -151,7 +151,7 @@
     <div class="bg-indigo-500/5 dark:bg-indigo-500/10 border-b border-indigo-500/10 py-2.5 px-4 text-xs font-bold">
         <div class="max-w-6xl mx-auto flex flex-wrap justify-between items-center gap-2">
             <div id="time-greeting-box" class="flex items-center space-x-2 text-indigo-600 dark:text-indigo-400">
-                <span>🌅</span> <span id="greeting-text">शुभ प्रभात!</span>
+                <span>🌅</span> <span id="greeting-text">Good Morning!</span>
             </div>
             <div id="live-clock-box" class="text-slate-500 dark:text-slate-400 flex items-center space-x-2">
                 <svg class="w-3.5 h-3.5 text-indigo-500 spin-slow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
@@ -167,35 +167,35 @@
         <div class="grid grid-cols-4 sm:grid-cols-8 gap-2 morph-panel p-2.5 rounded-3xl shadow-2xl">
             <button onclick="switchTab('dashboard')" id="tab-btn-dashboard" class="py-3 px-2 rounded-2xl font-bold text-xs flex flex-col items-center justify-center space-y-1.5 bg-gradient-to-r from-indigo-600 via-blue-600 to-pink-600 text-white shadow-lg shadow-indigo-600/30 transition transform active:scale-95">
                 <svg class="w-4 h-4 wave-anim" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
-                <span>डैशबोर्ड</span>
+                <span>Dashboard</span>
             </button>
             <button onclick="switchTab('entries')" id="tab-btn-entries" class="py-3 px-2 rounded-2xl font-semibold text-xs flex flex-col items-center justify-center space-y-1.5 text-slate-600 dark:text-slate-400 hover:bg-indigo-500/10 hover:text-indigo-600 transition">
                 <svg class="w-4 h-4 float-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
-                <span>दूध एंट्री</span>
+                <span>Milk Entries</span>
             </button>
             <button onclick="switchTab('khata')" id="tab-btn-khata" class="py-3 px-2 rounded-2xl font-semibold text-xs flex flex-col items-center justify-center space-y-1.5 text-slate-600 dark:text-slate-400 hover:bg-indigo-500/10 hover:text-indigo-600 transition">
                 <svg class="w-4 h-4 pulseGlow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
-                <span>लेन-देन</span>
+                <span>Transactions</span>
             </button>
             <button onclick="switchTab('customers')" id="tab-btn-customers" class="py-3 px-2 rounded-2xl font-semibold text-xs flex flex-col items-center justify-center space-y-1.5 text-slate-600 dark:text-slate-400 hover:bg-indigo-500/10 hover:text-indigo-600 transition">
                 <svg class="w-4 h-4 float-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-                <span>ग्राहक</span>
+                <span>Customers</span>
             </button>
             <button onclick="switchTab('ai')" id="tab-btn-ai" class="py-3 px-2 rounded-2xl font-semibold text-xs flex flex-col items-center justify-center space-y-1.5 text-slate-600 dark:text-slate-400 hover:bg-indigo-500/10 hover:text-indigo-600 transition">
                 <svg class="w-4 h-4 animate-spin text-indigo-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v4m0 12v4M4.93 4.93l2.83 2.83m8.48 8.48l2.83 2.83M2 12h4m12 0h4"/></svg>
-                <span>AI प्रेडिक्टर</span>
+                <span>AI Predictor</span>
             </button>
             <button onclick="switchTab('stock')" id="tab-btn-stock" class="py-3 px-2 rounded-2xl font-semibold text-xs flex flex-col items-center justify-center space-y-1.5 text-slate-600 dark:text-slate-400 hover:bg-indigo-500/10 hover:text-indigo-600 transition">
                 <svg class="w-4 h-4 float-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="8" y1="10" x2="16" y2="10"/><line x1="8" y1="14" x2="12" y2="14"/></svg>
-                <span>फैट कैल्कु.</span>
+                <span>Fat Calc.</span>
             </button>
             <button onclick="switchTab('reports')" id="tab-btn-reports" class="py-3 px-2 rounded-2xl font-semibold text-xs flex flex-col items-center justify-center space-y-1.5 text-slate-600 dark:text-slate-400 hover:bg-indigo-500/10 hover:text-indigo-600 transition">
                 <svg class="w-4 h-4 wave-anim" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
-                <span>बिल & स्लिप</span>
+                <span>Bills & Slips</span>
             </button>
             <button onclick="switchTab('expenses')" id="tab-btn-expenses" class="py-3 px-2 rounded-2xl font-semibold text-xs flex flex-col items-center justify-center space-y-1.5 text-slate-600 dark:text-slate-400 hover:bg-indigo-500/10 hover:text-indigo-600 transition">
                 <svg class="w-4 h-4 float-icon text-emerald-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
-                <span>चारा & खर्च</span>
+                <span>Feed & Expenses</span>
             </button>
         </div>
 
@@ -207,19 +207,19 @@
                         <svg class="w-8 h-8 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8" fill="#fff"/></svg>
                     </div>
                     <div>
-                        <span class="bg-white/20 text-white font-black text-[10px] px-3 py-1 rounded-full uppercase tracking-wider backdrop-blur-md">⚡ मॉर्फिज्म डेयरी मास्टर</span>
-                        <h2 class="text-lg sm:text-xl font-black tracking-tight mt-2">सभी का कुल या पर्टिकुलर ग्राहक चुनें 👇</h2>
+                        <span class="bg-white/20 text-white font-black text-[10px] px-3 py-1 rounded-full uppercase tracking-wider backdrop-blur-md">⚡ Morphism Dairy Master</span>
+                        <h2 class="text-lg sm:text-xl font-black tracking-tight mt-2">Select Master Total or Specific Customer 👇</h2>
                     </div>
                 </div>
                 <div class="flex flex-wrap items-center justify-center gap-3 w-full sm:w-auto">
                     <select id="dash-profile-select" onchange="updateDashboard()" class="bg-slate-900/90 text-white border border-slate-700/80 rounded-2xl px-4 py-2.5 text-xs font-bold focus:outline-none focus:border-indigo-500 shadow-inner truncate max-w-[240px]">
-                        <option value="all">👥 सभी का कुल टोटल (Master Total)</option>
+                        <option value="all">👥 Overall Total (Master Total)</option>
                     </select>
 
                     <div class="flex items-center space-x-1.5 bg-black/30 p-1.5 rounded-2xl border border-white/20 backdrop-blur-md">
-                        <button onclick="setDashboardPeriod('all')" id="dash-btn-all" class="px-3.5 py-1.5 rounded-xl text-xs font-bold bg-white text-indigo-950 shadow">कुल</button>
-                        <button onclick="setDashboardPeriod('7')" id="dash-btn-7" class="px-3.5 py-1.5 rounded-xl text-xs font-semibold text-white/80 hover:text-white">7 दिन</button>
-                        <button onclick="setDashboardPeriod('30')" id="dash-btn-30" class="px-3.5 py-1.5 rounded-xl text-xs font-semibold text-white/80 hover:text-white">30 दिन</button>
+                        <button onclick="setDashboardPeriod('all')" id="dash-btn-all" class="px-3.5 py-1.5 rounded-xl text-xs font-bold bg-white text-indigo-950 shadow">All</button>
+                        <button onclick="setDashboardPeriod('7')" id="dash-btn-7" class="px-3.5 py-1.5 rounded-xl text-xs font-semibold text-white/80 hover:text-white">7 Days</button>
+                        <button onclick="setDashboardPeriod('30')" id="dash-btn-30" class="px-3.5 py-1.5 rounded-xl text-xs font-semibold text-white/80 hover:text-white">30 Days</button>
                     </div>
                 </div>
             </div>
@@ -227,8 +227,8 @@
             <!-- Giant Highlighted Stat Cards with Animated SVGs -->
             <div class="space-y-4">
                 <div class="flex justify-between items-center px-1">
-                    <h3 class="text-xs font-black uppercase tracking-wider text-slate-500 dark:text-slate-400">📊 मुख्य समग्र सारांश (Overall Master Stats)</h3>
-                    <span class="text-[10px] rgb-badge text-indigo-600 font-bold px-3 py-1 rounded-full">मोफिनिज्म सिंक्रोनाइज्ड</span>
+                    <h3 class="text-xs font-black uppercase tracking-wider text-slate-500 dark:text-slate-400">📊 Overall Master Summary Stats</h3>
+                    <span class="text-[10px] rgb-badge text-indigo-600 font-bold px-3 py-1 rounded-full">Morphism Synchronized</span>
                 </div>
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
                     
@@ -236,13 +236,13 @@
                     <div class="morph-panel p-6 rounded-3xl shadow-md flex flex-col justify-between relative overflow-hidden space-y-4">
                         <div class="flex justify-between items-center">
                             <span class="text-xs font-extrabold text-indigo-600 dark:text-indigo-400 uppercase tracking-wide flex items-center gap-1.5">
-                                <svg class="w-4 h-4 wave-anim text-indigo-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/></svg> कुल दूध मात्रा
+                                <svg class="w-4 h-4 wave-anim text-indigo-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/></svg> Total Milk Volume
                             </span>
                             <span id="badge-liters-growth" class="text-[10px] px-2.5 py-0.5 rounded-full font-bold bg-indigo-500/10 text-indigo-600">▲ 0%</span>
                         </div>
                         <div class="flex justify-between items-end pt-1 px-1">
                             <div>
-                                <p class="text-[11px] text-slate-500 font-medium">सुबह और शाम की कुल</p>
+                                <p class="text-[11px] text-slate-500 font-medium">Morning & Evening Sum</p>
                             </div>
                             <h3 id="stat-total-liters" class="text-lg sm:text-xl font-black text-indigo-600 dark:text-indigo-400 tracking-tight truncate max-w-[200px]" title="0.0 L">0.0 L</h3>
                         </div>
@@ -252,13 +252,13 @@
                     <div class="morph-panel p-6 rounded-3xl shadow-md flex flex-col justify-between relative overflow-hidden space-y-4">
                         <div class="flex justify-between items-center">
                             <span class="text-xs font-extrabold text-blue-600 dark:text-blue-400 uppercase tracking-wide flex items-center gap-1.5">
-                                <svg class="w-4 h-4 float-icon text-blue-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg> कुल कारोबार मूल्य
+                                <svg class="w-4 h-4 float-icon text-blue-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg> Total Business Value
                             </span>
                             <span id="badge-amount-growth" class="text-[10px] px-2.5 py-0.5 rounded-full font-bold bg-blue-500/10 text-blue-600">▲ 0%</span>
                         </div>
                         <div class="flex justify-between items-end pt-1 px-1">
                             <div>
-                                <p class="text-[11px] text-slate-500 font-medium">लीटर × रेट का योग</p>
+                                <p class="text-[11px] text-slate-500 font-medium">Total Liters × Rate</p>
                             </div>
                             <h3 id="stat-total-amount" class="text-lg sm:text-xl font-black text-blue-600 dark:text-blue-400 tracking-tight truncate max-w-[210px]" title="₹0.00">₹0.00</h3>
                         </div>
@@ -268,13 +268,13 @@
                     <div class="morph-panel p-6 rounded-3xl shadow-md flex flex-col justify-between relative overflow-hidden space-y-4">
                         <div class="flex justify-between items-center">
                             <span class="text-xs font-extrabold text-violet-600 dark:text-violet-400 uppercase tracking-wide flex items-center gap-1.5">
-                                <svg class="w-4 h-4 wave-anim text-violet-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg> कुल भुगतान (PAID)
+                                <svg class="w-4 h-4 wave-anim text-violet-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg> Total Paid
                             </span>
-                            <span class="text-[10px] px-2.5 py-0.5 rounded-full font-bold bg-violet-500/10 text-violet-600">चुकाया</span>
+                            <span class="text-[10px] px-2.5 py-0.5 rounded-full font-bold bg-violet-500/10 text-violet-600">Settled</span>
                         </div>
                         <div class="flex justify-between items-end pt-1 px-1">
                             <div>
-                                <p class="text-[11px] text-slate-500 font-medium">नकद या UPI से दिया</p>
+                                <p class="text-[11px] text-slate-500 font-medium">Cash or UPI Paid</p>
                             </div>
                             <h3 id="stat-total-paid" class="text-lg sm:text-xl font-black text-violet-600 dark:text-violet-400 tracking-tight truncate max-w-[210px]" title="₹0.00">₹0.00</h3>
                         </div>
@@ -284,13 +284,13 @@
                     <div class="morph-panel p-6 rounded-3xl shadow-md flex flex-col justify-between relative overflow-hidden space-y-4">
                         <div class="flex justify-between items-center">
                             <span class="text-xs font-extrabold text-amber-600 dark:text-amber-400 uppercase tracking-wide flex items-center gap-1.5">
-                                <svg class="w-4 h-4 float-icon text-amber-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg> शेष बकाया (DUE)
+                                <svg class="w-4 h-4 float-icon text-amber-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg> Outstanding Due
                             </span>
-                            <span class="text-[10px] px-2.5 py-0.5 rounded-full font-bold bg-amber-500/10 text-amber-600">बाकी</span>
+                            <span class="text-[10px] px-2.5 py-0.5 rounded-full font-bold bg-amber-500/10 text-amber-600">Pending</span>
                         </div>
                         <div class="flex justify-between items-end pt-1 px-1">
                             <div>
-                                <p class="text-[11px] text-slate-500 font-medium">लेना या देना बाकी</p>
+                                <p class="text-[11px] text-slate-500 font-medium">Balance Payable / Due</p>
                             </div>
                             <h3 id="stat-total-due" class="text-lg sm:text-xl font-black text-amber-600 dark:text-amber-400 tracking-tight truncate max-w-[210px]" title="₹0.00">₹0.00</h3>
                         </div>
@@ -301,22 +301,22 @@
 
             <!-- Time-Frame Analytics Cards -->
             <div class="space-y-4 pt-2">
-                <h3 class="text-xs font-black uppercase tracking-wider text-slate-500 dark:text-slate-400 px-1">⏱️ समयानुसार विश्लेषण एवं परसेंटेज ग्रोथ (Yesterday, Today, 7 Days, 30 Days)</h3>
+                <h3 class="text-xs font-black uppercase tracking-wider text-slate-500 dark:text-slate-400 px-1">⏱️ Timeframe Analysis & Growth Percentage (Yesterday, Today, 7 Days, 30 Days)</h3>
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
                     
                     <!-- Yesterday -->
                     <div class="morph-panel p-6 rounded-3xl shadow-md space-y-3 border-l-4 border-blue-500">
                         <div class="flex justify-between items-center">
-                            <span class="text-xs font-extrabold text-blue-600 dark:text-blue-400 uppercase tracking-wide">📅 कल का डेटा</span>
-                            <span class="text-[10px] px-2.5 py-0.5 rounded-full font-bold bg-blue-500/10 text-blue-600">बीता कल</span>
+                            <span class="text-xs font-extrabold text-blue-600 dark:text-blue-400 uppercase tracking-wide">📅 Yesterday's Data</span>
+                            <span class="text-[10px] px-2.5 py-0.5 rounded-full font-bold bg-blue-500/10 text-blue-600">Yesterday</span>
                         </div>
                         <div class="grid grid-cols-2 gap-3 pt-2">
                             <div>
-                                <p class="text-[11px] text-slate-500 font-bold">दूध मात्रा</p>
+                                <p class="text-[11px] text-slate-500 font-bold">Milk Volume</p>
                                 <h4 id="stat-yest-liters" class="text-base font-black text-slate-900 dark:text-white truncate">0.0 L</h4>
                             </div>
                             <div>
-                                <p class="text-[11px] text-slate-500 font-bold">कारोबार</p>
+                                <p class="text-[11px] text-slate-500 font-bold">Revenue</p>
                                 <h4 id="stat-yest-amount" class="text-base font-black text-blue-600 truncate">₹0</h4>
                             </div>
                         </div>
@@ -325,16 +325,16 @@
                     <!-- Today -->
                     <div class="morph-panel p-6 rounded-3xl shadow-md space-y-3 border-l-4 border-indigo-500">
                         <div class="flex justify-between items-center">
-                            <span class="text-xs font-extrabold text-indigo-600 dark:text-indigo-400 uppercase tracking-wide">📅 आज का डेटा</span>
-                            <span id="badge-today-growth" class="text-[10px] px-2.5 py-0.5 rounded-full font-bold bg-indigo-500/10 text-indigo-600">लाइव</span>
+                            <span class="text-xs font-extrabold text-indigo-600 dark:text-indigo-400 uppercase tracking-wide">📅 Today's Data</span>
+                            <span id="badge-today-growth" class="text-[10px] px-2.5 py-0.5 rounded-full font-bold bg-indigo-500/10 text-indigo-600">Live</span>
                         </div>
                         <div class="grid grid-cols-2 gap-3 pt-2">
                             <div>
-                                <p class="text-[11px] text-slate-500 font-bold">दूध मात्रा</p>
+                                <p class="text-[11px] text-slate-500 font-bold">Milk Volume</p>
                                 <h4 id="stat-today-liters" class="text-base font-black text-slate-900 dark:text-white truncate">0.0 L</h4>
                             </div>
                             <div>
-                                <p class="text-[11px] text-slate-500 font-bold">कारोबार</p>
+                                <p class="text-[11px] text-slate-500 font-bold">Revenue</p>
                                 <h4 id="stat-today-amount" class="text-base font-black text-indigo-600 truncate">₹0</h4>
                             </div>
                         </div>
@@ -343,16 +343,16 @@
                     <!-- 7 Days -->
                     <div class="morph-panel p-6 rounded-3xl shadow-md space-y-3 border-l-4 border-violet-500">
                         <div class="flex justify-between items-center">
-                            <span class="text-xs font-extrabold text-violet-600 dark:text-violet-400 uppercase tracking-wide">📆 पिछले 7 दिन</span>
-                            <span id="badge-7d-growth" class="text-[10px] px-2.5 py-0.5 rounded-full font-bold bg-violet-500/10 text-violet-600">साप्ताहिक</span>
+                            <span class="text-xs font-extrabold text-violet-600 dark:text-violet-400 uppercase tracking-wide">📆 Last 7 Days</span>
+                            <span id="badge-7d-growth" class="text-[10px] px-2.5 py-0.5 rounded-full font-bold bg-violet-500/10 text-violet-600">Weekly</span>
                         </div>
                         <div class="grid grid-cols-2 gap-3 pt-2">
                             <div>
-                                <p class="text-[11px] text-slate-500 font-bold">दूध मात्रा</p>
+                                <p class="text-[11px] text-slate-500 font-bold">Milk Volume</p>
                                 <h4 id="stat-7-liters" class="text-base font-black text-slate-900 dark:text-white truncate">0.0 L</h4>
                             </div>
                             <div>
-                                <p class="text-[11px] text-slate-500 font-bold">कारोबार</p>
+                                <p class="text-[11px] text-slate-500 font-bold">Revenue</p>
                                 <h4 id="stat-7-amount" class="text-base font-black text-violet-600 truncate">₹0</h4>
                             </div>
                         </div>
@@ -361,16 +361,16 @@
                     <!-- 30 Days -->
                     <div class="morph-panel p-6 rounded-3xl shadow-md space-y-3 border-l-4 border-emerald-500">
                         <div class="flex justify-between items-center">
-                            <span class="text-xs font-extrabold text-emerald-600 dark:text-emerald-400 uppercase tracking-wide">🗓️ पिछले 30 दिन</span>
-                            <span class="text-[10px] px-2.5 py-0.5 rounded-full font-bold bg-emerald-500/10 text-emerald-600">मासिक</span>
+                            <span class="text-xs font-extrabold text-emerald-600 dark:text-emerald-400 uppercase tracking-wide">🗓️ Last 30 Days</span>
+                            <span class="text-[10px] px-2.5 py-0.5 rounded-full font-bold bg-emerald-500/10 text-emerald-600">Monthly</span>
                         </div>
                         <div class="grid grid-cols-2 gap-3 pt-2">
                             <div>
-                                <p class="text-[11px] text-slate-500 font-bold">दूध मात्रा</p>
+                                <p class="text-[11px] text-slate-500 font-bold">Milk Volume</p>
                                 <h4 id="stat-30-liters" class="text-base font-black text-slate-900 dark:text-white truncate">0.0 L</h4>
                             </div>
                             <div>
-                                <p class="text-[11px] text-slate-500 font-bold">कारोबार</p>
+                                <p class="text-[11px] text-slate-500 font-bold">Revenue</p>
                                 <h4 id="stat-30-amount" class="text-base font-black text-emerald-600 truncate">₹0</h4>
                             </div>
                         </div>
@@ -387,47 +387,47 @@
                                 <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
                             </div>
                             <div>
-                                <h3 class="font-bold text-slate-900 dark:text-white text-sm">तुरंत दूध दर्ज करें</h3>
-                                <p class="text-[11px] text-slate-500 dark:text-slate-400 font-medium">वेंडर के लिए क्विक एंट्री</p>
+                                <h3 class="font-bold text-slate-900 dark:text-white text-sm">Quick Milk Entry</h3>
+                                <p class="text-[11px] text-slate-500 dark:text-slate-400 font-medium">Fast Entry for Vendors</p>
                             </div>
                         </div>
                     </div>
                     <form id="quickEntryForm" onsubmit="handleQuickEntry(event)" class="space-y-4">
                         <div>
-                            <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1.5">ग्राहक का नाम चुनें</label>
+                            <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1.5">Select Customer</label>
                             <select id="qe-customer" required class="w-full bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-indigo-950 rounded-2xl px-4 py-3 text-xs text-slate-900 dark:text-white font-bold focus:outline-none focus:border-indigo-500 shadow-inner">
-                                <option value="">-- ग्राहक चुनें --</option>
+                                <option value="">-- Select Customer --</option>
                             </select>
                         </div>
                         <div class="grid grid-cols-2 gap-3.5">
                             <div>
-                                <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1.5">तारीख</label>
+                                <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1.5">Date</label>
                                 <input type="date" id="qe-date" required class="w-full bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-indigo-950 rounded-2xl px-3.5 py-2.5 text-xs text-slate-900 dark:text-white font-bold shadow-inner">
                             </div>
                             <div>
-                                <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1.5">शिफ्ट</label>
+                                <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1.5">Shift</label>
                                 <select id="qe-shift" class="w-full bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-indigo-950 rounded-2xl px-3.5 py-2.5 text-xs text-slate-900 dark:text-white font-bold shadow-inner">
-                                    <option value="Morning">🌅 सुबह</option>
-                                    <option value="Evening">🌇 शाम</option>
+                                    <option value="Morning">🌅 Morning</option>
+                                    <option value="Evening">🌇 Evening</option>
                                 </select>
                             </div>
                         </div>
                         <div class="grid grid-cols-2 gap-3.5">
                             <div>
-                                <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1.5">दूध (लीटर में)</label>
-                                <input type="number" step="0.01" min="0.01" id="qe-liters" placeholder="जैसे: 5.25" required oninput="calcQuickTotal()" class="w-full bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-indigo-950 rounded-2xl px-3.5 py-2.5 text-xs text-slate-900 dark:text-white font-bold shadow-inner">
+                                <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1.5">Milk (in Liters)</label>
+                                <input type="number" step="0.01" min="0.01" id="qe-liters" placeholder="e.g. 5.25" required oninput="calcQuickTotal()" class="w-full bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-indigo-950 rounded-2xl px-3.5 py-2.5 text-xs text-slate-900 dark:text-white font-bold shadow-inner">
                             </div>
                             <div>
-                                <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1.5">रेट प्रति लीटर (₹)</label>
-                                <input type="number" step="0.01" id="qe-rate" placeholder="जैसे: 64.50" required oninput="calcQuickTotal()" class="w-full bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-indigo-950 rounded-2xl px-3.5 py-2.5 text-xs text-slate-900 dark:text-white font-bold shadow-inner">
+                                <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1.5">Rate per Liter (₹)</label>
+                                <input type="number" step="0.01" id="qe-rate" placeholder="e.g. 64.50" required oninput="calcQuickTotal()" class="w-full bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-indigo-950 rounded-2xl px-3.5 py-2.5 text-xs text-slate-900 dark:text-white font-bold shadow-inner">
                             </div>
                         </div>
                         <div class="bg-indigo-500/10 border border-indigo-500/30 p-3.5 rounded-2xl flex justify-between items-center text-xs font-bold text-indigo-700 dark:text-indigo-300">
-                            <span>कुल बनने वाली रकम:</span>
+                            <span>Total Calculated Amount:</span>
                             <span id="qe-total-preview" class="text-sm font-black text-indigo-600 dark:text-indigo-400">₹0</span>
                         </div>
                         <button type="submit" class="w-full bg-gradient-to-r from-indigo-600 via-blue-600 to-pink-600 hover:opacity-95 text-white font-bold py-3.5 rounded-2xl transition shadow-xl shadow-indigo-600/30 text-xs tracking-wide transform active:scale-[0.98]">
-                            एंट्री सेव करें 💾 ✨
+                            Save Entry 💾 ✨
                         </button>
                     </form>
                 </div>
@@ -439,22 +439,22 @@
                                 <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
                             </div>
                             <div>
-                                <h3 class="font-bold text-slate-900 dark:text-white text-sm">हाल की दूध एंट्रियां</h3>
-                                <p class="text-[11px] text-slate-500 dark:text-slate-400 font-medium">अभी तक दर्ज किया गया हालिया दूध</p>
+                                <h3 class="font-bold text-slate-900 dark:text-white text-sm">Recent Milk Entries</h3>
+                                <p class="text-[11px] text-slate-500 dark:text-slate-400 font-medium">Recently Recorded Milk Entries</p>
                             </div>
                         </div>
-                        <button onclick="switchTab('entries')" class="text-xs font-bold text-indigo-600 dark:text-indigo-400 hover:underline bg-indigo-500/10 px-3.5 py-2 rounded-2xl border border-indigo-500/25 transition">सभी देखें →</button>
+                        <button onclick="switchTab('entries')" class="text-xs font-bold text-indigo-600 dark:text-indigo-400 hover:underline bg-indigo-500/10 px-3.5 py-2 rounded-2xl border border-indigo-500/25 transition">View All →</button>
                     </div>
                     <div class="overflow-x-auto">
                         <table class="w-full text-left border-collapse">
                             <thead>
                                 <tr class="border-b border-slate-200 dark:border-indigo-950 text-[11px] font-bold text-slate-400 uppercase">
-                                    <th class="py-3 px-3"># क्रम</th>
-                                    <th class="py-3 px-3">तारीख/शिफ्ट</th>
-                                    <th class="py-3 px-3">ग्राहक का नाम</th>
-                                    <th class="py-3 px-3">लीटर</th>
-                                    <th class="py-3 px-3">रेट</th>
-                                    <th class="py-3 px-3">कुल रुपये</th>
+                                    <th class="py-3 px-3"># Sl No.</th>
+                                    <th class="py-3 px-3">Date / Shift</th>
+                                    <th class="py-3 px-3">Customer Name</th>
+                                    <th class="py-3 px-3">Liters</th>
+                                    <th class="py-3 px-3">Rate</th>
+                                    <th class="py-3 px-3">Total Amount</th>
                                 </tr>
                             </thead>
                             <tbody id="recent-entries-tbody" class="text-xs divide-y divide-slate-200 dark:divide-indigo-950/50 font-semibold"></tbody>
@@ -469,13 +469,13 @@
             <div class="morph-panel p-5 sm:p-7 rounded-3xl shadow-2xl space-y-5">
                 <div class="flex flex-wrap justify-between items-center gap-3 border-b border-slate-200 dark:border-indigo-950 pb-4">
                     <div>
-                        <h2 class="text-base font-black text-slate-900 dark:text-white flex items-center gap-2">📝 सभी दूध एंट्रियां एवं फिल्टर</h2>
-                        <span id="entries-count-badge" class="text-[10px] rgb-badge text-indigo-600 dark:text-indigo-400 font-bold px-3 py-0.5 rounded-full mt-1 inline-block">मॉर्फिज्म वेंडर सूट</span>
+                        <h2 class="text-base font-black text-slate-900 dark:text-white flex items-center gap-2">📝 All Milk Entries & Filters</h2>
+                        <span id="entries-count-badge" class="text-[10px] rgb-badge text-indigo-600 dark:text-indigo-400 font-bold px-3 py-0.5 rounded-full mt-1 inline-block">Morphism Vendor Suite</span>
                     </div>
                     <div class="flex gap-2.5 w-full sm:w-auto">
                         <input type="date" id="filter-date" onchange="renderEntriesTable()" class="bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-indigo-950 text-slate-900 dark:text-white rounded-2xl px-3 py-2 text-xs flex-1 font-bold shadow-inner">
                         <select id="filter-customer" onchange="renderEntriesTable()" class="bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-indigo-950 text-slate-900 dark:text-white rounded-2xl px-3 py-2 text-xs flex-1 font-bold shadow-inner">
-                            <option value="">-- सभी ग्राहक --</option>
+                            <option value="">-- All Customers --</option>
                         </select>
                     </div>
                 </div>
@@ -484,43 +484,43 @@
                 <form id="detailedEntryForm" onsubmit="handleDetailedEntry(event)" class="bg-gradient-to-br from-indigo-500/5 via-blue-500/5 to-pink-500/5 p-5 sm:p-6 rounded-3xl border border-indigo-500/20 shadow-lg space-y-4">
                     <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
                         <div>
-                            <label class="block text-xs font-black text-slate-700 dark:text-slate-300 mb-1.5 flex items-center gap-1.5">📅 तारीख चुनें</label>
+                            <label class="block text-xs font-black text-slate-700 dark:text-slate-300 mb-1.5 flex items-center gap-1.5">📅 Select Date</label>
                             <input type="date" id="de-date" required class="w-full bg-white dark:bg-slate-950 border border-slate-200 dark:border-indigo-950 text-slate-900 dark:text-white rounded-2xl px-4 py-3 text-xs font-bold shadow-inner focus:border-indigo-500 focus:outline-none">
                         </div>
                         <div>
-                            <label class="block text-xs font-black text-slate-700 dark:text-slate-300 mb-1.5 flex items-center gap-1.5">👤 ग्राहक का नाम</label>
+                            <label class="block text-xs font-black text-slate-700 dark:text-slate-300 mb-1.5 flex items-center gap-1.5">👤 Customer Name</label>
                             <select id="de-customer" required class="w-full bg-white dark:bg-slate-950 border border-slate-200 dark:border-indigo-950 text-slate-900 dark:text-white rounded-2xl px-4 py-3 text-xs font-bold shadow-inner focus:border-indigo-500 focus:outline-none">
-                                <option value="">-- ग्राहक चुनें --</option>
+                                <option value="">-- Select Customer --</option>
                             </select>
                         </div>
                         <div>
-                            <label class="block text-xs font-black text-slate-700 dark:text-slate-300 mb-1.5 flex items-center gap-1.5">⏰ शिफ्ट</label>
+                            <label class="block text-xs font-black text-slate-700 dark:text-slate-300 mb-1.5 flex items-center gap-1.5">⏰ Shift</label>
                             <select id="de-shift" class="w-full bg-white dark:bg-slate-950 border border-slate-200 dark:border-indigo-950 text-slate-900 dark:text-white rounded-2xl px-4 py-3 text-xs font-bold shadow-inner focus:border-indigo-500 focus:outline-none">
-                                <option value="Morning">🌅 सुबह (Morning)</option>
-                                <option value="Evening">🌇 शाम (Evening)</option>
+                                <option value="Morning">🌅 Morning</option>
+                                <option value="Evening">🌇 Evening</option>
                             </select>
                         </div>
                     </div>
 
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         <div>
-                            <label class="block text-xs font-black text-slate-700 dark:text-slate-300 mb-1.5 flex items-center gap-1.5">🥛 दूध (लीटर में)</label>
-                            <input type="number" step="0.01" min="0.01" id="de-liters" placeholder="जैसे: 10.50 L" required oninput="calcDetailedTotal()" class="w-full bg-white dark:bg-slate-950 border border-slate-200 dark:border-indigo-950 text-slate-900 dark:text-white rounded-2xl px-4 py-3 text-xs font-bold shadow-inner focus:border-indigo-500 focus:outline-none">
+                            <label class="block text-xs font-black text-slate-700 dark:text-slate-300 mb-1.5 flex items-center gap-1.5">🥛 Milk (in Liters)</label>
+                            <input type="number" step="0.01" min="0.01" id="de-liters" placeholder="e.g. 10.50 L" required oninput="calcDetailedTotal()" class="w-full bg-white dark:bg-slate-950 border border-slate-200 dark:border-indigo-950 text-slate-900 dark:text-white rounded-2xl px-4 py-3 text-xs font-bold shadow-inner focus:border-indigo-500 focus:outline-none">
                         </div>
                         <div>
-                            <label class="block text-xs font-black text-slate-700 dark:text-slate-300 mb-1.5 flex items-center gap-1.5">₹ रेट प्रति लीटर</label>
-                            <input type="number" step="0.01" id="de-rate" placeholder="जैसे: 65.00" required oninput="calcDetailedTotal()" class="w-full bg-white dark:bg-slate-950 border border-slate-200 dark:border-indigo-950 text-slate-900 dark:text-white rounded-2xl px-4 py-3 text-xs font-bold shadow-inner focus:border-indigo-500 focus:outline-none">
+                            <label class="block text-xs font-black text-slate-700 dark:text-slate-300 mb-1.5 flex items-center gap-1.5">₹ Rate per Liter</label>
+                            <input type="number" step="0.01" id="de-rate" placeholder="e.g. 65.00" required oninput="calcDetailedTotal()" class="w-full bg-white dark:bg-slate-950 border border-slate-200 dark:border-indigo-950 text-slate-900 dark:text-white rounded-2xl px-4 py-3 text-xs font-bold shadow-inner focus:border-indigo-500 focus:outline-none">
                         </div>
                     </div>
 
                     <div class="bg-indigo-500/10 border border-indigo-500/30 p-3.5 rounded-2xl flex justify-between items-center text-xs font-bold text-indigo-700 dark:text-indigo-300">
-                        <span>ऑटोमैटिक कुल बनने वाली रकम (Live Total):</span>
+                        <span>Live Calculated Total Amount:</span>
                         <span id="de-total-preview" class="text-sm font-black text-indigo-600 dark:text-indigo-400">₹0.00</span>
                     </div>
 
                     <div class="pt-1">
                         <button type="submit" class="w-full bg-gradient-to-r from-indigo-600 via-blue-600 to-pink-600 hover:opacity-95 text-white font-black py-4 rounded-2xl text-xs tracking-wider uppercase transition shadow-xl shadow-indigo-600/30 transform active:scale-[0.99] flex items-center justify-center gap-2">
-                            <span>डेटा सुरक्षित करें & जोड़ें</span> <svg class="w-4 h-4 spin-slow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg> ✨
+                            <span>Save & Add Data</span> <svg class="w-4 h-4 spin-slow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg> ✨
                         </button>
                     </div>
                 </form>
@@ -532,14 +532,14 @@
                     <table class="w-full text-left border-collapse">
                         <thead>
                             <tr class="border-b border-slate-200 dark:border-indigo-950 text-[11px] font-bold text-slate-400 uppercase">
-                                <th class="py-3 px-3"># क्रम</th>
-                                <th class="py-3 px-3">तारीख</th> 
-                                <th class="py-3 px-3">शिफ्ट</th> 
-                                <th class="py-3 px-3">नाम</th> 
-                                <th class="py-3 px-3">लीटर</th> 
-                                <th class="py-3 px-3">रेट</th> 
-                                <th class="py-3 px-3">कुल</th> 
-                                <th class="py-3 px-3 text-right">कार्य & PDF स्लिप</th>
+                                <th class="py-3 px-3"># Sl No.</th>
+                                <th class="py-3 px-3">Date</th> 
+                                <th class="py-3 px-3">Shift</th> 
+                                <th class="py-3 px-3">Name</th> 
+                                <th class="py-3 px-3">Liters</th> 
+                                <th class="py-3 px-3">Rate</th> 
+                                <th class="py-3 px-3">Total</th> 
+                                <th class="py-3 px-3 text-right">Actions & PDF Slip</th>
                             </tr>
                         </thead>
                         <tbody id="all-entries-tbody" class="text-xs divide-y divide-slate-200 dark:divide-indigo-950/50 font-semibold"></tbody>
@@ -553,50 +553,50 @@
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
                 <div class="morph-panel p-6 rounded-3xl shadow-xl space-y-4">
                     <div class="flex justify-between items-center pb-2">
-                        <h3 class="font-bold text-slate-900 dark:text-white text-sm">रुपये लेना या देना 🗂️</h3>
-                        <span class="text-[10px] bg-amber-500/20 text-amber-600 dark:text-amber-400 border border-amber-500/30 font-bold px-3 py-0.5 rounded-full">लेजर मैनेजमेंट</span>
+                        <h3 class="font-bold text-slate-900 dark:text-white text-sm">Payment Paid or Received 🗂️</h3>
+                        <span class="text-[10px] bg-amber-500/20 text-amber-600 dark:text-amber-400 border border-amber-500/30 font-bold px-3 py-0.5 rounded-full">Ledger Management</span>
                     </div>
                     <form id="khataForm" onsubmit="handleKhataEntry(event)" class="space-y-4">
                         <div>
-                            <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1.5">ग्राहक चुनें</label>
+                            <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1.5">Select Customer</label>
                             <select id="khata-customer" required class="w-full bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-indigo-950 text-slate-900 dark:text-white rounded-2xl px-4 py-3 text-xs font-bold shadow-inner">
-                                <option value="">-- ग्राहक चुनें --</option>
+                                <option value="">-- Select Customer --</option>
                             </select>
                         </div>
                         <div>
-                            <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1.5">लेन-देन का प्रकार</label>
+                            <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1.5">Transaction Type</label>
                             <select id="khata-type" class="w-full bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-indigo-950 text-slate-900 dark:text-white rounded-2xl px-4 py-3 text-xs font-bold shadow-inner">
-                                <option value="Given">💸 भुगतान दिया (Paid)</option>
-                                <option value="Received">💵 भुगतान मिला (Received)</option>
-                                <option value="Advance">🪙 एडवांस भुगतान</option>
+                                <option value="Given">💸 Payment Paid</option>
+                                <option value="Received">💵 Payment Received</option>
+                                <option value="Advance">🪙 Advance Payment</option>
                             </select>
                         </div>
                         <div>
-                            <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1.5">राशि (₹)</label>
-                            <input type="number" step="0.01" id="khata-amount" placeholder="जैसे: 2000.50" required class="w-full bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-indigo-950 text-slate-900 dark:text-white rounded-2xl px-4 py-3 text-xs font-bold shadow-inner">
+                            <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1.5">Amount (₹)</label>
+                            <input type="number" step="0.01" id="khata-amount" placeholder="e.g. 2000.50" required class="w-full bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-indigo-950 text-slate-900 dark:text-white rounded-2xl px-4 py-3 text-xs font-bold shadow-inner">
                         </div>
                         <div>
-                            <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1.5">तारीख</label>
+                            <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1.5">Date</label>
                             <input type="date" id="khata-date" required class="w-full bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-indigo-950 text-slate-900 dark:text-white rounded-2xl px-4 py-3 text-xs font-bold shadow-inner">
                         </div>
                         <div>
-                            <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1.5">नोट / विवरण</label>
-                            <input type="text" id="khata-note" placeholder="नकद या UPI" class="w-full bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-indigo-950 text-slate-900 dark:text-white rounded-2xl px-4 py-3 text-xs font-bold shadow-inner">
+                            <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1.5">Note / Description</label>
+                            <input type="text" id="khata-note" placeholder="Cash or UPI" class="w-full bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-indigo-950 text-slate-900 dark:text-white rounded-2xl px-4 py-3 text-xs font-bold shadow-inner">
                         </div>
-                        <button type="submit" class="w-full bg-gradient-to-r from-indigo-600 via-blue-600 to-pink-600 hover:opacity-95 text-white font-bold py-3.5 rounded-2xl text-xs transition shadow-lg shadow-indigo-600/30 transform active:scale-95">सेव करें 💼 ✨</button>
+                        <button type="submit" class="w-full bg-gradient-to-r from-indigo-600 via-blue-600 to-pink-600 hover:opacity-95 text-white font-bold py-3.5 rounded-2xl text-xs transition shadow-lg shadow-indigo-600/30 transform active:scale-95">Save 💼 ✨</button>
                     </form>
                 </div>
                 <div class="morph-panel p-6 rounded-3xl shadow-xl lg:col-span-2 space-y-4">
                     <div class="flex flex-wrap justify-between items-center gap-3 pb-2 border-b border-slate-200 dark:border-indigo-950">
-                        <h3 class="font-bold text-slate-900 dark:text-white text-sm">खाता-बही इतिहास & PDF स्लिप 📖</h3>
+                        <h3 class="font-bold text-slate-900 dark:text-white text-sm">Ledger History & PDF Slip 📖</h3>
                         <div class="flex items-center gap-2">
-                            <select id="khata-filter-customer" onchange="renderKhataTable()" class="bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-indigo-950 text-slate-900 dark:text-white rounded-2xl px-3 py-2 text-xs font-bold shadow-inner"><option value="">सभी ग्राहक</option></select>
-                            <button onclick="downloadKhataPDF()" class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold px-3.5 py-2 rounded-2xl text-xs flex items-center gap-1.5 shadow">📥 PDF डाउनलोड</button>
+                            <select id="khata-filter-customer" onchange="renderKhataTable()" class="bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-indigo-950 text-slate-900 dark:text-white rounded-2xl px-3 py-2 text-xs font-bold shadow-inner"><option value="">All Customers</option></select>
+                            <button onclick="downloadKhataPDF()" class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold px-3.5 py-2 rounded-2xl text-xs flex items-center gap-1.5 shadow">📥 Download PDF</button>
                         </div>
                     </div>
                     <div class="overflow-x-auto" id="printable-khata-area">
                         <table class="w-full text-left border-collapse">
-                            <thead><tr class="border-b border-slate-200 dark:border-indigo-950 text-[11px] font-bold text-slate-400 uppercase"><th class="py-3 px-3"># क्रम</th><th class="py-3 px-3">तारीख</th><th class="py-3 px-3">नाम</th><th class="py-3 px-3">प्रकार</th><th class="py-3 px-3">राशि</th><th class="py-3 px-3">नोट</th><th class="py-3 px-3 text-right">कार्य</th></tr></thead>
+                            <thead><tr class="border-b border-slate-200 dark:border-indigo-950 text-[11px] font-bold text-slate-400 uppercase"><th class="py-3 px-3"># Sl No.</th><th class="py-3 px-3">Date</th><th class="py-3 px-3">Name</th><th class="py-3 px-3">Type</th><th class="py-3 px-3">Amount</th><th class="py-3 px-3">Note</th><th class="py-3 px-3 text-right">Actions</th></tr></thead>
                             <tbody id="khata-tbody" class="text-xs divide-y divide-slate-200 dark:divide-indigo-950/50 font-semibold"></tbody>
                         </table>
                     </div>
@@ -609,30 +609,30 @@
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
                 <div class="morph-panel p-6 rounded-3xl shadow-xl space-y-4">
                     <div class="flex justify-between items-center pb-2">
-                        <h3 class="font-bold text-slate-900 dark:text-white text-sm">नया ग्राहक जोड़ें ➕</h3>
-                        <span class="text-[10px] rgb-badge text-indigo-600 dark:text-indigo-400 font-bold px-3 py-0.5 rounded-full">वेंडर डायरेक्टरी</span>
+                        <h3 class="font-bold text-slate-900 dark:text-white text-sm">Add New Customer ➕</h3>
+                        <span class="text-[10px] rgb-badge text-indigo-600 dark:text-indigo-400 font-bold px-3 py-0.5 rounded-full">Vendor Directory</span>
                     </div>
                     <form id="customerForm" onsubmit="handleCustomerSubmit(event)" class="space-y-4">
                         <input type="hidden" id="cust-id">
-                        <div><label class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1.5">पूरा नाम</label><input type="text" id="cust-name" placeholder="रामेश्वर यादव" required class="w-full bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-indigo-950 text-slate-900 dark:text-white rounded-2xl px-4 py-3 text-xs font-bold shadow-inner"></div>
-                        <div><label class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1.5">मोबाइल नंबर</label><input type="tel" id="cust-phone" placeholder="9876543210" required class="w-full bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-indigo-950 text-slate-900 dark:text-white rounded-2xl px-4 py-3 text-xs font-bold shadow-inner"></div>
+                        <div><label class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1.5">Full Name</label><input type="text" id="cust-name" placeholder="Rameshwar Yadav" required class="w-full bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-indigo-950 text-slate-900 dark:text-white rounded-2xl px-4 py-3 text-xs font-bold shadow-inner"></div>
+                        <div><label class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1.5">Mobile Number</label><input type="tel" id="cust-phone" placeholder="9876543210" required class="w-full bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-indigo-950 text-slate-900 dark:text-white rounded-2xl px-4 py-3 text-xs font-bold shadow-inner"></div>
                         <div>
-                            <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1.5">दूध का प्रकार</label>
+                            <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1.5">Milk Type</label>
                             <select id="cust-milknumber" class="w-full bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-indigo-950 text-slate-900 dark:text-white rounded-2xl px-4 py-3 text-xs font-bold shadow-inner">
-                                <option value="Buffalo">🐃 भैंस का दूध</option><option value="Cow">🐄 गाय का दूध</option><option value="Both">🥛 दोनों</option>
+                                <option value="Buffalo">🐃 Buffalo Milk</option><option value="Cow">🐄 Cow Milk</option><option value="Both">🥛 Both</option>
                             </select>
                         </div>
                         <div class="flex space-x-3 pt-2">
-                            <button type="submit" id="cust-submit-btn" class="flex-1 bg-gradient-to-r from-indigo-600 via-blue-600 to-pink-600 hover:opacity-95 text-white font-bold py-3.5 rounded-2xl transition text-xs shadow-lg shadow-indigo-600/30 transform active:scale-95">सेव करें 💾 ✨</button>
-                            <button type="button" onclick="resetCustomerForm()" class="hidden bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300 px-4 py-3.5 rounded-2xl text-xs font-bold" id="cust-cancel-btn">रद्द</button>
+                            <button type="submit" id="cust-submit-btn" class="flex-1 bg-gradient-to-r from-indigo-600 via-blue-600 to-pink-600 hover:opacity-95 text-white font-bold py-3.5 rounded-2xl transition text-xs shadow-lg shadow-indigo-600/30 transform active:scale-95">Save 💾 ✨</button>
+                            <button type="button" onclick="resetCustomerForm()" class="hidden bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300 px-4 py-3.5 rounded-2xl text-xs font-bold" id="cust-cancel-btn">Cancel</button>
                         </div>
                     </form>
                 </div>
                 <div class="morph-panel p-6 rounded-3xl shadow-xl lg:col-span-2 space-y-4">
-                    <h3 class="font-bold text-slate-900 dark:text-white text-sm pb-2">पंजीकृत डायरेक्टरी 📇</h3>
+                    <h3 class="font-bold text-slate-900 dark:text-white text-sm pb-2">Registered Directory 📇</h3>
                     <div class="overflow-x-auto">
                         <table class="w-full text-left border-collapse">
-                            <thead><tr class="border-b border-slate-200 dark:border-indigo-950 text-[11px] font-bold text-slate-400 uppercase"><th class="py-3 px-3"># क्रम</th><th class="py-3 px-3">नाम</th><th class="py-3 px-3">मोबाइल</th><th class="py-3 px-3">प्रकार</th><th class="py-3 px-3 text-right">कार्य</th></tr></thead>
+                            <thead><tr class="border-b border-slate-200 dark:border-indigo-950 text-[11px] font-bold text-slate-400 uppercase"><th class="py-3 px-3"># Sl No.</th><th class="py-3 px-3">Name</th><th class="py-3 px-3">Mobile</th><th class="py-3 px-3">Type</th><th class="py-3 px-3 text-right">Actions</th></tr></thead>
                             <tbody id="customers-tbody" class="text-xs divide-y divide-slate-200 dark:divide-indigo-950/50 font-semibold"></tbody>
                         </table>
                     </div>
@@ -656,16 +656,16 @@
                             <h2 class="text-base sm:text-lg font-black tracking-tight flex items-center gap-2 text-slate-900 dark:text-white">
                                 Deep AI & Professional Dairy Suite 🧠 <span class="text-[10px] rgb-badge text-indigo-600 dark:text-indigo-400 px-3 py-0.5 rounded-full font-bold">40+ PRO INSIGHTS</span>
                             </h2>
-                            <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5 font-medium">गहन डेयरी इंटेलिजेंस, वित्तीय ऑडिट और एआई प्रेडिक्टिव ग्राफ्स</p>
+                            <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5 font-medium">Deep Dairy Intelligence, Financial Audit & AI Predictive Analytics</p>
                         </div>
                     </div>
                     
                     <div class="flex flex-wrap items-center gap-3 w-full sm:w-auto">
                         <select id="ai-filter-profile" onchange="calculateAIPredictions()" class="bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-white border border-slate-200 dark:border-indigo-950 rounded-2xl px-4 py-2.5 text-xs font-bold focus:outline-none focus:border-indigo-500 max-w-[220px] shadow-inner">
-                            <option value="all">👥 सभी वेंडर / कुल डेटा</option>
+                            <option value="all">👥 All Vendors / Master Data</option>
                         </select>
                         <button onclick="calculateAIPredictions()" class="bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 hover:opacity-95 text-white font-bold px-4 py-2.5 rounded-2xl text-xs flex items-center space-x-2 shadow-lg shadow-indigo-600/30 transition transform active:scale-95">
-                            <svg class="w-3.5 h-3.5 spin-slow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg> <span>रिफ्रेश</span>
+                            <svg class="w-3.5 h-3.5 spin-slow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg> <span>Refresh</span>
                         </button>
                     </div>
                 </div>
@@ -677,8 +677,8 @@
                             <svg class="w-8 h-8 wave-anim" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><path d="M18 9l-5 5-4-4-3 3" stroke="#38bdf8" stroke-width="2.5"/></svg>
                         </div>
                         <div>
-                            <h4 class="text-sm font-black text-indigo-900 dark:text-indigo-200">एंटरप्राइज प्रॉफिट मार्जिन & यील्ड फोरकास्ट</h4>
-                            <p class="text-xs text-slate-600 dark:text-slate-400 mt-0.5">आपके डेयरी के पिछले रिकॉर्ड्स के आधार पर डीप आर्टिफिशियल इंटेलिजेंस द्वारा स्वतः गणना।</p>
+                            <h4 class="text-sm font-black text-indigo-900 dark:text-indigo-200">Enterprise Profit Margin & Yield Forecast</h4>
+                            <p class="text-xs text-slate-600 dark:text-slate-400 mt-0.5">Automated calculations via Deep Artificial Intelligence based on your dairy records.</p>
                         </div>
                     </div>
                     <div class="text-right">
@@ -689,19 +689,19 @@
                 <!-- Customer to Customer Comparison Filter Box -->
                 <div class="bg-slate-50 dark:bg-slate-950/80 border border-slate-200 dark:border-indigo-950 p-5 rounded-3xl space-y-3.5 shadow-inner">
                     <h4 class="text-xs font-bold text-slate-700 dark:text-slate-300 flex items-center gap-2">
-                        <svg class="w-4 h-4 text-indigo-500 float-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg> ग्राहक से ग्राहक तुलना (Customer vs Customer Comparison)
+                        <svg class="w-4 h-4 text-indigo-500 float-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg> Customer vs Customer Comparison
                     </h4>
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         <div>
-                            <label class="block text-[11px] text-slate-500 mb-1.5 font-bold">पहला ग्राहक (Customer 1)</label>
+                            <label class="block text-[11px] text-slate-500 mb-1.5 font-bold">First Customer (Customer 1)</label>
                             <select id="ai-cust-1" onchange="compareCustomersAI()" class="w-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-indigo-950 rounded-2xl px-3.5 py-2.5 text-xs text-slate-900 dark:text-white font-bold shadow-inner">
-                                <option value="">-- ग्राहक 1 चुनें --</option>
+                                <option value="">-- Select Customer 1 --</option>
                             </select>
                         </div>
                         <div>
-                            <label class="block text-[11px] text-slate-500 mb-1.5 font-bold">दूसरा ग्राहक (Customer 2)</label>
+                            <label class="block text-[11px] text-slate-500 mb-1.5 font-bold">Second Customer (Customer 2)</label>
                             <select id="ai-cust-2" onchange="compareCustomersAI()" class="w-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-indigo-950 rounded-2xl px-3.5 py-2.5 text-xs text-slate-900 dark:text-white font-bold shadow-inner">
-                                <option value="">-- ग्राहक 2 चुनें --</option>
+                                <option value="">-- Select Customer 2 --</option>
                             </select>
                         </div>
                     </div>
@@ -711,84 +711,84 @@
                 <!-- 40+ Deep Professional Insights & AI Features Grid -->
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
                     <div class="bg-slate-50/80 dark:bg-slate-950/60 border border-slate-200/80 dark:border-indigo-950/80 p-5 rounded-3xl shadow-sm hover:border-indigo-500 transition">
-                        <span class="text-[10px] text-indigo-600 dark:text-indigo-400 font-extrabold uppercase tracking-wider">1. कुल दूध मात्रा</span>
+                        <span class="text-[10px] text-indigo-600 dark:text-indigo-400 font-extrabold uppercase tracking-wider">1. Total Milk Volume</span>
                         <h3 id="ai-feat-1" class="text-xl font-black text-slate-900 dark:text-white mt-1.5">0.0 L</h3>
                     </div>
                     <div class="bg-slate-50/80 dark:bg-slate-950/60 border border-slate-200/80 dark:border-indigo-950/80 p-5 rounded-3xl shadow-sm hover:border-indigo-500 transition">
-                        <span class="text-[10px] text-indigo-600 dark:text-indigo-400 font-extrabold uppercase tracking-wider">2. कुल कारोबार मूल्य</span>
+                        <span class="text-[10px] text-indigo-600 dark:text-indigo-400 font-extrabold uppercase tracking-wider">2. Total Business Value</span>
                         <h3 id="ai-feat-2" class="text-xl font-black text-slate-900 dark:text-white mt-1.5">₹0</h3>
                     </div>
                     <div class="bg-slate-50/80 dark:bg-slate-950/60 border border-slate-200/80 dark:border-indigo-950/80 p-5 rounded-3xl shadow-sm hover:border-indigo-500 transition">
-                        <span class="text-[10px] text-indigo-600 dark:text-indigo-400 font-extrabold uppercase tracking-wider">3. अगले 7 दिन का प्रेडिक्शन</span>
+                        <span class="text-[10px] text-indigo-600 dark:text-indigo-400 font-extrabold uppercase tracking-wider">3. Next 7 Days Forecast</span>
                         <h3 id="ai-feat-3" class="text-xl font-black text-blue-600 dark:text-blue-400 mt-1.5">₹0</h3>
                     </div>
                     <div class="bg-slate-50/80 dark:bg-slate-950/60 border border-slate-200/80 dark:border-indigo-950/80 p-5 rounded-3xl shadow-sm hover:border-indigo-500 transition">
-                        <span class="text-[10px] text-indigo-600 dark:text-indigo-400 font-extrabold uppercase tracking-wider">4. बिज़नेस हेल्थ स्कोर</span>
+                        <span class="text-[10px] text-indigo-600 dark:text-indigo-400 font-extrabold uppercase tracking-wider">4. Business Health Score</span>
                         <h3 id="ai-feat-4" class="text-xl font-black text-violet-600 dark:text-violet-400 mt-1.5">0%</h3>
                     </div>
                     <div class="bg-slate-50/80 dark:bg-slate-950/60 border border-slate-200/80 dark:border-indigo-950/80 p-5 rounded-3xl shadow-sm hover:border-indigo-500 transition">
-                        <span class="text-[10px] text-indigo-600 dark:text-indigo-400 font-extrabold uppercase tracking-wider">5. औसत फैट प्रतिशत</span>
+                        <span class="text-[10px] text-indigo-600 dark:text-indigo-400 font-extrabold uppercase tracking-wider">5. Average Fat %</span>
                         <h3 id="ai-feat-5" class="text-xl font-black text-slate-900 dark:text-white mt-1.5">0.0%</h3>
                     </div>
                     <div class="bg-slate-50/80 dark:bg-slate-950/60 border border-slate-200/80 dark:border-indigo-950/80 p-5 rounded-3xl shadow-sm hover:border-indigo-500 transition">
-                        <span class="text-[10px] text-indigo-600 dark:text-indigo-400 font-extrabold uppercase tracking-wider">6. औसत रेट प्रति लीटर</span>
+                        <span class="text-[10px] text-indigo-600 dark:text-indigo-400 font-extrabold uppercase tracking-wider">6. Average Rate per Liter</span>
                         <h3 id="ai-feat-6" class="text-xl font-black text-slate-900 dark:text-white mt-1.5">₹0</h3>
                     </div>
                     <div class="bg-slate-50/80 dark:bg-slate-950/60 border border-slate-200/80 dark:border-indigo-950/80 p-5 rounded-3xl shadow-sm hover:border-indigo-500 transition">
-                        <span class="text-[10px] text-indigo-600 dark:text-indigo-400 font-extrabold uppercase tracking-wider">7. मासिक ग्रोथ प्रोजेक्शन</span>
+                        <span class="text-[10px] text-indigo-600 dark:text-indigo-400 font-extrabold uppercase tracking-wider">7. Monthly Growth Projection</span>
                         <h3 id="ai-feat-7" class="text-xl font-black text-indigo-600 dark:text-indigo-400 mt-1.5">0%</h3>
                     </div>
                     <div class="bg-slate-50/80 dark:bg-slate-950/60 border border-slate-200/80 dark:border-indigo-950/80 p-5 rounded-3xl shadow-sm hover:border-indigo-500 transition">
-                        <span class="text-[10px] text-indigo-600 dark:text-indigo-400 font-extrabold uppercase tracking-wider">8. पेमेंट जोखिम इंडेक्स</span>
+                        <span class="text-[10px] text-indigo-600 dark:text-indigo-400 font-extrabold uppercase tracking-wider">8. Payment Risk Index</span>
                         <h3 id="ai-feat-8" class="text-xl font-black text-indigo-600 dark:text-indigo-400 mt-1.5">-</h3>
                     </div>
                     <div class="bg-slate-50/80 dark:bg-slate-950/60 border border-slate-200/80 dark:border-indigo-950/80 p-5 rounded-3xl shadow-sm hover:border-indigo-500 transition">
-                        <span class="text-[10px] text-indigo-600 dark:text-indigo-400 font-extrabold uppercase tracking-wider">9. सुबह vs शाम शिफ्ट रेश्यो</span>
+                        <span class="text-[10px] text-indigo-600 dark:text-indigo-400 font-extrabold uppercase tracking-wider">9. Morning vs Evening Ratio</span>
                         <h3 id="ai-feat-9" class="text-xl font-black text-slate-900 dark:text-white mt-1.5">0:0</h3>
                     </div>
                     <div class="bg-slate-50/80 dark:bg-slate-950/60 border border-slate-200/80 dark:border-indigo-950/80 p-5 rounded-3xl shadow-sm hover:border-indigo-500 transition">
-                        <span class="text-[10px] text-indigo-600 dark:text-indigo-400 font-extrabold uppercase tracking-wider">10. सक्रिय ग्राहक संख्या</span>
+                        <span class="text-[10px] text-indigo-600 dark:text-indigo-400 font-extrabold uppercase tracking-wider">10. Active Customers Count</span>
                         <h3 id="ai-feat-10" class="text-xl font-black text-slate-900 dark:text-white mt-1.5">0</h3>
                     </div>
                     <div class="bg-slate-50/80 dark:bg-slate-950/60 border border-slate-200/80 dark:border-indigo-950/80 p-5 rounded-3xl shadow-sm hover:border-indigo-500 transition">
-                        <span class="text-[10px] text-indigo-600 dark:text-indigo-400 font-extrabold uppercase tracking-wider">11. कुल बकाया राशि</span>
+                        <span class="text-[10px] text-indigo-600 dark:text-indigo-400 font-extrabold uppercase tracking-wider">11. Total Outstanding Due</span>
                         <h3 id="ai-feat-11" class="text-xl font-black text-amber-600 dark:text-amber-400 mt-1.5">₹0</h3>
                     </div>
                     <div class="bg-slate-50/80 dark:bg-slate-950/60 border border-slate-200/80 dark:border-indigo-950/80 p-5 rounded-3xl shadow-sm hover:border-indigo-500 transition">
-                        <span class="text-[10px] text-indigo-600 dark:text-indigo-400 font-extrabold uppercase tracking-wider">12. एनुअल यील्ड एस्टीमेट</span>
+                        <span class="text-[10px] text-indigo-600 dark:text-indigo-400 font-extrabold uppercase tracking-wider">12. Annual Yield Estimate</span>
                         <h3 id="ai-feat-12" class="text-xl font-black text-blue-600 dark:text-blue-400 mt-1.5">0 L</h3>
                     </div>
                     <div class="bg-slate-50/80 dark:bg-slate-950/60 border border-slate-200/80 dark:border-indigo-950/80 p-5 rounded-3xl shadow-sm hover:border-indigo-500 transition">
-                        <span class="text-[10px] text-indigo-600 dark:text-indigo-400 font-extrabold uppercase tracking-wider">13. पीक सप्लाई डे</span>
+                        <span class="text-[10px] text-indigo-600 dark:text-indigo-400 font-extrabold uppercase tracking-wider">13. Peak Supply Day</span>
                         <h3 id="ai-feat-13" class="text-xl font-black text-slate-900 dark:text-white mt-1.5">-</h3>
                     </div>
                     <div class="bg-slate-50/80 dark:bg-slate-950/60 border border-slate-200/80 dark:border-indigo-950/80 p-5 rounded-3xl shadow-sm hover:border-indigo-500 transition">
-                        <span class="text-[10px] text-indigo-600 dark:text-indigo-400 font-extrabold uppercase tracking-wider">14. डेयरी प्रॉफिट मार्जिन</span>
+                        <span class="text-[10px] text-indigo-600 dark:text-indigo-400 font-extrabold uppercase tracking-wider">14. Dairy Profit Margin</span>
                         <h3 id="ai-feat-14" class="text-xl font-black text-indigo-600 dark:text-indigo-400 mt-1.5">0%</h3>
                     </div>
                     <div class="bg-slate-50/80 dark:bg-slate-950/60 border border-slate-200/80 dark:border-indigo-950/80 p-5 rounded-3xl shadow-sm hover:border-indigo-500 transition">
-                        <span class="text-[10px] text-indigo-600 dark:text-indigo-400 font-extrabold uppercase tracking-wider">15. क्वालिटी ग्रेड इंडेक्स</span>
+                        <span class="text-[10px] text-indigo-600 dark:text-indigo-400 font-extrabold uppercase tracking-wider">15. Quality Grade Index</span>
                         <h3 id="ai-feat-15" class="text-xl font-black text-violet-600 dark:text-violet-400 mt-1.5">-</h3>
                     </div>
                     <div class="bg-slate-50/80 dark:bg-slate-950/60 border border-slate-200/80 dark:border-indigo-950/80 p-5 rounded-3xl shadow-sm hover:border-indigo-500 transition">
-                        <span class="text-[10px] text-indigo-600 dark:text-indigo-400 font-extrabold uppercase tracking-wider">16. स्मार्ट फीड रिकमेंडेशन</span>
+                        <span class="text-[10px] text-indigo-600 dark:text-indigo-400 font-extrabold uppercase tracking-wider">16. Smart Feed Recommendation</span>
                         <h3 id="ai-feat-16" class="text-xl font-black text-slate-900 dark:text-white mt-1.5">-</h3>
                     </div>
                     <div class="bg-slate-50/80 dark:bg-slate-950/60 border border-slate-200/80 dark:border-indigo-950/80 p-5 rounded-3xl shadow-sm hover:border-indigo-500 transition">
-                        <span class="text-[10px] text-indigo-600 dark:text-indigo-400 font-extrabold uppercase tracking-wider">17. मार्केट डिमांड ट्रेंड</span>
+                        <span class="text-[10px] text-indigo-600 dark:text-indigo-400 font-extrabold uppercase tracking-wider">17. Market Demand Trend</span>
                         <h3 id="ai-feat-17" class="text-xl font-black text-blue-600 dark:text-blue-400 mt-1.5">-</h3>
                     </div>
                     <div class="bg-slate-50/80 dark:bg-slate-950/60 border border-slate-200/80 dark:border-indigo-950/80 p-5 rounded-3xl shadow-sm hover:border-indigo-500 transition">
-                        <span class="text-[10px] text-indigo-600 dark:text-indigo-400 font-extrabold uppercase tracking-wider">18. ऑटो-सिंक स्टेटस</span>
-                        <h3 id="ai-feat-18" class="text-xl font-black text-indigo-600 dark:text-indigo-400 mt-1.5">सक्रिय</h3>
+                        <span class="text-[10px] text-indigo-600 dark:text-indigo-400 font-extrabold uppercase tracking-wider">18. Auto-Sync Status</span>
+                        <h3 id="ai-feat-18" class="text-xl font-black text-indigo-600 dark:text-indigo-400 mt-1.5">Active</h3>
                     </div>
                     <div class="bg-slate-50/80 dark:bg-slate-950/60 border border-slate-200/80 dark:border-indigo-950/80 p-5 rounded-3xl shadow-sm hover:border-indigo-500 transition">
-                        <span class="text-[10px] text-indigo-600 dark:text-indigo-400 font-extrabold uppercase tracking-wider">19. एआई बिजनेस एडवाइजर</span>
-                        <h3 id="ai-feat-19" class="text-xl font-black text-violet-600 dark:text-violet-400 mt-1.5">रेडी</h3>
+                        <span class="text-[10px] text-indigo-600 dark:text-indigo-400 font-extrabold uppercase tracking-wider">19. AI Business Advisor</span>
+                        <h3 id="ai-feat-19" class="text-xl font-black text-violet-600 dark:text-violet-400 mt-1.5">Ready</h3>
                     </div>
                     <div class="bg-slate-50/80 dark:bg-slate-950/60 border border-slate-200/80 dark:border-indigo-950/80 p-5 rounded-3xl shadow-sm hover:border-indigo-500 transition">
-                        <span class="text-[10px] text-indigo-600 dark:text-indigo-400 font-extrabold uppercase tracking-wider">20. डेयरी सिक्योरिटी इंडेक्स</span>
-                        <h3 id="ai-feat-20" class="text-xl font-black text-indigo-600 dark:text-indigo-400 mt-1.5">100% सुरक्षित</h3>
+                        <span class="text-[10px] text-indigo-600 dark:text-indigo-400 font-extrabold uppercase tracking-wider">20. Dairy Security Index</span>
+                        <h3 id="ai-feat-20" class="text-xl font-black text-indigo-600 dark:text-indigo-400 mt-1.5">100% Secure</h3>
                     </div>
                 </div>
             </div>
@@ -798,18 +798,18 @@
         <section id="tab-stock" class="hidden space-y-5">
             <div class="morph-panel p-8 rounded-3xl shadow-2xl max-w-xl mx-auto space-y-5">
                 <h3 class="font-black text-slate-900 dark:text-white text-base text-center flex items-center justify-center gap-2">
-                    <svg class="w-5 h-5 text-indigo-500 float-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="8" y1="10" x2="16" y2="10"/></svg> फैट और SNF आधारित रेट कैलकुलेटर
+                    <svg class="w-5 h-5 text-indigo-500 float-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="8" y1="10" x2="16" y2="10"/><line x1="8" y1="14" x2="12" y2="14"/></svg> Fat & SNF Based Rate Calculator
                 </h3>
                 <div class="space-y-4">
                     <div>
-                        <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1.5">फैट प्रतिशत (Fat %)</label>
-                        <input type="number" step="0.01" id="calc-fat" placeholder="जैसे: 6.50" class="w-full bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-indigo-950 rounded-2xl px-4 py-3 text-xs text-slate-900 dark:text-white font-bold shadow-inner">
+                        <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1.5">Fat Percentage (Fat %)</label>
+                        <input type="number" step="0.01" id="calc-fat" placeholder="e.g. 6.50" class="w-full bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-indigo-950 rounded-2xl px-4 py-3 text-xs text-slate-900 dark:text-white font-bold shadow-inner">
                     </div>
                     <div>
-                        <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1.5">एसएनएफ प्रतिशत (SNF %)</label>
-                        <input type="number" step="0.01" id="calc-snf" placeholder="जैसे: 8.50" class="w-full bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-indigo-950 rounded-2xl px-4 py-3 text-xs text-slate-900 dark:text-white font-bold shadow-inner">
+                        <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1.5">SNF Percentage (SNF %)</label>
+                        <input type="number" step="0.01" id="calc-snf" placeholder="e.g. 8.50" class="w-full bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-indigo-950 rounded-2xl px-4 py-3 text-xs text-slate-900 dark:text-white font-bold shadow-inner">
                     </div>
-                    <button onclick="calculateFatRate()" class="w-full bg-gradient-to-r from-indigo-600 via-blue-600 to-pink-600 hover:opacity-95 text-white font-bold py-3.5 rounded-2xl text-xs transition shadow-lg shadow-indigo-600/30 transform active:scale-95">मूल्य गणना करें ⚡</button>
+                    <button onclick="calculateFatRate()" class="w-full bg-gradient-to-r from-indigo-600 via-blue-600 to-pink-600 hover:opacity-95 text-white font-bold py-3.5 rounded-2xl text-xs transition shadow-lg shadow-indigo-600/30 transform active:scale-95">Calculate Rate ⚡</button>
                 </div>
                 <div id="fat-calc-result" class="hidden bg-indigo-500/10 border border-indigo-500/30 p-4 rounded-2xl text-center text-xs text-indigo-800 dark:text-indigo-200 font-bold"></div>
             </div>
@@ -820,17 +820,17 @@
             <div id="printable-slip-area" class="morph-panel p-4 sm:p-8 rounded-3xl shadow-2xl space-y-6 overflow-hidden">
                 <div class="flex flex-wrap justify-between items-center gap-3 border-b border-slate-200 dark:border-indigo-950 pb-5">
                     <div>
-                        <h3 class="font-black text-slate-900 dark:text-white text-base sm:text-lg flex items-center gap-2">🖨️ वीआईपी बिल, टैक्स, इंसेंटिव & स्लिप जनरेटर</h3>
-                        <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 font-medium">डीप डेयरी बिजनेस इनफॉर्मेशन और शेयरिंग सूट</p>
+                        <h3 class="font-black text-slate-900 dark:text-white text-base sm:text-lg flex items-center gap-2">🖨️ VIP Bill, Tax, Incentive & Slip Generator</h3>
+                        <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 font-medium">Deep Dairy Business Analytics and Billing Suite</p>
                     </div>
                     <div class="flex flex-wrap gap-3 w-full sm:w-auto">
                         <select id="report-customer-select" onchange="generateReport()" class="bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-indigo-950 text-slate-900 dark:text-white rounded-2xl px-4 py-2.5 text-xs font-bold shadow-inner flex-1 sm:flex-initial max-w-full truncate">
-                            <option value="">-- ग्राहक चुनें --</option>
+                            <option value="">-- Select Customer --</option>
                         </select>
                         <select id="report-period" onchange="generateReport()" class="bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-indigo-950 text-slate-900 dark:text-white rounded-2xl px-4 py-2.5 text-xs font-bold shadow-inner">
-                            <option value="weekly">साप्ताहिक (7 दिन)</option>
-                            <option value="monthly">मासिक (30 दिन)</option>
-                            <option value="all">संपूर्ण लेजर</option>
+                            <option value="weekly">Weekly (7 Days)</option>
+                            <option value="monthly">Monthly (30 Days)</option>
+                            <option value="all">Complete Ledger</option>
                         </select>
                     </div>
                 </div>
@@ -838,43 +838,43 @@
                 <!-- Deep Bill Information Banner Cards -->
                 <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
                     <div class="bg-slate-50 dark:bg-slate-950/80 p-4 sm:p-5 rounded-3xl border border-slate-200 dark:border-indigo-950 shadow-inner space-y-1 overflow-hidden">
-                        <span class="text-[10px] sm:text-[11px] text-slate-500 font-extrabold uppercase truncate block">कुल दूध मात्रा</span>
+                        <span class="text-[10px] sm:text-[11px] text-slate-500 font-extrabold uppercase truncate block">Total Milk Volume</span>
                         <h4 id="rep-liters" class="text-lg sm:text-xl font-black text-indigo-600 truncate">0.0 L</h4>
-                        <p class="text-[9px] sm:text-[10px] text-slate-400 truncate">सुबह + शाम औसत</p>
+                        <p class="text-[9px] sm:text-[10px] text-slate-400 truncate">Morning + Evening Avg</p>
                     </div>
                     <div class="bg-slate-50 dark:bg-slate-950/80 p-4 sm:p-5 rounded-3xl border border-slate-200 dark:border-indigo-950 shadow-inner space-y-1 overflow-hidden">
-                        <span class="text-[10px] sm:text-[11px] text-slate-500 font-extrabold uppercase truncate block">कुल कारोबार मूल्य</span>
+                        <span class="text-[10px] sm:text-[11px] text-slate-500 font-extrabold uppercase truncate block">Total Business Value</span>
                         <h4 id="rep-amount" class="text-lg sm:text-xl font-black text-blue-600 truncate">₹0</h4>
-                        <p class="text-[9px] sm:text-[10px] text-slate-400 truncate">लीटर × रेट योग</p>
+                        <p class="text-[9px] sm:text-[10px] text-slate-400 truncate">Liters × Rate Sum</p>
                     </div>
                     <div class="bg-slate-50 dark:bg-slate-950/80 p-4 sm:p-5 rounded-3xl border border-slate-200 dark:border-indigo-950 shadow-inner space-y-1 overflow-hidden">
-                        <span class="text-[10px] sm:text-[11px] text-slate-500 font-extrabold uppercase truncate block">भुगतान (Paid)</span>
+                        <span class="text-[10px] sm:text-[11px] text-slate-500 font-extrabold uppercase truncate block">Total Paid</span>
                         <h4 id="rep-paid" class="text-lg sm:text-xl font-black text-violet-600 truncate">₹0</h4>
-                        <p class="text-[9px] sm:text-[10px] text-slate-400 truncate">नकद / UPI दिया</p>
+                        <p class="text-[9px] sm:text-[10px] text-slate-400 truncate">Cash / UPI Paid</p>
                     </div>
                     <div class="bg-slate-50 dark:bg-slate-950/80 p-4 sm:p-5 rounded-3xl border border-slate-200 dark:border-indigo-950 shadow-inner space-y-1 overflow-hidden">
-                        <span class="text-[10px] sm:text-[11px] text-slate-500 font-extrabold uppercase truncate block">शेष बकाया (Due)</span>
+                        <span class="text-[10px] sm:text-[11px] text-slate-500 font-extrabold uppercase truncate block">Outstanding Due</span>
                         <h4 id="rep-balance" class="text-lg sm:text-xl font-black text-amber-600 truncate">₹0</h4>
-                        <p class="text-[9px] sm:text-[10px] text-slate-400 truncate">अंतिम बैलेंस</p>
+                        <p class="text-[9px] sm:text-[10px] text-slate-400 truncate">Closing Balance</p>
                     </div>
                 </div>
 
                 <!-- Deep Enterprise Bill Summary Details Box -->
                 <div class="bg-gradient-to-br from-indigo-500/5 via-blue-500/5 to-pink-500/5 border border-indigo-500/20 p-4 sm:p-5 rounded-3xl space-y-3 overflow-hidden">
                     <div class="flex justify-between items-center text-xs font-bold text-slate-700 dark:text-slate-300 gap-2">
-                        <span class="truncate">🏷️ औसत फैट / गुणवत्ता ग्रेड:</span>
-                        <span id="rep-fat-grade" class="text-indigo-600 font-black truncate">Grade A+ (उत्तम)</span>
+                        <span class="truncate">🏷️ Average Fat / Quality Grade:</span>
+                        <span id="rep-fat-grade" class="text-indigo-600 font-black truncate">Grade A+ (Optimal)</span>
                     </div>
                     <div class="flex justify-between items-center text-xs font-bold text-slate-700 dark:text-slate-300 gap-2">
-                        <span class="truncate">🎁 इंसेंटिव / बोनस राशि:</span>
+                        <span class="truncate">🎁 Incentive / Bonus Amount:</span>
                         <span id="rep-incentive" class="text-emerald-600 font-black truncate">+ ₹0.00</span>
                     </div>
                     <div class="flex justify-between items-center text-xs font-bold text-slate-700 dark:text-slate-300 gap-2">
-                        <span class="truncate">📦 पशु आहार कटौती / एडवांस:</span>
+                        <span class="truncate">📦 Cattle Feed Deduction / Advance:</span>
                         <span id="rep-deduction" class="text-red-500 font-black truncate">- ₹0.00</span>
                     </div>
                     <div class="border-t border-indigo-500/20 pt-2.5 flex justify-between items-center text-xs sm:text-sm font-black text-slate-900 dark:text-white gap-2">
-                        <span class="truncate">शुद्ध देय / प्राप्त योग्य राशि:</span>
+                        <span class="truncate">Net Payable / Receivable Amount:</span>
                         <span id="rep-net-payable" class="text-indigo-600 dark:text-indigo-400 text-sm sm:text-base truncate">₹0.00</span>
                     </div>
                 </div>
@@ -884,13 +884,13 @@
                     <table class="w-full text-left border-collapse min-w-[300px]">
                         <thead>
                             <tr class="border-b border-slate-200 dark:border-indigo-950 text-[11px] font-bold text-slate-400 uppercase">
-                                <th class="py-3 px-3">तारीख & शिफ्ट</th>
-                                <th class="py-3 px-3">दूध मात्रा & रेट</th>
-                                <th class="py-3 px-3 text-right">कुल रकम</th>
+                                <th class="py-3 px-3">Date & Shift</th>
+                                <th class="py-3 px-3">Milk Volume & Rate</th>
+                                <th class="py-3 px-3 text-right">Total Amount</th>
                             </tr>
                         </thead>
                         <tbody id="report-details-tbody" class="text-xs divide-y divide-slate-200 dark:divide-indigo-950/50 font-semibold">
-                            <tr><td colspan="3" class="text-center py-5 text-slate-400">कृपया कोई ग्राहक चुनें</td></tr>
+                            <tr><td colspan="3" class="text-center py-5 text-slate-400">Please select a customer</td></tr>
                         </tbody>
                     </table>
                 </div>
@@ -899,16 +899,16 @@
             <!-- Action Buttons for Sharing Only This Section -->
             <div class="flex flex-wrap justify-end gap-3 pt-3">
                 <button onclick="copyBillText()" class="flex-1 sm:flex-initial bg-slate-800 hover:bg-slate-700 text-white font-bold px-4 py-3 rounded-2xl text-xs transition shadow-lg flex items-center justify-center space-x-2 transform active:scale-95">
-                    <span>📋 स्लिप कॉपी</span>
+                    <span>📋 Copy Slip</span>
                 </button>
                 <button onclick="downloadSlipPDF()" class="flex-1 sm:flex-initial bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 hover:opacity-95 text-white font-bold px-4 py-3 rounded-2xl text-xs transition shadow-lg shadow-blue-600/30 flex items-center justify-center space-x-2 transform active:scale-95">
-                    <span>📥 PDF डाउनलोड</span>
+                    <span>📥 Download PDF</span>
                 </button>
                 <button onclick="sendWhatsAppBill()" class="flex-1 sm:flex-initial bg-gradient-to-r from-emerald-600 via-teal-600 to-green-600 hover:opacity-95 text-white font-bold px-4 py-3 rounded-2xl text-xs transition shadow-lg shadow-emerald-600/30 flex items-center justify-center space-x-2 transform active:scale-95">
-                    <span>💬 WhatsApp शेयर</span>
+                    <span>💬 Share via WhatsApp</span>
                 </button>
                 <button onclick="printOnlySlip()" class="flex-1 sm:flex-initial bg-gradient-to-r from-indigo-600 via-blue-600 to-pink-600 hover:opacity-95 text-white font-bold px-4 py-3 rounded-2xl text-xs transition shadow-lg shadow-indigo-600/30 flex items-center justify-center space-x-2 transform active:scale-95">
-                    <span>🖨️ केवल स्लिप प्रिंट</span>
+                    <span>🖨️ Print Slip Only</span>
                 </button>
             </div>
         </section>
@@ -919,50 +919,50 @@
                 <!-- Detailed Expense Entry Form -->
                 <div class="morph-panel p-6 rounded-3xl shadow-xl space-y-4">
                     <div class="flex justify-between items-center pb-2 border-b border-slate-200 dark:border-indigo-950">
-                        <h3 class="font-bold text-slate-900 dark:text-white text-sm">विस्तृत पशुआहार & लागत दर्ज करें 🌾</h3>
-                        <span class="text-[10px] bg-emerald-500/20 text-emerald-600 dark:text-emerald-400 border border-emerald-500/30 font-bold px-3 py-0.5 rounded-full">एंटरप्राइज लेजर</span>
+                        <h3 class="font-bold text-slate-900 dark:text-white text-sm">Enter Detailed Feed & Expenses 🌾</h3>
+                        <span class="text-[10px] bg-emerald-500/20 text-emerald-600 dark:text-emerald-400 border border-emerald-500/30 font-bold px-3 py-0.5 rounded-full">Enterprise Ledger</span>
                     </div>
                     <form id="expenseForm" onsubmit="handleExpenseSubmit(event)" class="space-y-3.5">
                         <div>
-                            <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">चारा / खर्च की श्रेणी (Category)</label>
+                            <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">Feed / Expense Category</label>
                             <select id="exp-category" class="w-full bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-indigo-950 text-slate-900 dark:text-white rounded-2xl px-4 py-2.5 text-xs font-bold shadow-inner">
-                                <option value="Binola">🌾 बिनौला खली / पशुआहार (Premium)</option>
-                                <option value="Chokar">🌾 गेहूं का चोकर / भूसा (Bulk)</option>
-                                <option value="Grain">🌽 मक्का / दाना मिश्रण (High Energy)</option>
-                                <option value="GreenFeed">🌿 हरा चारा / बरसीम (Organic)</option>
-                                <option value="Mineral">🧪 मिनरल मिक्चर / विटामिन्स</option>
-                                <option value="Medicine">💊 पशु चिकित्सा / डॉक्टर फीस / AI</option>
-                                <option value="Maintenance">🔧 डेयरी शेड रख-रखाव / बिजली / पानी</option>
-                                <option value="Labor">👷 डेयरी लेबर / वेतन</option>
-                                <option value="Transport">🚚 परिवहन / ढुलाई खर्च</option>
-                                <option value="Other">📦 अन्य विविध व्यावसायिक खर्च</option>
+                                <option value="Binola">🌾 Cottonseed Cake / Cattle Feed (Premium)</option>
+                                <option value="Chokar">🌾 Wheat Bran / Straw (Bulk)</option>
+                                <option value="Grain">🌽 Maize / Grain Mixture (High Energy)</option>
+                                <option value="GreenFeed">🌿 Green Fodder / Berseem (Organic)</option>
+                                <option value="Mineral">🧪 Mineral Mixture / Vitamins</option>
+                                <option value="Medicine">💊 Veterinary / Doctor Fees / AI</option>
+                                <option value="Maintenance">🔧 Dairy Shed Maintenance / Electricity / Water</option>
+                                <option value="Labor">👷 Dairy Labor / Wages</option>
+                                <option value="Transport">🚚 Transportation / Logistics</option>
+                                <option value="Other">📦 Other Miscellaneous Expenses</option>
                             </select>
                         </div>
                         <div class="grid grid-cols-2 gap-3">
                             <div>
-                                <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">मात्रा (वजन/बोरी/यूनिट)</label>
-                                <input type="text" id="exp-qty" placeholder="जैसे: 2 बोरी" class="w-full bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-indigo-950 text-slate-900 dark:text-white rounded-2xl px-3.5 py-2 text-xs font-bold shadow-inner">
+                                <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">Quantity (Weight/Bags/Units)</label>
+                                <input type="text" id="exp-qty" placeholder="e.g. 2 Bags" class="w-full bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-indigo-950 text-slate-900 dark:text-white rounded-2xl px-3.5 py-2 text-xs font-bold shadow-inner">
                             </div>
                             <div>
-                                <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">कुल राशि (₹)</label>
-                                <input type="number" step="0.01" id="exp-amount" placeholder="जैसे: 2400.00" required class="w-full bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-indigo-950 text-slate-900 dark:text-white rounded-2xl px-3.5 py-2 text-xs font-bold shadow-inner">
+                                <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">Total Amount (₹)</label>
+                                <input type="number" step="0.01" id="exp-amount" placeholder="e.g. 2400.00" required class="w-full bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-indigo-950 text-slate-900 dark:text-white rounded-2xl px-3.5 py-2 text-xs font-bold shadow-inner">
                             </div>
                         </div>
                         <div class="grid grid-cols-2 gap-3">
                             <div>
-                                <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">तारीख</label>
+                                <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">Date</label>
                                 <input type="date" id="exp-date" required class="w-full bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-indigo-950 text-slate-900 dark:text-white rounded-2xl px-3.5 py-2 text-xs font-bold shadow-inner">
                             </div>
                             <div>
-                                <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">पशु / शेड / यूनिट</label>
-                                <input type="text" id="exp-animal" placeholder="जैसे: भैंस शेड #1" class="w-full bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-indigo-950 text-slate-900 dark:text-white rounded-2xl px-3.5 py-2 text-xs font-bold shadow-inner">
+                                <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">Animal / Shed / Unit</label>
+                                <input type="text" id="exp-animal" placeholder="e.g. Buffalo Shed #1" class="w-full bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-indigo-950 text-slate-900 dark:text-white rounded-2xl px-3.5 py-2 text-xs font-bold shadow-inner">
                             </div>
                         </div>
                         <div>
-                            <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">सप्लायर नाम / ब्रांड / नोट</label>
-                            <input type="text" id="exp-note" placeholder="जैसे: अमूल दाना या स्थानीय व्यापारी" class="w-full bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-indigo-950 text-slate-900 dark:text-white rounded-2xl px-4 py-2.5 text-xs font-bold shadow-inner">
+                            <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">Supplier Name / Brand / Note</label>
+                            <input type="text" id="exp-note" placeholder="e.g. Amul Feed or Local Merchant" class="w-full bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-indigo-950 text-slate-900 dark:text-white rounded-2xl px-4 py-2.5 text-xs font-bold shadow-inner">
                         </div>
-                        <button type="submit" class="w-full bg-gradient-to-r from-emerald-600 via-teal-600 to-green-600 hover:opacity-95 text-white font-bold py-3.5 rounded-2xl text-xs transition shadow-lg shadow-emerald-600/30 transform active:scale-95">विस्तृत खर्च सेव करें 📝 ✨</button>
+                        <button type="submit" class="w-full bg-gradient-to-r from-emerald-600 via-teal-600 to-green-600 hover:opacity-95 text-white font-bold py-3.5 rounded-2xl text-xs transition shadow-lg shadow-emerald-600/30 transform active:scale-95">Save Expense 📝 ✨</button>
                     </form>
                 </div>
 
@@ -970,19 +970,19 @@
                 <div class="morph-panel p-6 rounded-3xl shadow-xl lg:col-span-2 space-y-5">
                     <div class="grid grid-cols-1 sm:grid-cols-4 gap-3">
                         <div class="bg-emerald-500/10 border border-emerald-500/20 p-4 rounded-2xl">
-                            <span class="text-[10px] text-emerald-600 dark:text-emerald-400 font-extrabold uppercase">कुल पशुआहार खर्च</span>
+                            <span class="text-[10px] text-emerald-600 dark:text-emerald-400 font-extrabold uppercase">Total Feed Expense</span>
                             <h4 id="exp-summary-feed" class="text-lg font-black text-emerald-700 dark:text-emerald-300 mt-1">₹0</h4>
                         </div>
                         <div class="bg-blue-500/10 border border-blue-500/20 p-4 rounded-2xl">
-                            <span class="text-[10px] text-blue-600 dark:text-blue-400 font-extrabold uppercase">लेबर & अन्य खर्च</span>
+                            <span class="text-[10px] text-blue-600 dark:text-blue-400 font-extrabold uppercase">Labor & Other Costs</span>
                             <h4 id="exp-summary-other" class="text-lg font-black text-blue-700 dark:text-blue-300 mt-1">₹0</h4>
                         </div>
                         <div class="bg-indigo-500/10 border border-indigo-500/20 p-4 rounded-2xl">
-                            <span class="text-[10px] text-indigo-600 dark:text-indigo-400 font-extrabold uppercase">प्रति लीटर लागत (Cost/L)</span>
+                            <span class="text-[10px] text-indigo-600 dark:text-indigo-400 font-extrabold uppercase">Cost per Liter (Cost/L)</span>
                             <h4 id="exp-summary-cost-per-liter" class="text-lg font-black text-indigo-700 dark:text-indigo-300 mt-1">₹0.0</h4>
                         </div>
                         <div class="bg-violet-500/10 border border-violet-500/20 p-4 rounded-2xl">
-                            <span class="text-[10px] text-violet-600 dark:text-violet-400 font-extrabold uppercase">फीड ROI इंडेक्स</span>
+                            <span class="text-[10px] text-violet-600 dark:text-violet-400 font-extrabold uppercase">Feed ROI Index</span>
                             <h4 id="exp-summary-roi" class="text-lg font-black text-violet-700 dark:text-violet-300 mt-1">100%</h4>
                         </div>
                     </div>
@@ -990,31 +990,31 @@
                     <!-- Enterprise Feed Metrics Banner -->
                     <div class="bg-slate-50 dark:bg-slate-950/80 border border-slate-200 dark:border-indigo-950 p-4 rounded-2xl flex flex-wrap justify-between items-center gap-3 text-xs">
                         <div>
-                            <span class="text-slate-500 font-medium">मासिक बजट अनुमानित स्थिति:</span>
-                            <span id="exp-budget-status" class="font-bold text-emerald-600 ml-1">संतुलित (Optimal)</span>
+                            <span class="text-slate-500 font-medium">Monthly Budget Estimated Status:</span>
+                            <span id="exp-budget-status" class="font-bold text-emerald-600 ml-1">Optimal (Balanced)</span>
                         </div>
                         <div>
-                            <span class="text-slate-500 font-medium">फीड कन्वर्जन दक्षता (FCE):</span>
+                            <span class="text-slate-500 font-medium">Feed Conversion Efficiency (FCE):</span>
                             <span class="font-bold text-indigo-600 ml-1">Grade A+ (High Efficiency)</span>
                         </div>
                     </div>
 
                     <div class="flex justify-between items-center pb-2 border-b border-slate-200 dark:border-indigo-950">
-                        <h3 class="font-bold text-slate-900 dark:text-white text-sm">चारा एवं लागत इतिहास (Enterprise Ledger) 📊</h3>
-                        <span id="total-expenses-badge" class="text-xs font-bold text-emerald-600">कुल योग: ₹0</span>
+                        <h3 class="font-bold text-slate-900 dark:text-white text-sm">Feed & Cost History (Enterprise Ledger) 📊</h3>
+                        <span id="total-expenses-badge" class="text-xs font-bold text-emerald-600">Total Sum: ₹0</span>
                     </div>
 
                     <div class="overflow-x-auto">
                         <table class="w-full text-left border-collapse">
                             <thead>
                                 <tr class="border-b border-slate-200 dark:border-indigo-950 text-[11px] font-bold text-slate-400 uppercase">
-                                    <th class="py-3 px-3"># क्रम</th>
-                                    <th class="py-3 px-3">तारीख</th>
-                                    <th class="py-3 px-3">श्रेणी</th>
-                                    <th class="py-3 px-3">मात्रा/पशु</th>
-                                    <th class="py-3 px-3">विवरण / सप्लायर</th>
-                                    <th class="py-3 px-3">राशि</th>
-                                    <th class="py-3 px-3 text-right">कार्य</th>
+                                    <th class="py-3 px-3"># Sl No.</th>
+                                    <th class="py-3 px-3">Date</th>
+                                    <th class="py-3 px-3">Category</th>
+                                    <th class="py-3 px-3">Quantity / Shed</th>
+                                    <th class="py-3 px-3">Description / Supplier</th>
+                                    <th class="py-3 px-3">Amount</th>
+                                    <th class="py-3 px-3 text-right">Actions</th>
                                 </tr>
                             </thead>
                             <tbody id="expenses-tbody" class="text-xs divide-y divide-slate-200 dark:divide-indigo-950/50 font-semibold"></tbody>
@@ -1034,8 +1034,8 @@
                     <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/></svg>
                 </div>
                 <div>
-                    <h4 class="font-extrabold text-slate-900 dark:text-white text-sm">मिल्क हिसाब (Global Pro Suite)</h4>
-                    <p class="text-[11px] text-slate-500 font-medium">© 2026 सर्वाधिकार सुरक्षित। उद्यम डेयरी सॉफ्टवेयर।</p>
+                    <h4 class="font-extrabold text-slate-900 dark:text-white text-sm">Milk Ledger (Global Pro Suite)</h4>
+                    <p class="text-[11px] text-slate-500 font-medium">© 2026 All Rights Reserved. Enterprise Dairy Software.</p>
                 </div>
             </div>
 
@@ -1056,8 +1056,8 @@
     <script>
         let appData = {
             customers: JSON.parse(localStorage.getItem('milk_customers_v8')) || [
-                { id: '1', name: 'रामेश्वर यादव', phone: '9876543210', milkType: 'Buffalo' },
-                { id: '2', name: 'सुनील कुमार', phone: '9123456789', milkType: 'Cow' }
+                { id: '1', name: 'Rameshwar Yadav', phone: '9876543210', milkType: 'Buffalo' },
+                { id: '2', name: 'Sunil Kumar', phone: '9123456789', milkType: 'Cow' }
             ],
             entries: JSON.parse(localStorage.getItem('milk_entries_v8')) || [],
             khata: JSON.parse(localStorage.getItem('milk_khata_v8')) || [],
@@ -1090,20 +1090,20 @@
                         const lon = position.coords.longitude;
                         const res = await fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lon}`);
                         const data = await res.json();
-                        const city = data.address.city || data.address.town || data.address.village || data.address.state || "भारत";
+                        const city = data.address.city || data.address.town || data.address.village || data.address.state || "India";
                         const locEl = document.getElementById('live-location-text');
-                        if (locEl) locEl.innerHTML = `📍 ${city}, भारत`;
+                        if (locEl) locEl.innerHTML = `📍 ${city}, India`;
                     } catch (e) {
                         const locEl = document.getElementById('live-location-text');
-                        if (locEl) locEl.innerHTML = `📍 भारत (डिफ़ॉल्ट)`;
+                        if (locEl) locEl.innerHTML = `📍 India (Default)`;
                     }
                 }, () => {
                     const locEl = document.getElementById('live-location-text');
-                    if (locEl) locEl.innerHTML = `📍 भारत (लोकेशन बंद)`;
+                    if (locEl) locEl.innerHTML = `📍 India (Location Off)`;
                 });
             } else {
                 const locEl = document.getElementById('live-location-text');
-                if (locEl) locEl.innerHTML = `📍 भारत`;
+                if (locEl) locEl.innerHTML = `📍 India`;
             }
 
             const savedName = localStorage.getItem('milk_user_name_v8');
@@ -1133,22 +1133,22 @@
             function updateClock() {
                 const now = new Date();
                 const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-                const dateStr = now.toLocaleDateString('hi-IN', options);
-                const timeStr = now.toLocaleTimeString('hi-IN');
+                const dateStr = now.toLocaleDateString('en-US', options);
+                const timeStr = now.toLocaleTimeString('en-US');
                 const clockEl = document.getElementById('live-datetime-str');
                 if(clockEl) clockEl.innerText = `${dateStr} | ${timeStr}`;
 
                 const hour = now.getHours();
-                let greeting = "शुभ प्रभात 🌅";
+                let greeting = "Good Morning 🌅";
                 let icon = "🌅";
                 if (hour >= 12 && hour < 16) {
-                    greeting = "शुभ दोपहर ☀️";
+                    greeting = "Good Afternoon ☀️";
                     icon = "☀️";
                 } else if (hour >= 16 && hour < 20) {
-                    greeting = "शुभ संध्या 🌇";
+                    greeting = "Good Evening 🌇";
                     icon = "🌇";
                 } else if (hour >= 20 || hour < 4) {
-                    greeting = "शुभ रात्रि 🌙";
+                    greeting = "Good Night 🌙";
                     icon = "🌙";
                 }
                 const greetEl = document.getElementById('greeting-text');
@@ -1206,27 +1206,6 @@
             if (id === 'ai') calculateAIPredictions();
             if (id === 'reports') generateReport();
             if (id === 'expenses') renderExpensesTable();
-        }
-
-        function switchTab(id) {
-            ['dashboard', 'entries', 'khata', 'customers', 'ai', 'stock', 'reports', 'expenses'].forEach(t => {
-                const sec = document.getElementById(`tab-${t}`);
-                const btn = document.getElementById(`tab-btn-${t}`);
-                if (sec) sec.classList.add('hidden');
-                if (btn) btn.className = "py-3 px-2 rounded-2xl font-semibold text-xs flex flex-col items-center justify-center space-y-1.5 text-slate-600 dark:text-slate-400 hover:bg-indigo-500/10 hover:text-indigo-600 transition";
-            });
-            const targetSec = document.getElementById(`tab-${id}`);
-            const targetBtn = document.getElementById(`tab-btn-${id}`);
-            if (targetSec) targetSec.classList.remove('hidden');
-            if (targetBtn) targetBtn.className = "py-3 px-2 rounded-2xl font-bold text-xs flex flex-col items-center justify-center space-y-1.5 bg-gradient-to-r from-indigo-600 via-blue-600 to-pink-600 text-white shadow-lg shadow-indigo-600/30 transition transform active:scale-95";
-
-            if (id === 'dashboard') updateDashboard();
-            if (id === 'entries') renderEntriesTable();
-            if (id === 'khata') renderKhataTable();
-            if (id === 'customers') renderCustomerTable();
-            if (id === 'ai') calculateAIPredictions();
-            if (id === 'reports') generateReport();
-            if (id === 'expenses') renderExpensesTable();
             if(typeof lucide !== 'undefined') lucide.createIcons();
         }
 
@@ -1236,11 +1215,11 @@
             const qty = document.getElementById('exp-qty').value || '-';
             const amount = parseFloat(document.getElementById('exp-amount').value);
             const date = document.getElementById('exp-date').value;
-            const animal = document.getElementById('exp-animal').value || 'सामान्य शेड';
+            const animal = document.getElementById('exp-animal').value || 'General Shed';
             const note = document.getElementById('exp-note').value;
 
             if(isNaN(amount) || amount <= 0) {
-                showToast('कृपया सही राशि दर्ज करें!', true);
+                showToast('Please enter a valid amount!', true);
                 return;
             }
 
@@ -1262,7 +1241,7 @@
             document.getElementById('exp-animal').value = '';
             document.getElementById('exp-note').value = '';
             renderExpensesTable();
-            showToast('खर्च सफलतापूर्वक सेव हो गया! 🌾');
+            showToast('Expense successfully saved! 🌾');
         }
 
         function renderExpensesTable() {
@@ -1282,7 +1261,7 @@
             });
 
             const badge = document.getElementById('total-expenses-badge');
-            if(badge) badge.innerText = `कुल योग: ₹${total.toFixed(2)}`;
+            if(badge) badge.innerText = `Total Sum: ₹${total.toFixed(2)}`;
 
             const sumFeed = document.getElementById('exp-summary-feed');
             const sumOther = document.getElementById('exp-summary-other');
@@ -1306,16 +1285,16 @@
             if(sumRoi) sumRoi.innerText = `${roi.toFixed(0)}%`;
 
             tbody.innerHTML = appData.expenses.length ? appData.expenses.map((x, index) => {
-                let catText = 'अन्य खर्च';
-                if(x.category === 'Binola') catText = '🌾 बिनौला खली';
-                else if(x.category === 'Chokar') catText = '🌾 चोकर/भूसा';
-                else if(x.category === 'Grain') catText = '🌽 दाना मिश्रण';
-                else if(x.category === 'GreenFeed') catText = '🌿 हरा चारा';
-                else if(x.category === 'Mineral') catText = '🧪 मिनरल मिक्चर';
-                else if(x.category === 'Medicine') catText = '💊 पशु चिकित्सा';
-                else if(x.category === 'Maintenance') catText = '🔧 रख-रखाव';
-                else if(x.category === 'Labor') catText = '👷 लेबर वेतन';
-                else if(x.category === 'Transport') catText = '🚚 परिवहन';
+                let catText = 'Other Expense';
+                if(x.category === 'Binola') catText = '🌾 Cottonseed Cake';
+                else if(x.category === 'Chokar') catText = '🌾 Bran / Straw';
+                else if(x.category === 'Grain') catText = '🌽 Grain Mix';
+                else if(x.category === 'GreenFeed') catText = '🌿 Green Fodder';
+                else if(x.category === 'Mineral') catText = '🧪 Mineral Mix';
+                else if(x.category === 'Medicine') catText = '💊 Veterinary';
+                else if(x.category === 'Maintenance') catText = '🔧 Maintenance';
+                else if(x.category === 'Labor') catText = '👷 Labor Wages';
+                else if(x.category === 'Transport') catText = '🚚 Logistics';
 
                 return `
                     <tr class="border-b border-slate-200 dark:border-indigo-950">
@@ -1326,18 +1305,18 @@
                         <td class="py-3 px-3 font-medium">${x.note || '-'}</td>
                         <td class="py-3 px-3 font-bold text-emerald-600">₹${parseFloat(x.amount).toFixed(2)}</td>
                         <td class="py-3 px-3 text-right">
-                            <button onclick="deleteExpense('${x.id}')" class="text-red-500 font-bold hover:underline">हटाएं</button>
+                            <button onclick="deleteExpense('${x.id}')" class="text-red-500 font-bold hover:underline">Delete</button>
                         </td>
                     </tr>
                 `;
-            }).join('') : '<tr><td colspan="7" class="text-center py-5 text-slate-400">कोई खर्च रिकॉर्ड नहीं मिला</td></tr>';
+            }).join('') : '<tr><td colspan="7" class="text-center py-5 text-slate-400">No expense records found</td></tr>';
         }
 
         function deleteExpense(id) {
             appData.expenses = appData.expenses.filter(x => x.id !== id);
             saveToLocalStorage();
             renderExpensesTable();
-            showToast('खर्च रिकॉर्ड हटा दिया गया!');
+            showToast('Expense record deleted!');
         }
 
         function populateCustomerDropdowns() {
@@ -1346,15 +1325,15 @@
                 if (!el) return;
                 let html = '';
                 if (id === 'dash-profile-select') {
-                    html = '<option value="all">👥 सभी का कुल टोटल (Master Total)</option>';
+                    html = '<option value="all">👥 Overall Total (Master Total)</option>';
                 } else if (id === 'ai-filter-profile') {
-                    html = '<option value="all">👥 सभी वेंडर / कुल डेटा</option>';
+                    html = '<option value="all">👥 All Vendors / Master Data</option>';
                 } else if (id === 'ai-cust-1' || id === 'ai-cust-2') {
-                    html = `<option value="">-- ${id === 'ai-cust-1' ? 'ग्राहक 1' : 'ग्राहक 2'} चुनें --</option>`;
+                    html = `<option value="">-- Select ${id === 'ai-cust-1' ? 'Customer 1' : 'Customer 2'} --</option>`;
                 } else if (id.includes('filter') || id.includes('report')) {
-                    html = '<option value="">-- सभी / चुनें --</option>';
+                    html = '<option value="">-- All / Select --</option>';
                 } else {
-                    html = '<option value="">-- ग्राहक चुनें --</option>';
+                    html = '<option value="">-- Select Customer --</option>';
                 }
                 appData.customers.forEach(c => html += `<option value="${c.id}">${c.name} (${c.phone})</option>`);
                 el.innerHTML = html;
@@ -1384,7 +1363,7 @@
             const rate = parseFloat(document.getElementById('qe-rate').value);
 
             if(!customerId || isNaN(liters) || isNaN(rate)) {
-                showToast('कृपया सभी जानकारी सही से भरें!', true);
+                showToast('Please fill all details correctly!', true);
                 return;
             }
 
@@ -1406,7 +1385,7 @@
             calcQuickTotal();
             
             updateDashboard();
-            showToast('दूध प्रविष्टि सफलतापूर्वक दर्ज हो गई! 🥛');
+            showToast('Milk entry recorded successfully! 🥛');
         }
 
         function handleDetailedEntry(e) {
@@ -1418,7 +1397,7 @@
             const rate = parseFloat(document.getElementById('de-rate').value);
 
             if(!customerId || isNaN(liters) || isNaN(rate)) {
-                showToast('कृपया सभी फील्ड सही भरें!', true);
+                showToast('Please fill all fields correctly!', true);
                 return;
             }
 
@@ -1441,7 +1420,7 @@
             if(preview) preview.innerText = '₹0.00';
             
             renderEntriesTable();
-            showToast('विस्तृत दूध एंट्री जोड़ दी गई! ✅');
+            showToast('Detailed milk entry added! ✅');
         }
 
         function handleKhataEntry(e) {
@@ -1453,7 +1432,7 @@
             const note = document.getElementById('khata-note').value;
 
             if(!customerId || isNaN(amount)) {
-                showToast('कृपया ग्राहक और सही राशि भरें!', true);
+                showToast('Please select customer and valid amount!', true);
                 return;
             }
 
@@ -1474,7 +1453,7 @@
             document.getElementById('khata-customer').value = '';
 
             renderKhataTable();
-            showToast('लेन-देन सफलतापूर्वक सेव हो गया! 💼');
+            showToast('Transaction saved successfully! 💼');
         }
 
         function handleCustomerSubmit(e) {
@@ -1485,7 +1464,7 @@
             const milkType = document.getElementById('cust-milknumber').value;
 
             if(!name || !phone) {
-                showToast('कृपया सभी जानकारी सही से भरें!', true);
+                showToast('Please fill all required information!', true);
                 return;
             }
 
@@ -1508,14 +1487,14 @@
             populateCustomerDropdowns();
             renderCustomerTable();
             resetCustomerForm();
-            showToast('ग्राहक की जानकारी सुरक्षित हो गई! 📇');
+            showToast('Customer information saved! 📇');
         }
 
         function resetCustomerForm() {
             document.getElementById('cust-id').value = '';
             document.getElementById('cust-name').value = '';
             document.getElementById('cust-phone').value = '';
-            document.getElementById('cust-submit-btn').innerText = 'सेव करें 💾';
+            document.getElementById('cust-submit-btn').innerText = 'Save 💾';
             document.getElementById('cust-cancel-btn').classList.add('hidden');
         }
 
@@ -1527,13 +1506,13 @@
                     <td class="py-3 px-3 font-bold text-indigo-600">#${index + 1}</td>
                     <td class="py-3 px-3 font-bold">${c.name}</td>
                     <td class="py-3 px-3">${c.phone}</td>
-                    <td class="py-3 px-3">${c.milkType === 'Buffalo' ? 'भैंस' : c.milkType === 'Cow' ? 'गाय' : 'दोनों'}</td>
+                    <td class="py-3 px-3">${c.milkType === 'Buffalo' ? 'Buffalo' : c.milkType === 'Cow' ? 'Cow' : 'Both'}</td>
                     <td class="py-3 px-3 text-right">
-                        <button onclick="editCustomer('${c.id}')" class="text-blue-500 font-bold hover:underline mr-3">संपादित</button>
-                        <button onclick="deleteCustomer('${c.id}')" class="text-red-500 font-bold hover:underline">हटाएं</button>
+                        <button onclick="editCustomer('${c.id}')" class="text-blue-500 font-bold hover:underline mr-3">Edit</button>
+                        <button onclick="deleteCustomer('${c.id}')" class="text-red-500 font-bold hover:underline">Delete</button>
                     </td>
                 </tr>
-            `).join('') : '<tr><td colspan="5" class="text-center py-5 text-slate-400">कोई ग्राहक पंजीकृत नहीं है</td></tr>';
+            `).join('') : '<tr><td colspan="5" class="text-center py-5 text-slate-400">No customers registered</td></tr>';
         }
 
         function editCustomer(id) {
@@ -1543,17 +1522,18 @@
             document.getElementById('cust-name').value = c.name;
             document.getElementById('cust-phone').value = c.phone;
             document.getElementById('cust-milknumber').value = c.milkType;
-            document.getElementById('cust-submit-btn').innerText = 'अपडेट करें 🔄';
+            document.getElementById('cust-submit-btn').innerText = 'Update 🔄';
             document.getElementById('cust-cancel-btn').classList.remove('hidden');
         }
 
         function deleteCustomer(id) {
-            if(confirm('क्या आप वाकई इस ग्राहक को हटाना चाहते हैं?')) {
+            const confirmed = window.confirm ? window.confirm('Are you sure you want to remove this customer?') : true;
+            if(confirmed) {
                 appData.customers = appData.customers.filter(c => c.id !== id);
                 saveToLocalStorage();
                 populateCustomerDropdowns();
                 renderCustomerTable();
-                showToast('ग्राहक हटा दिया गया!');
+                showToast('Customer deleted!');
             }
         }
 
@@ -1570,7 +1550,7 @@
             });
 
             const badge = document.getElementById('entries-count-badge');
-            if(badge) badge.innerText = `${filtered.length} रिकॉर्ड्स`;
+            if(badge) badge.innerText = `${filtered.length} Records`;
 
             const rowsHtml = filtered.length ? filtered.map((e, index) => {
                 const c = appData.customers.find(x => x.id === e.customerId);
@@ -1578,18 +1558,18 @@
                     <tr class="border-b border-slate-200 dark:border-indigo-950 hover:bg-slate-50/50 dark:hover:bg-indigo-950/20 transition">
                         <td class="py-3.5 px-3 font-extrabold text-indigo-600">#${index + 1}</td>
                         <td class="py-3.5 px-3 font-semibold">${e.date}</td>
-                        <td class="py-3.5 px-3"><span class="px-2.5 py-1 rounded-full text-[10px] font-bold ${e.shift === 'Morning' ? 'bg-amber-500/10 text-amber-600' : 'bg-indigo-500/10 text-indigo-600'}">${e.shift === 'Morning' ? '🌅 सुबह' : '🌇 शाम'}</span></td>
-                        <td class="py-3.5 px-3 font-bold">${c ? c.name : 'अज्ञात'}</td>
+                        <td class="py-3.5 px-3"><span class="px-2.5 py-1 rounded-full text-[10px] font-bold ${e.shift === 'Morning' ? 'bg-amber-500/10 text-amber-600' : 'bg-indigo-500/10 text-indigo-600'}">${e.shift === 'Morning' ? '🌅 Morning' : '🌇 Evening'}</span></td>
+                        <td class="py-3.5 px-3 font-bold">${c ? c.name : 'Unknown'}</td>
                         <td class="py-3.5 px-3 font-black text-indigo-600 dark:text-indigo-400">${parseFloat(e.liters).toFixed(2)} L</td>
                         <td class="py-3.5 px-3 font-medium">₹${parseFloat(e.rate).toFixed(2)}</td>
                         <td class="py-3.5 px-3 font-black text-blue-600 dark:text-blue-400">₹${parseFloat(e.total).toFixed(2)}</td>
                         <td class="py-3.5 px-3 text-right space-x-2">
-                            <button onclick="downloadSingleEntryPDF('${e.id}')" class="bg-blue-500/10 text-blue-600 hover:bg-blue-600 hover:text-white px-3 py-1.5 rounded-xl font-bold transition text-[11px]" title="PDF स्लिप डाउनलोड करें">📥 PDF</button>
-                            <button onclick="deleteEntry('${e.id}')" class="bg-red-500/10 text-red-500 hover:bg-red-500 hover:text-white px-3 py-1.5 rounded-xl font-bold transition text-[11px]">हटाएं</button>
+                            <button onclick="downloadSingleEntryPDF('${e.id}')" class="bg-blue-500/10 text-blue-600 hover:bg-blue-600 hover:text-white px-3 py-1.5 rounded-xl font-bold transition text-[11px]" title="Download PDF Slip">📥 PDF</button>
+                            <button onclick="deleteEntry('${e.id}')" class="bg-red-500/10 text-red-500 hover:bg-red-500 hover:text-white px-3 py-1.5 rounded-xl font-bold transition text-[11px]">Delete</button>
                         </td>
                     </tr>
                 `;
-            }).join('') : '<tr><td colspan="8" class="text-center py-8 text-slate-400 font-medium">कोई प्रविष्टि नहीं मिली</td></tr>';
+            }).join('') : '<tr><td colspan="8" class="text-center py-8 text-slate-400 font-medium">No entries found</td></tr>';
 
             if(tbody) tbody.innerHTML = rowsHtml;
 
@@ -1600,23 +1580,23 @@
                         <div class="morph-panel p-4 rounded-2xl shadow-sm space-y-2.5 relative overflow-hidden">
                             <div class="flex justify-between items-center border-b border-slate-200 dark:border-indigo-950/60 pb-2">
                                 <span class="bg-indigo-600 text-white text-[10px] font-extrabold px-2.5 py-0.5 rounded-full shadow-sm">#${index + 1}</span>
-                                <span class="text-xs font-bold text-slate-500 dark:text-slate-400">${e.date} (${e.shift === 'Morning' ? '🌅 सुबह' : '🌇 शाम'})</span>
+                                <span class="text-xs font-bold text-slate-500 dark:text-slate-400">${e.date} (${e.shift === 'Morning' ? '🌅 Morning' : '🌇 Evening'})</span>
                             </div>
                             <div class="flex justify-between items-center">
-                                <span class="text-xs font-black text-slate-900 dark:text-white text-base">${c ? c.name : 'अज्ञात'}</span>
+                                <span class="text-xs font-black text-slate-900 dark:text-white text-base">${c ? c.name : 'Unknown'}</span>
                                 <span class="text-sm font-black text-indigo-600 dark:text-indigo-400">${parseFloat(e.liters).toFixed(2)} L</span>
                             </div>
                             <div class="flex justify-between items-center pt-1 text-xs">
-                                <span class="text-slate-500 font-medium">रेट: ₹${parseFloat(e.rate).toFixed(2)} / L</span>
-                                <span class="font-black text-blue-600 dark:text-blue-400 text-sm">कुल: ₹${parseFloat(e.total).toFixed(2)}</span>
+                                <span class="text-slate-500 font-medium">Rate: ₹${parseFloat(e.rate).toFixed(2)} / L</span>
+                                <span class="font-black text-blue-600 dark:text-blue-400 text-sm">Total: ₹${parseFloat(e.total).toFixed(2)}</span>
                             </div>
                             <div class="flex justify-end gap-2 pt-2 border-t border-slate-200/60 dark:border-indigo-950/40">
-                                <button onclick="downloadSingleEntryPDF('${e.id}')" class="bg-blue-500/10 text-blue-600 hover:bg-blue-600 hover:text-white px-3.5 py-1.5 rounded-xl font-bold transition text-xs">📥 PDF स्लिप</button>
-                                <button onclick="deleteEntry('${e.id}')" class="bg-red-500/10 text-red-500 hover:bg-red-500 hover:text-white px-3.5 py-1.5 rounded-xl font-bold transition text-xs">हटाएं 🗑️</button>
+                                <button onclick="downloadSingleEntryPDF('${e.id}')" class="bg-blue-500/10 text-blue-600 hover:bg-blue-600 hover:text-white px-3.5 py-1.5 rounded-xl font-bold transition text-xs">📥 PDF Slip</button>
+                                <button onclick="deleteEntry('${e.id}')" class="bg-red-500/10 text-red-500 hover:bg-red-500 hover:text-white px-3.5 py-1.5 rounded-xl font-bold transition text-xs">Delete 🗑️</button>
                             </div>
                         </div>
                     `;
-                }).join('') : '<div class="text-center py-8 text-slate-400 font-medium morph-panel rounded-2xl border border-dashed border-slate-300 dark:border-indigo-950">कोई प्रविष्टि नहीं मिली</div>';
+                }).join('') : '<div class="text-center py-8 text-slate-400 font-medium morph-panel rounded-2xl border border-dashed border-slate-300 dark:border-indigo-950">No entries found</div>';
             }
         }
 
@@ -1624,7 +1604,7 @@
             const entry = appData.entries.find(e => e.id === id);
             if(!entry) return;
             const c = appData.customers.find(x => x.id === entry.customerId);
-            showToast(`प्रविष्टि #${c ? c.name : ''} की PDF स्लिप तैयार की जा रही है...`);
+            showToast(`Generating PDF Slip for ${c ? c.name : 'Entry'}...`);
             setTimeout(() => {
                 window.print();
             }, 400);
@@ -1635,7 +1615,7 @@
             saveToLocalStorage();
             renderEntriesTable();
             updateDashboard();
-            showToast('एंट्री सफलतापूर्वक हटा दी गई!');
+            showToast('Entry deleted successfully!');
         }
 
         function renderKhataTable() {
@@ -1649,25 +1629,25 @@
             if(tbody) {
                 tbody.innerHTML = filtered.length ? filtered.map((x, index) => {
                     const c = appData.customers.find(cp => cp.id === x.customerId);
-                    let typeText = 'भुगतान दिया';
+                    let typeText = 'Payment Paid';
                     let typeClass = 'text-red-500';
-                    if(x.type === 'Received') { typeText = 'भुगतान मिला'; typeClass = 'text-emerald-500'; }
-                    else if(x.type === 'Advance') { typeText = 'एडवांस'; typeClass = 'text-indigo-500'; }
+                    if(x.type === 'Received') { typeText = 'Payment Received'; typeClass = 'text-emerald-500'; }
+                    else if(x.type === 'Advance') { typeText = 'Advance'; typeClass = 'text-indigo-500'; }
 
                     return `
                         <tr class="border-b border-slate-200 dark:border-indigo-950">
                             <td class="py-3 px-3 font-bold text-indigo-600">#${index + 1}</td>
                             <td class="py-3 px-3">${x.date}</td>
-                            <td class="py-3 px-3 font-bold">${c ? c.name : 'अज्ञात'}</td>
+                            <td class="py-3 px-3 font-bold">${c ? c.name : 'Unknown'}</td>
                             <td class="py-3 px-3"><span class="font-bold ${typeClass}">${typeText}</span></td>
                             <td class="py-3 px-3 font-black">₹${parseFloat(x.amount).toFixed(2)}</td>
                             <td class="py-3 px-3 font-medium">${x.note || '-'}</td>
                             <td class="py-3 px-3 text-right">
-                                <button onclick="deleteKhata('${x.id}')" class="text-red-500 font-bold hover:underline">हटाएं</button>
+                                <button onclick="deleteKhata('${x.id}')" class="text-red-500 font-bold hover:underline">Delete</button>
                             </td>
                         </tr>
                     `;
-                }).join('') : '<tr><td colspan="7" class="text-center py-5 text-slate-400">कोई लेन-देन रिकॉर्ड नहीं मिला</td></tr>';
+                }).join('') : '<tr><td colspan="7" class="text-center py-5 text-slate-400">No transaction records found</td></tr>';
             }
         }
 
@@ -1675,11 +1655,11 @@
             appData.khata = appData.khata.filter(x => x.id !== id);
             saveToLocalStorage();
             renderKhataTable();
-            showToast('लेन-देन रिकॉर्ड हटा दिया गया!');
+            showToast('Transaction record deleted!');
         }
 
         function downloadKhataPDF() {
-            showToast('लेन-देन लेजर PDF जनरेट हो रहा है...');
+            showToast('Generating Ledger PDF...');
             setTimeout(() => {
                 window.print();
             }, 500);
@@ -1780,14 +1760,14 @@
                     return `
                         <tr class="border-b border-slate-200 dark:border-indigo-950">
                             <td class="py-3 px-3 font-bold text-indigo-600">#${index + 1}</td>
-                            <td class="py-3 px-3">${e.date} (${e.shift === 'Morning' ? 'सुबह' : 'शाम'})</td>
-                            <td class="py-3 px-3 font-bold">${c ? c.name : 'अज्ञात'}</td>
+                            <td class="py-3 px-3">${e.date} (${e.shift === 'Morning' ? 'Morning' : 'Evening'})</td>
+                            <td class="py-3 px-3 font-bold">${c ? c.name : 'Unknown'}</td>
                             <td class="py-3 px-3 font-black text-indigo-600">${parseFloat(e.liters).toFixed(2)} L</td>
                             <td class="py-3 px-3">₹${parseFloat(e.rate).toFixed(2)}</td>
                             <td class="py-3 px-3 font-black text-blue-600">₹${parseFloat(e.total).toFixed(2)}</td>
                         </tr>
                     `;
-                }).join('') : '<tr><td colspan="6" class="text-center py-4 text-slate-400">हाल में कोई एंट्री नहीं है</td></tr>';
+                }).join('') : '<tr><td colspan="6" class="text-center py-4 text-slate-400">No recent entries found</td></tr>';
             }
         }
 
@@ -1818,10 +1798,10 @@
                 avgRate = sumRate / filteredEntries.length;
             }
 
-            if(document.getElementById('ai-feat-5')) document.getElementById('ai-feat-5').innerText = hasData ? `उत्तम` : `-`;
+            if(document.getElementById('ai-feat-5')) document.getElementById('ai-feat-5').innerText = hasData ? `Optimal` : `-`;
             if(document.getElementById('ai-feat-6')) document.getElementById('ai-feat-6').innerText = hasData ? `₹${avgRate.toFixed(2)}` : `₹0`;
             if(document.getElementById('ai-feat-7')) document.getElementById('ai-feat-7').innerText = hasData ? `+5.0%` : `0%`;
-            if(document.getElementById('ai-feat-8')) document.getElementById('ai-feat-8').innerText = hasData ? `सुरक्षित` : `-`;
+            if(document.getElementById('ai-feat-8')) document.getElementById('ai-feat-8').innerText = hasData ? `Secure` : `-`;
             
             let morningCount = filteredEntries.filter(e => e.shift === 'Morning').length;
             let eveningCount = filteredEntries.filter(e => e.shift === 'Evening').length;
@@ -1834,14 +1814,14 @@
             if(document.getElementById('ai-feat-11')) document.getElementById('ai-feat-11').innerText = hasData ? `₹${totalDue.toFixed(2)}` : `₹0`;
             
             if(document.getElementById('ai-feat-12')) document.getElementById('ai-feat-12').innerText = hasData ? `${(totalL * 30).toFixed(2)} L` : `0 L`;
-            if(document.getElementById('ai-feat-13')) document.getElementById('ai-feat-13').innerText = hasData ? `नियमित` : `-`;
+            if(document.getElementById('ai-feat-13')) document.getElementById('ai-feat-13').innerText = hasData ? `Consistent` : `-`;
             if(document.getElementById('ai-feat-14')) document.getElementById('ai-feat-14').innerText = hasData ? `20.0%` : `0%`;
             if(document.getElementById('ai-feat-15')) document.getElementById('ai-feat-15').innerText = hasData ? `Grade A` : `-`;
-            if(document.getElementById('ai-feat-16')) document.getElementById('ai-feat-16').innerText = hasData ? `उत्तम` : `-`;
-            if(document.getElementById('ai-feat-17')) document.getElementById('ai-feat-17').innerText = hasData ? `स्थिर` : `-`;
-            if(document.getElementById('ai-feat-18')) document.getElementById('ai-feat-18').innerText = hasData ? `सिंक्रोनाइज्ड` : `खाली`;
-            if(document.getElementById('ai-feat-19')) document.getElementById('ai-feat-19').innerText = hasData ? `सक्रिय` : `प्रतीक्षारत`;
-            if(document.getElementById('ai-feat-20')) document.getElementById('ai-feat-20').innerText = hasData ? `सुरक्षित` : `-`;
+            if(document.getElementById('ai-feat-16')) document.getElementById('ai-feat-16').innerText = hasData ? `Optimal` : `-`;
+            if(document.getElementById('ai-feat-17')) document.getElementById('ai-feat-17').innerText = hasData ? `Stable` : `-`;
+            if(document.getElementById('ai-feat-18')) document.getElementById('ai-feat-18').innerText = hasData ? `Synchronized` : `Empty`;
+            if(document.getElementById('ai-feat-19')) document.getElementById('ai-feat-19').innerText = hasData ? `Active` : `Standby`;
+            if(document.getElementById('ai-feat-20')) document.getElementById('ai-feat-20').innerText = hasData ? `Protected` : `-`;
         }
 
         function calculateFatRate() {
@@ -1851,19 +1831,19 @@
             if(!res) return;
             if(fat <= 0 || snf <= 0) {
                 res.classList.remove('hidden');
-                res.innerText = 'कृपया सही फैट और SNF मान दर्ज करें!';
+                res.innerText = 'Please enter valid Fat and SNF values!';
                 return;
             }
             const estimatedRate = (fat * 8.5) + (snf * 2.2);
             res.classList.remove('hidden');
-            res.innerHTML = `अनुमानित दूध दर (Estimated Rate): <strong class="text-indigo-600 dark:text-indigo-400 text-sm">₹${estimatedRate.toFixed(2)} प्रति लीटर</strong>`;
+            res.innerHTML = `Estimated Milk Rate: <strong class="text-indigo-600 dark:text-indigo-400 text-sm">₹${estimatedRate.toFixed(2)} per liter</strong>`;
         }
 
         function generateReport() {
             const custId = document.getElementById('report-customer-select')?.value;
             if(!custId) {
                 const tbody = document.getElementById('report-details-tbody');
-                if(tbody) tbody.innerHTML = '<tr><td colspan="3" class="text-center py-5 text-slate-400">कृपया कोई ग्राहक चुनें</td></tr>';
+                if(tbody) tbody.innerHTML = '<tr><td colspan="3" class="text-center py-5 text-slate-400">Please select a customer</td></tr>';
                 return;
             }
             const period = document.getElementById('report-period')?.value || 'weekly';
@@ -1909,33 +1889,33 @@
             if(tbody) {
                 tbody.innerHTML = filteredEntries.length ? filteredEntries.map(e => `
                     <tr class="border-b border-slate-200 dark:border-indigo-950">
-                        <td class="py-2.5 px-3 font-medium">${e.date} (${e.shift === 'Morning' ? '🌅 सुबह' : '🌇 शाम'})</td>
+                        <td class="py-2.5 px-3 font-medium">${e.date} (${e.shift === 'Morning' ? '🌅 Morning' : '🌇 Evening'})</td>
                         <td class="py-2.5 px-3 font-semibold">${parseFloat(e.liters).toFixed(2)} L @ ₹${parseFloat(e.rate).toFixed(2)}</td>
                         <td class="py-2.5 px-3 text-right font-black text-indigo-600">₹${parseFloat(e.total).toFixed(2)}</td>
                     </tr>
-                `).join('') : '<tr><td colspan="3" class="text-center py-4 text-slate-400">इस अवधि में कोई दूध प्रविष्टि नहीं मिली</td></tr>';
+                `).join('') : '<tr><td colspan="3" class="text-center py-4 text-slate-400">No milk entries found for this duration</td></tr>';
             }
         }
 
         function sendWhatsAppBill() {
             const custId = document.getElementById('report-customer-select')?.value;
-            if(!custId) { showToast('कृपया पहले ग्राहक चुनें!', true); return; }
+            if(!custId) { showToast('Please select a customer first!', true); return; }
             const c = appData.customers.find(x => x.id === custId);
             const amt = document.getElementById('rep-amount')?.innerText || '₹0';
             const l = document.getElementById('rep-liters')?.innerText || '0 L';
             const net = document.getElementById('rep-net-payable')?.innerText || '₹0';
-            const msg = `🧾 *मिल्क हिसाब - वीआईपी बिल स्लिप*\n----------------------------------\nनमस्ते *${c.name}* जी,\nआपके डेयरी दूध का विस्तृत विवरण:\n• कुल दूध: *${l}*\n• कुल कारोबार मूल्य: *${amt}*\n• शुद्ध देय रकम: *${net}*\n----------------------------------\nधन्यवाद! 🥛✨`;
+            const msg = `🧾 *Milk Ledger - VIP Invoice Slip*\n----------------------------------\nHello *${c.name}*,\nYour dairy statement summary:\n• Total Milk: *${l}*\n• Total Value: *${amt}*\n• Net Payable: *${net}*\n----------------------------------\nThank you! 🥛✨`;
             window.open(`https://wa.me/91${c.phone}?text=${encodeURIComponent(msg)}`, '_blank');
         }
 
         function copyBillText() {
             const custId = document.getElementById('report-customer-select')?.value;
-            if(!custId) { showToast('कृपया पहले ग्राहक चुनें!', true); return; }
+            if(!custId) { showToast('Please select a customer first!', true); return; }
             const c = appData.customers.find(x => x.id === custId);
             const amt = document.getElementById('rep-amount')?.innerText || '₹0';
             const l = document.getElementById('rep-liters')?.innerText || '0 L';
             const net = document.getElementById('rep-net-payable')?.innerText || '₹0';
-            const text = `मिल्क हिसाब बिल स्लिप - ${c.name} | कुल दूध: ${l} | कुल मूल्य: ${amt} | शुद्ध देय: ${net}`;
+            const text = `Milk Ledger Invoice - ${c.name} | Total Milk: ${l} | Total Value: ${amt} | Net Payable: ${net}`;
             
             const textArea = document.createElement("textarea");
             textArea.value = text;
@@ -1943,23 +1923,23 @@
             textArea.select();
             try {
                 document.execCommand('copy');
-                showToast('बिल स्लिप क्लिपबोर्ड पर कॉपी हो गई! 📋');
+                showToast('Bill slip copied to clipboard! 📋');
             } catch (err) {
-                showToast('कॉपी करने में त्रुटि!', true);
+                showToast('Failed to copy!', true);
             }
             document.body.removeChild(textArea);
         }
 
         function printOnlySlip() {
             const custId = document.getElementById('report-customer-select')?.value;
-            if(!custId) { showToast('कृपया पहले ग्राहक चुनें!', true); return; }
+            if(!custId) { showToast('Please select a customer first!', true); return; }
             window.print();
         }
 
         function downloadSlipPDF() {
             const custId = document.getElementById('report-customer-select')?.value;
-            if(!custId) { showToast('कृपया पहले ग्राहक चुनें!', true); return; }
-            showToast('PDF जनरेट हो रहा है... कृपया प्रिंट डायलॉग में "Save as PDF" चुनें!');
+            if(!custId) { showToast('Please select a customer first!', true); return; }
+            showToast('Generating PDF... Please select "Save as PDF" in the print dialogue!');
             setTimeout(() => {
                 window.print();
             }, 600);
@@ -1976,7 +1956,7 @@
             }
             if(c1 === c2) {
                 res.classList.remove('hidden');
-                res.innerText = 'कृपया दो अलग-अलग ग्राहक चुनें!';
+                res.innerText = 'Please select two different customers!';
                 return;
             }
             const cust1Obj = appData.customers.find(x => x.id === c1);
@@ -1989,7 +1969,7 @@
             appData.entries.filter(e => e.customerId === c2).forEach(e => { l2 += parseFloat(e.liters) || 0; amt2 += parseFloat(e.total) || 0; });
 
             res.classList.remove('hidden');
-            res.innerHTML = `📊 तुलना परिणाम:<br>• <strong>${cust1Obj?.name}</strong>: ${l1.toFixed(2)} L (₹${amt1.toFixed(2)})<br>• <strong>${cust2Obj?.name}</strong>: ${l2.toFixed(2)} L (₹${amt2.toFixed(2)})`;
+            res.innerHTML = `📊 Comparison Result:<br>• <strong>${cust1Obj?.name}</strong>: ${l1.toFixed(2)} L (₹${amt1.toFixed(2)})<br>• <strong>${cust2Obj?.name}</strong>: ${l2.toFixed(2)} L (₹${amt2.toFixed(2)})`;
         }
     </script>
 </body>
